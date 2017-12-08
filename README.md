@@ -7,23 +7,22 @@ Initial DB scheme:
 ![Initial DB scheme](http://s019.radikal.ru/i617/1712/20/b6160f97211b.jpg)
 
 #### Plan:
+1 Step (using JDBC and Spting):
 - init repository (completed);
 - init/set new Maven project and directory's structure (completed);
 - set initial db scheme (completed);
+- spring-app.xml (completed);
+- spring-db.xml (completed);
+- h2.properties (completed);
+- entities (mostly completed);
 
 //TODO:
-1 step (JDBC template){
-spring-app.xml
-init/spring-db.xml
 populateDB.sql
 initDB.sql
-
-add Entities
 add DAO
 }
 
  
-
 #### Prerequisites:
 - IntelliJ IDEA.
 
