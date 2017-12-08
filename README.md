@@ -10,8 +10,19 @@ Initial DB scheme:
 - init repository (completed);
 - init/set new Maven project and directory's structure (completed);
 - set initial db scheme (completed);
-- init/set spring-app.xml (in progress);
-- //TODO
+
+//TODO:
+1 step (JDBC template){
+spring-app.xml
+init/spring-db.xml
+populateDB.sql
+initDB.sql
+
+add Entities
+add DAO
+}
+
+ 
 
 #### Prerequisites:
 - IntelliJ IDEA.
