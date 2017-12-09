@@ -6,4 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Note extends AbstractNamedEntity {
+    public String title;
+    public String description;
 }

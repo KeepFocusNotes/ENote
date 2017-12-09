@@ -6,4 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Notepad extends AbstractNamedEntity {
+    public String title;
 }
