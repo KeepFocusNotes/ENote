@@ -21,12 +21,12 @@ Initial DB scheme:
 - implements Spring+JDBC package(70%)
  - JDBCAbstractGenericDao (completed);
  - JDBCUserRepositoryImpl (completed);
- - initDB.sql (in progress 90%);
+ - JDBCNotepadRepositoryImpl (completed);
+ - initDB.sql (completed for users and notepads (16403 entities in each));
+ - populateDB.sql (completed for users and notepads (16403 entities in each))
+ - tests
  - other entities' repos...
 ...
-populateDB.sql
-initDB.sql
-tests
 }
 
  
