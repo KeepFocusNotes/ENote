@@ -14,25 +14,22 @@ public class User extends AbstractNamedEntity {
     //temporal field
     private String password;
     private LocalDate birthDate;
-    private Date registered = new Date();
-    private Set<Role> roles;
+    private Date registrationDate = new Date();
 
     public User() {
         System.out.println(getId());
     }
 
     public User(User u) {
-        this(u.getId(), u.getEmail(), u.getPassword(), u.getBirthDate(), u.getRegistered(),
-                u.getRoles());
+        this(u.getId(), u.getEmail(), u.getPassword(), u.getBirthDate(), u.getRegistrationDate());
     }
 
-    public User(Integer id, String email, String password, LocalDate birthDate, Date registered,
-                Set<Role> roles) {
+    public User(Integer id, String email, String password, LocalDate birthDate,
+                Date registrationDate) {
         super(id, email);
         this.email = email;
         this.password = password;
         this.birthDate = birthDate;
-        this.registered = registered;
-        this.roles = roles;
+        this.registrationDate = registrationDate;
     }
 }
