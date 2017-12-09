@@ -3,9 +3,11 @@ package com.epam.university.spring.enote.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public abstract class AbstractBaseEntity {
+public abstract class AbstractBaseEntity implements Serializable{
     // start count from?!: public static final int START_SEQ = 100;
     protected Integer id;
 

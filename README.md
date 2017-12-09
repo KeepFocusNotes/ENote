@@ -17,9 +17,15 @@ Initial DB scheme:
 - entities (mostly completed);
 
 //TODO:
+- create common interfaces;
+- implements Spring+JDBC package(70%)
+ - JDBCAbstractGenericDao (completed);
+ - JDBCUserRepositoryImpl (in progress);
+ - other entities' repos...
+...
 populateDB.sql
 initDB.sql
-add DAO
+tests
 }
 
  
