@@ -22,12 +22,11 @@ Initial DB scheme:
  - JDBCAbstractGenericDao (completed);
  - JDBCUserRepositoryImpl (completed);
  - JDBCNotepadRepositoryImpl (completed);
- - initDB.sql (in progress 90%);
+ - initDB.sql (completed for users and notepads (16403 entities in each));
+ - populateDB.sql (completed for users and notepads (16403 entities in each))
+ - tests
  - other entities' repos...
 ...
-populateDB.sql
-initDB.sql
-tests
 }
 
  
