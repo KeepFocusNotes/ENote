@@ -8,34 +8,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotepadService implements DBService<Notepad> {
+public class NotepadServiceImpl implements DBService<Notepad> {
 
   private final GenericDao<Notepad> notepadRepository;
 
   @Autowired
-  public NotepadService(
+  public NotepadServiceImpl(
       GenericDao<Notepad> notepadRepository) {
     this.notepadRepository = notepadRepository;
   }
 
   @Override
   public Notepad getById(Integer id) {
-    return null;
+    return notepadRepository.get(id);
   }
 
   @Override
   public List<Notepad> getAll() {
-    return null;
+    return notepadRepository.getAll();
   }
 
   @Override
   public Notepad save(Notepad element) {
-    return null;
+    return notepadRepository.save(element);
   }
 
   @Override
   public List<Notepad> saveAll(List<Notepad> elements) {
-    return null;
+    return notepadRepository.saveAll(elements);
   }
 
   @Override
