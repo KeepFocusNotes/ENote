@@ -15,9 +15,7 @@ public abstract class JdbcAbstractGenericDao<T extends Serializable> {
 
     public abstract T get(Integer id);
 
-    public List<T> getAll() {
-        return null;
-    }
+    public abstract List<T> getAll();
 
     public abstract T save(T entity);
 

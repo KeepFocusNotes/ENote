@@ -20,7 +20,8 @@ Initial DB scheme:
 - create common interfaces;
 - implements Spring+JDBC package(70%)
  - JDBCAbstractGenericDao (completed);
- - JDBCUserRepositoryImpl (in progress);
+ - JDBCUserRepositoryImpl (completed);
+ - initDB.sql (in progress 90%);
  - other entities' repos...
 ...
 populateDB.sql
