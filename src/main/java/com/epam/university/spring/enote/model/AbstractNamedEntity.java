@@ -6,7 +6,8 @@ import lombok.Setter;
 
 /**
  * An abstract class designed for a person to be able to identify an entity (easier to perceive
- * than a digital id).
+ * than a digital id). In the project the inheritance from this class is using only for human-like
+ * entities.
  *
  * @see <a href="https://en.wikipedia.org/wiki/Named_entity">In the expression "Named Entity" the
  * word "Named" aims to restrict the possible set of entities to only those for which one or many
