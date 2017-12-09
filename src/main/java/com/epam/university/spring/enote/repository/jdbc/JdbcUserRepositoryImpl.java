@@ -69,7 +69,7 @@ public class JdbcUserRepositoryImpl extends JdbcAbstractGenericDao<User> impleme
 
     @Override
     public List<User> saveAll(List<User> users) {
-        return users.stream().map(user -> save(user)).collect(Collectors.toList());
+        return users.stream().map(this::save).collect(Collectors.toList());
     }
 
     //TODO cascade removing

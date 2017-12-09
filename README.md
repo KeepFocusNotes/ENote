@@ -21,6 +21,7 @@ Initial DB scheme:
 - implements Spring+JDBC package(70%)
  - JDBCAbstractGenericDao (completed);
  - JDBCUserRepositoryImpl (completed);
+ - JDBCNotepadRepositoryImpl (completed);
  - initDB.sql (in progress 90%);
  - other entities' repos...
 ...
