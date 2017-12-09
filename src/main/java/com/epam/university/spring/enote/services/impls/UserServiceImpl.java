@@ -20,22 +20,22 @@ public class UserServiceImpl implements DBService<User> {
 
   @Override
   public User getById(Integer id) {
-    return null;
+    return userRepository.get(id);
   }
 
   @Override
   public List<User> getAll() {
-    return null;
+    return userRepository.getAll();
   }
 
   @Override
   public User save(User element) {
-    return null;
+    return userRepository.save(element);
   }
 
   @Override
   public List<User> saveAll(List<User> elements) {
-    return null;
+    return userRepository.saveAll(elements);
   }
 
   @Override
