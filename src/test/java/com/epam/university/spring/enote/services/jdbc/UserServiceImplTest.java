@@ -1,18 +1,19 @@
 package com.epam.university.spring.enote.services.jdbc;
 
-import static org.junit.Assert.*;
-
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.services.GenericService;
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class UserServiceImplTest {
 
@@ -28,8 +29,7 @@ public class UserServiceImplTest {
     userService = new UserServiceImpl(userRepository);
 
     user = new User(userID, "asd@asd.ru", "1234",
-                    LocalDate.of(1952, 10, 7),
-                    LocalDate.of(2017, 12, 9));
+                    LocalDate.of(1952, 10, 7));
   }
 
   @Test
