@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 public abstract class AbstractBaseEntity implements Serializable{
-    public static final int START_SEQ = 100000;
+    public static final int START_SEQ = 1;
     protected Integer id;
 
     public AbstractBaseEntity() {

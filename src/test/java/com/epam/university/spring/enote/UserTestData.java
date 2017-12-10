@@ -3,10 +3,8 @@ package com.epam.university.spring.enote;
 import com.epam.university.spring.enote.model.User;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import static com.epam.university.spring.enote.model.AbstractBaseEntity.START_SEQ;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTestData {
 
@@ -19,13 +17,14 @@ public class UserTestData {
             "UserSecondPasswordUserData", LocalDate.of(1980, 1,
             2));
 
+   /*
     //without dependency on equals and hashcode
     public static void assertMatch(User actual, User expected) {
         assertThat(actual).isEqualToIgnoringGivenFields(expected, "registrationDate");
     }
 
-    /*syntax sugar for the cases, when we've got just several items to pass, so don't have to
-    init array or iterable*/
+    //syntax sugar for the cases, when we've got just several items to pass, so don't have to
+    init array or iterable
     public static void assertMatch(Iterable<User> actual, User... expected) {
         assertMatch(actual, Arrays.asList(expected));
     }
@@ -34,4 +33,5 @@ public class UserTestData {
         assertThat(actual).usingElementComparatorIgnoringFields("registrationDate")
                 .isEqualTo(expected);
     }
+        */
 }
