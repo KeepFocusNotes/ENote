@@ -1,10 +1,10 @@
-package com.epam.university.spring.enote.services.impls;
+package com.epam.university.spring.enote.services.jdbc;
 
 import static org.junit.Assert.*;
 
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.repository.GenericDao;
-import com.epam.university.spring.enote.services.DBService;
+import com.epam.university.spring.enote.services.GenericService;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class UserServiceImplTest {
 
   @Mock
   private GenericDao<User> userRepository;
-  private DBService<User> userService;
+  private GenericService<User> userService;
   private User user;
   private Integer userID = 1234;
 
@@ -53,7 +53,7 @@ public class UserServiceImplTest {
   @Test
   public void save() throws Exception {
     Mockito.when(userRepository.save(user)).thenReturn(user);
-    User actual = userService.save(user);
+    User actual = userService.create(user);
 
     assertEquals(user, actual);
   }
@@ -62,7 +62,7 @@ public class UserServiceImplTest {
   public void saveAll() throws Exception {
     List<User> expected = Collections.singletonList(user);
     Mockito.when(userRepository.saveAll(expected)).thenReturn(expected);
-    List<User> actual = userService.saveAll(expected);
+    List<User> actual = userService.createFromList(expected);
 
     assertEquals(expected, actual);
   }

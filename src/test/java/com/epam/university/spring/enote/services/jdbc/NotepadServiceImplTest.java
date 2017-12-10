@@ -1,10 +1,10 @@
-package com.epam.university.spring.enote.services.impls;
+package com.epam.university.spring.enote.services.jdbc;
 
 import static org.junit.Assert.assertEquals;
 
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
-import com.epam.university.spring.enote.services.DBService;
+import com.epam.university.spring.enote.services.GenericService;
 import java.util.Collections;
 import java.util.List;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import org.mockito.MockitoAnnotations;
 public class NotepadServiceImplTest {
   @Mock
   private GenericDao<Notepad> notepadRepository;
-  private DBService<Notepad> notepadService;
+  private GenericService<Notepad> notepadService;
   private Notepad notepad;
   private Integer notepadID = 1234;
 
@@ -50,7 +50,7 @@ public class NotepadServiceImplTest {
   @Test
   public void save() throws Exception {
     Mockito.when(notepadRepository.save(notepad)).thenReturn(notepad);
-    Notepad actual = notepadService.save(notepad);
+    Notepad actual = notepadService.create(notepad);
 
     assertEquals(notepad, actual);
   }
@@ -59,7 +59,7 @@ public class NotepadServiceImplTest {
   public void saveAll() throws Exception {
     List<Notepad> expected = Collections.singletonList(notepad);
     Mockito.when(notepadRepository.saveAll(expected)).thenReturn(expected);
-    List<Notepad> actual = notepadService.saveAll(expected);
+    List<Notepad> actual = notepadService.createFromList(expected);
 
     assertEquals(expected, actual);
   }

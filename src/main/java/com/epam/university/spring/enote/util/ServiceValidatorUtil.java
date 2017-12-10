@@ -18,7 +18,7 @@ public class ServiceValidatorUtil {
         return objectToCheck;
     }
 
-    public static <T> T validateNotFountWithId(T objectToCheck, Integer id) {
+    public static <T> T validateNotFoundWithId(T objectToCheck, Integer id) {
         return validateNotFound(objectToCheck, "id=" + id);
     }
 }
