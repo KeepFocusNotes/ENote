@@ -2,6 +2,7 @@ package com.epam.university.spring.enote.model;
 
 import java.time.LocalDate;
 import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,7 @@ public class User extends AbstractNamedEntity {
     //temporal field
     private String password;
     private LocalDate birthDate;
-    private Date registrationDate = new Date();
+    private LocalDate registrationDate = LocalDate.now();
 
     public User() {
         System.out.println(getId());
@@ -23,7 +24,7 @@ public class User extends AbstractNamedEntity {
     }
 
     public User(Integer id, String email, String password, LocalDate birthDate,
-                Date registrationDate) {
+                LocalDate registrationDate) {
         super(id, email);
         this.email = email;
         this.password = password;

@@ -30,7 +30,7 @@ public class UserServiceImplTest {
 
     user = new User(userID, "asd@asd.ru", "1234",
                     LocalDate.of(1952, 10, 7),
-                    new Date(2017, 12, 9));
+                    LocalDate.of(2017, 12, 9));
   }
 
   @Test
