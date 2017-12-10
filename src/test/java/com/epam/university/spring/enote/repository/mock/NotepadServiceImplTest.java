@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.repository.mock;
 
 import static org.junit.Assert.assertEquals;
 

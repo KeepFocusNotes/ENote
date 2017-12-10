@@ -1,8 +1,7 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.repository.mock;
 
 import com.epam.university.spring.enote.model.Note;
 import com.epam.university.spring.enote.repository.GenericDao;
-import com.epam.university.spring.enote.repository.jdbc.JdbcNoteRepositoryImpl;
 import com.epam.university.spring.enote.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

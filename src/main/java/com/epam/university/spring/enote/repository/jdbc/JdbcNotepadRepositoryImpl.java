@@ -22,11 +22,14 @@ import java.util.stream.Collectors;
 public class JdbcNotepadRepositoryImpl extends JdbcAbstractGenericDao<Notepad> implements
         GenericDao<Notepad> {
 
+    //takes the fields throw reflection with using getters
     private static final BeanPropertyRowMapper<Notepad> ROW_MAPPER = BeanPropertyRowMapper
             .newInstance(Notepad.class);
     //TODO why not create utils with getter?!
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    //takes the fields throw reflection with using setters
     private final SimpleJdbcInsert simpleJdbcInsert;
 
     //for all possible deps?
