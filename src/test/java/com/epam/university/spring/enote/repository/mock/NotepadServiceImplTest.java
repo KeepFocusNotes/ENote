@@ -58,7 +58,7 @@ public class NotepadServiceImplTest {
   @Test
   public void saveAll() throws Exception {
     List<Notepad> expected = Collections.singletonList(notepad);
-    Mockito.when(notepadRepository.saveAll(expected)).thenReturn(expected);
+    Mockito.when(notepadRepository.save(notepad)).thenReturn(notepad);
     List<Notepad> actual = notepadService.createFromList(expected);
 
     assertEquals(expected, actual);
