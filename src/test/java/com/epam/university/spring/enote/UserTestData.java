@@ -12,17 +12,16 @@ public class UserTestData {
 
     public static final int USER_FIRST_ID = START_SEQ;
     public static final int USER_SECOND_ID = START_SEQ + 1;
-
     public static final User USER_FIRST = new User(USER_FIRST_ID, "UserFirstMail@userdata.com",
-            "FirstUserPasswordUserData.ru", LocalDate.of(1980, 1,
+            "UserFirstPasswordUserData​", LocalDate.of(1980, 1,
             1));
     public static final User USER_SECOND = new User(USER_SECOND_ID, "UserSecondMail@userdata.com",
-            "SecondUserPasswordUserData.ru", LocalDate.of(1980, 2,
+            "UserSecondPasswordUserData", LocalDate.of(1980, 1,
             2));
 
     //without dependency on equals and hashcode
     public static void assertMatch(User actual, User expected) {
-        assertThat(actual).isEqualToIgnoringGivenFields(expected,"registrationDate");
+        assertThat(actual).isEqualToIgnoringGivenFields(expected, "registrationDate");
     }
 
     /*syntax sugar for the cases, when we've got just several items to pass, so don't have to
