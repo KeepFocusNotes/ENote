@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote.repository.mock;
+package com.epam.university.spring.enote.services.jdbc;
 
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
