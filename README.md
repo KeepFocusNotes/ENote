@@ -31,9 +31,11 @@ Initial DB scheme:
    - GenericService and JdbcGenericServiceImpl (competed);
    - UserService, NotepadService, NoteService, TagService added (completed);
    - jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed);
-##### 3 Step test Services and Dao: 
-- test Services(in progress);
-- test DAO;
+##### 3 Step test Services, Dao, utils: 
+- UserServiceTest class, covering all of GenericService methods of the Service Layer and
+ all of GenericDao methods of the DAO Layer (implementation 100%, debugging in progress);
+- ServiceValidatorUtilTest (completed);
+- Mock test Services(in progress);
 
 ##### 4 Step implement Spring+JPA package:
 - implement Spring data JPA package;

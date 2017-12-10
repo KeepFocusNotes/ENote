@@ -46,8 +46,9 @@ public class UserServiceTest {
     public void create() throws Exception {
         List<User> usersAllBeforeCreation = userService.getAll();
         User newUser = new User(null, "new@gmail.com", "newPass", LocalDate.of(
-                2000, 01, 01));
+                2000, 1, 1));
         User created = userService.create(newUser);
+        //or just return the user and check equal
         newUser.setId(created.getId());
         usersAllBeforeCreation.add(newUser);
         ArrayList usersAllBeforeCreationPlusNew = new ArrayList<>(usersAllBeforeCreation);
@@ -64,14 +65,30 @@ public class UserServiceTest {
 
     @Test
     public void createFromList() throws Exception {
+        List<User> usersAllBeforeCreation = userService.getAll();
+        List<User> usersToCreate = new ArrayList<>();
+        usersToCreate.add(new User(null, "newFirst@gmail.com", "newPass", LocalDate.of(
+                2000, 1, 1)));
+        usersToCreate.add(new User(null, "newSecond@gmail.com", "newPass", LocalDate.of(
+                2000, 1, 2)));
+        List<User> createdFromList = userService.createFromList(usersToCreate);
+        usersAllBeforeCreation.addAll(createdFromList);
+        ArrayList usersAllBeforeCreationPlusNew = new ArrayList<>(usersAllBeforeCreation);
+        assertMatch(userService.getAll(), usersAllBeforeCreationPlusNew);
     }
 
     @Test
     public void delete() throws Exception {
+        List<User> usersAllBeforeDeleting = userService.getAll();
+        List<User> usersAllBeforeDeletingEcxeptFirst = usersAllBeforeDeleting.subList(1,
+                usersAllBeforeDeleting.size());
+        userService.delete(USER_FIRST);
+        assertMatch(userService.getAll(), usersAllBeforeDeletingEcxeptFirst);
     }
 
     @Test
     public void deleteAll() throws Exception {
+        userService.deleteAll();
+        assertTrue(userService.getAll().size() == 0);
     }
-
 }
