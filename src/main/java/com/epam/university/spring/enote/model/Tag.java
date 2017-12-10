@@ -1,10 +1,14 @@
 package com.epam.university.spring.enote.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Tag extends AbstractNamedEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Tag extends AbstractBaseEntity {
     public String title;
 }

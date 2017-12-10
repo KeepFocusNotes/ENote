@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 @Repository
 public abstract class JdbcAbstractGenericDao<T extends Serializable> {
+    //TODO is setted method in the implementing interface is needed for autowiring of the DAO in
+    //services?
     public Class<T> entityClass;
 
     public abstract T get(Integer id);
