@@ -7,7 +7,7 @@ Initial DB scheme:
 ![Initial DB scheme](http://s019.radikal.ru/i617/1712/20/b6160f97211b.jpg)
 
 ### Plan
-#####1 Step (using JDBC and Spting):
+####1 Step (using JDBC and Spring):
 - init repository (completed);
 - init/set new Maven project and directory's structure (completed);
 - set initial db scheme (completed);
@@ -15,7 +15,7 @@ Initial DB scheme:
 - spring-db.xml (completed);
 - h2.properties (completed);
 - entities (mostly completed).
-#####2 Step implement Spring+JDBC package(70%):
+####2 Step implement Spring+JDBC package(70%):
 - Jdbc package installation:
    - JdbcAbstractGenericDao (completed);
    - JdbcUserRepositoryImpl (completed);
@@ -30,12 +30,11 @@ Initial DB scheme:
    - GenericService and JdbcGenericServiceImpl (competed);
    - UserService, NotepadService, NoteService, TagService added (completed);
    - jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed);
-#####3 Step test Services and Dao: 
+####3 Step test Services and Dao: 
 - test Services(in progress);
 - test DAO;
-...
-...
-#####4 Step implement Spring+JPA package;
+
+####4 Step implement Spring+JPA package:
 - implement Spring data JPA package;
  
 #### Prerequisites:
