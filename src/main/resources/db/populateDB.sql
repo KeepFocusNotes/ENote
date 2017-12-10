@@ -4,8 +4,8 @@ DELETE FROM notepads;
 ALTER SEQUENCE global_seq RESTART WITH 1000;
 
 INSERT INTO users (email, "password", birth_date, registry_date) VALUES
-  ('​User@epam.com​', '​Antonovich20194051​', '​1987-09-24​', '​2017-09-08​'),
-  ('​Admin@epam.com​', '​toAdd00806907​', '​1983-10-01​', '​2017-09-09​'),
+  ('​UserFirstMail@userdata.com', 'UserFirstPasswordUserData​', '​1980-01-01​', '​2017-12-01​'),
+  ('​UserSecondMail@userdata.com', 'UserSecondPasswordUserData​', '​1980-01-02​', '​2017-12-02'),
   ('​KirAgeevichOstrozhskiy@yandex.com​', '​Ageevich35874315​', '​1993-09-28​', '​2017-09-04​'),
   ('​LeonidProkofevichMatkevich@gmail.com​', '​Prokofevich10061731​', '​1988-05-24​', '​2017-09-02​'),
   ('​AvvakumProtasovichGarshin@yandex.com​', '​Protasovich42546135​', '​1997-06-14​', '​2017-09-09​'),
