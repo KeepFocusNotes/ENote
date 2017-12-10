@@ -19,6 +19,7 @@ public class User extends AbstractNamedEntity {
         System.out.println(getId());
     }
 
+    //copying constructor
     public User(User u) {
         this(u.getId(), u.getEmail(), u.getPassword(), u.getBirthDate(), u.getRegistrationDate());
     }

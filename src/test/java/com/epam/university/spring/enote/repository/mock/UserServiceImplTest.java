@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.repository.mock;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,6 @@ import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.services.GenericService;
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,7 +60,7 @@ public class UserServiceImplTest {
   @Test
   public void saveAll() throws Exception {
     List<User> expected = Collections.singletonList(user);
-    Mockito.when(userRepository.saveAll(expected)).thenReturn(expected);
+    Mockito.when(userRepository.save(user)).thenReturn(user);
     List<User> actual = userService.createFromList(expected);
 
     assertEquals(expected, actual);
