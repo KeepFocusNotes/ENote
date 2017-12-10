@@ -51,7 +51,7 @@ public class JdbcUserRepositoryImpl extends JdbcAbstractGenericDao<User> impleme
 
     @Override
     public List<User> getAll() {
-        return jdbcTemplate.query("SELECT * FROM users ORDER by email", ROW_MAPPER);
+        return jdbcTemplate.query("SELECT * FROM users ORDER BY email", ROW_MAPPER);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class JdbcUserRepositoryImpl extends JdbcAbstractGenericDao<User> impleme
             user.setId(newKey.intValue());
         } else if (namedParameterJdbcTemplate.update(
                 "UPDATE users SET email=:email, password=:password, " +
-                        "birth_date=birthDate,registration_date=:registrationDate " +
+                        "birth_date=:birthDate,registration_date=:registrationDate " +
                         "WHERE id=:id", parameterSource) == 0) {
             return null;
         }

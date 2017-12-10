@@ -29,4 +29,15 @@ public class User extends AbstractNamedEntity {
         this.password = password;
         this.birthDate = birthDate;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", birthDate=" + birthDate +
+                ", registrationDate=" + registrationDate +
+                ", id=" + id +
+                '}';
+    }
 }
