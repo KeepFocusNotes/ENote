@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class TagServiceImpl extends JdbcGenericServiceImpl<Tag> implements TagService {
 
-    private final JdbcTagRepositoryImpl jdbcTagRepositoryImpl;
+   // private final JdbcTagRepositoryImpl jdbcTagRepositoryImpl;
 
     @Autowired
     public TagServiceImpl(
             @Qualifier("jdbcTagRepositoryImpl")
                     GenericDao<Tag> jdbcTagRepositoryImpl) {
         super(jdbcTagRepositoryImpl);
-        this.jdbcTagRepositoryImpl = (JdbcTagRepositoryImpl) jdbcTagRepositoryImpl;
+     //   this.jdbcTagRepositoryImpl = (JdbcTagRepositoryImpl) jdbcTagRepositoryImpl;
     }
 }

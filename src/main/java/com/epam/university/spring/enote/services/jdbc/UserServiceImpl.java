@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends JdbcGenericServiceImpl<User> implements UserService {
 
-    private final JdbcUserRepositoryImpl jdbcUserRepositoryImpl;
+   // private final JdbcUserRepositoryImpl jdbcUserRepositoryImpl;
 
     @Autowired
     public UserServiceImpl(
             @Qualifier("jdbcUserRepositoryImpl")
                     GenericDao<User> jdbcUserRepositoryImpl) {
         super(jdbcUserRepositoryImpl);
-        this.jdbcUserRepositoryImpl = (JdbcUserRepositoryImpl) jdbcUserRepositoryImpl;
+    //    this.jdbcUserRepositoryImpl = (JdbcUserRepositoryImpl) jdbcUserRepositoryImpl;
     }
 }
