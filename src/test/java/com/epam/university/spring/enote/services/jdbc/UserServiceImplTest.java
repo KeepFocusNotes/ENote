@@ -61,7 +61,7 @@ public class UserServiceImplTest {
   @Test
   public void saveAll() throws Exception {
     List<User> expected = Collections.singletonList(user);
-    Mockito.when(userRepository.saveAll(expected)).thenReturn(expected);
+    Mockito.when(userRepository.save(user)).thenReturn(user);
     List<User> actual = userService.createFromList(expected);
 
     assertEquals(expected, actual);
