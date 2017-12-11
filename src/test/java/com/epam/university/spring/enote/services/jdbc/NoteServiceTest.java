@@ -1,0 +1,114 @@
+package com.epam.university.spring.enote.services.jdbc;
+
+import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.model.Note;
+import com.epam.university.spring.enote.services.NoteService;
+import com.epam.university.spring.enote.util.exception.NotFoundException;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Comparator;
+import java.util.List;
+
+import static com.epam.university.spring.enote.NoteTestData.LIST_NOTES_TO_CREATE;
+import static com.epam.university.spring.enote.NoteTestData.NOTES_INITIALIZED;
+import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST;
+import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST_ID;
+import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST;
+import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST_ID;
+import static com.epam.university.spring.enote.NoteTestData.NOTE_TO_CREATE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+@ContextConfiguration({
+        "classpath:spring/spring-app.xml",
+        "classpath:spring/spring-db.xml"
+})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@RunWith(SpringRunner.class)
+@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
+public class NoteServiceTest {
+
+    @Autowired
+    private NoteService noteService;
+
+    @Test
+    public void getByIdFirstNote() throws Exception {
+        System.out.println("1");
+        System.out.println(noteService.getById(NOTE_FIRST_ID));
+        System.out.println(NOTE_FIRST);
+        assertEquals(noteService.getById(NOTE_FIRST_ID), NOTE_FIRST);
+        //assertMatch(noteService.getById(NOTE_FIRST_ID), NOTE_FIRST);
+    }
+
+    @Test
+    public void getByIdLastNote() throws Exception {
+        System.out.println("2");
+        assertEquals(noteService.getById(NOTE_LAST_ID), NOTE_LAST);
+        //assertMatch(actual,NOTE_FIRST);
+    }
+
+    @Test
+    public void getAll() throws Exception {
+        System.out.println("3");
+        List<Note> notesAll = noteService.getAll();
+        System.out.println(notesAll.size());
+        notesAll.sort(Comparator.comparing(AbstractBaseEntity::getId));
+        int counter = 1;
+        for (Note note : notesAll) {
+            if (counter != note.getId() | counter > NOTES_INITIALIZED) {
+                System.out.println(note);
+                throw new NotFoundException("Entity with needed id not found.");
+            }
+            counter++;
+        }
+        assertTrue(NOTES_INITIALIZED == notesAll.size());
+    }
+
+    @Test
+    public void create() throws Exception {
+        System.out.println("4");
+        NOTE_TO_CREATE.setId(noteService.create(NOTE_TO_CREATE).getId());
+        assertEquals(noteService.getById(NOTE_TO_CREATE.getId()), NOTE_TO_CREATE);
+    }
+
+    @Test
+    public void update() throws Exception {
+        System.out.println("5");
+        Note noteToUpdate = new Note(NOTE_FIRST);
+        noteToUpdate.setTitle("UpdatedTitle");
+        noteService.update(noteToUpdate);
+        assertEquals(noteService.getById(noteToUpdate.getId()), noteToUpdate);
+    }
+
+    @Test
+    public void createFromList() throws Exception {
+        System.out.println("6");
+        List<Note> expected = noteService.getAll();
+        noteService.createFromList(LIST_NOTES_TO_CREATE);
+        expected.addAll(LIST_NOTES_TO_CREATE);
+        List<Note> actual = noteService.getAll();
+        assertTrue(actual.containsAll(expected)
+                & expected.containsAll(actual));
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void delete() throws Exception {
+        System.out.println("7");
+        noteService.delete(NOTE_FIRST);
+        noteService.getById(NOTE_FIRST.getId());
+    }
+
+    @Test
+    public void deleteAll() throws Exception {
+        System.out.println("8");
+        noteService.deleteAll();
+        assertTrue(noteService.getAll().size() == 0);
+    }
+}

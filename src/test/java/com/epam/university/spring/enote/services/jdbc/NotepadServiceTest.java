@@ -48,6 +48,7 @@ public class NotepadServiceTest {
     @Test
     public void getByIdLastNotepad() throws Exception {
         System.out.println("2");
+        System.out.println(notepadService.getById(499));
         assertEquals(notepadService.getById(NOTEPAD_LAST_ID), NOTEPAD_LAST);
         //assertMatch(actual,NOTEPAD_FIRST);
     }
