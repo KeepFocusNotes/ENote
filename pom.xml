@@ -128,7 +128,5 @@
             <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
-
-
     </dependencies>
 </project>

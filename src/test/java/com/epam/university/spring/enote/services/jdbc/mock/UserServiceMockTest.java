@@ -1,8 +1,9 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.services.jdbc.mock;
 
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.services.GenericService;
+import com.epam.university.spring.enote.services.jdbc.UserServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -15,7 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserServiceImplTest {
+public class UserServiceMockTest {
 
     @Mock
     private GenericDao<User> userRepository;
@@ -27,7 +28,6 @@ public class UserServiceImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         userService = new UserServiceImpl(userRepository);
-
         user = new User(userID, "asd@asd.ru", "1234",
                 LocalDate.of(1952, 10, 7));
     }
@@ -51,7 +51,6 @@ public class UserServiceImplTest {
     public void save() throws Exception {
         Mockito.when(userRepository.save(user)).thenReturn(user);
         User actual = userService.create(user);
-
         assertEquals(user, actual);
     }
 
@@ -60,16 +59,6 @@ public class UserServiceImplTest {
         List<User> expected = Collections.singletonList(user);
         Mockito.when(userRepository.save(user)).thenReturn(user);
         List<User> actual = userService.createFromList(expected);
-
         assertEquals(expected, actual);
     }
-
-    @Test
-    public void delete() throws Exception {
-    }
-
-    @Test
-    public void deleteAll() throws Exception {
-    }
-
 }
