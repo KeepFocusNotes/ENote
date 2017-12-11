@@ -17,61 +17,59 @@ import static org.junit.Assert.assertEquals;
 
 public class UserServiceImplTest {
 
-  @Mock
-  private GenericDao<User> userRepository;
-  private GenericService<User> userService;
-  private User user;
-  private Integer userID = 1234;
+    @Mock
+    private GenericDao<User> userRepository;
+    private GenericService<User> userService;
+    private User user;
+    private Integer userID = 1234;
 
-  @Before
-  public void setUp() throws Exception {
-    MockitoAnnotations.initMocks(this);
-    userService = new UserServiceImpl(userRepository);
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        userService = new UserServiceImpl(userRepository);
 
-    user = new User(userID, "asd@asd.ru", "1234",
-                    LocalDate.of(1952, 10, 7));
-  }
+        user = new User(userID, "asd@asd.ru", "1234",
+                LocalDate.of(1952, 10, 7));
+    }
 
-  @Test
-  public void getById() throws Exception {
-    Mockito.when(userRepository.get(userID)).thenReturn(user);
-    User actual = userService.getById(userID);
+    @Test
+    public void getById() throws Exception {
+        Mockito.when(userRepository.get(userID)).thenReturn(user);
+        User actual = userService.getById(userID);
+        assertEquals(user, actual);
+    }
 
-    assertEquals(user, actual);
-  }
+    @Test
+    public void getAll() throws Exception {
+        List<User> expected = Collections.singletonList(user);
+        Mockito.when(userRepository.getAll()).thenReturn(expected);
+        List<User> actual = userService.getAll();
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void getAll() throws Exception {
-    List<User> expected = Collections.singletonList(user);
-    Mockito.when(userRepository.getAll()).thenReturn(expected);
-    List<User> actual = userService.getAll();
+    @Test
+    public void save() throws Exception {
+        Mockito.when(userRepository.save(user)).thenReturn(user);
+        User actual = userService.create(user);
 
-    assertEquals(expected, actual);
-  }
+        assertEquals(user, actual);
+    }
 
-  @Test
-  public void save() throws Exception {
-    Mockito.when(userRepository.save(user)).thenReturn(user);
-    User actual = userService.create(user);
+    @Test
+    public void saveAll() throws Exception {
+        List<User> expected = Collections.singletonList(user);
+        Mockito.when(userRepository.save(user)).thenReturn(user);
+        List<User> actual = userService.createFromList(expected);
 
-    assertEquals(user, actual);
-  }
+        assertEquals(expected, actual);
+    }
 
-  @Test
-  public void saveAll() throws Exception {
-    List<User> expected = Collections.singletonList(user);
-    Mockito.when(userRepository.save(user)).thenReturn(user);
-    List<User> actual = userService.createFromList(expected);
+    @Test
+    public void delete() throws Exception {
+    }
 
-    assertEquals(expected, actual);
-  }
-
-  @Test
-  public void delete() throws Exception {
-  }
-
-  @Test
-  public void deleteAll() throws Exception {
-  }
+    @Test
+    public void deleteAll() throws Exception {
+    }
 
 }

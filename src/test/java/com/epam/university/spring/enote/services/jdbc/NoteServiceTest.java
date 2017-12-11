@@ -40,30 +40,23 @@ public class NoteServiceTest {
 
     @Test
     public void getByIdFirstNote() throws Exception {
-        System.out.println("1");
-        System.out.println(noteService.getById(NOTE_FIRST_ID));
-        System.out.println(NOTE_FIRST);
         assertEquals(noteService.getById(NOTE_FIRST_ID), NOTE_FIRST);
         //assertMatch(noteService.getById(NOTE_FIRST_ID), NOTE_FIRST);
     }
 
     @Test
     public void getByIdLastNote() throws Exception {
-        System.out.println("2");
         assertEquals(noteService.getById(NOTE_LAST_ID), NOTE_LAST);
         //assertMatch(actual,NOTE_FIRST);
     }
 
     @Test
     public void getAll() throws Exception {
-        System.out.println("3");
         List<Note> notesAll = noteService.getAll();
-        System.out.println(notesAll.size());
         notesAll.sort(Comparator.comparing(AbstractBaseEntity::getId));
         int counter = 1;
         for (Note note : notesAll) {
             if (counter != note.getId() | counter > NOTES_INITIALIZED) {
-                System.out.println(note);
                 throw new NotFoundException("Entity with needed id not found.");
             }
             counter++;
@@ -73,14 +66,12 @@ public class NoteServiceTest {
 
     @Test
     public void create() throws Exception {
-        System.out.println("4");
         NOTE_TO_CREATE.setId(noteService.create(NOTE_TO_CREATE).getId());
         assertEquals(noteService.getById(NOTE_TO_CREATE.getId()), NOTE_TO_CREATE);
     }
 
     @Test
     public void update() throws Exception {
-        System.out.println("5");
         Note noteToUpdate = new Note(NOTE_FIRST);
         noteToUpdate.setTitle("UpdatedTitle");
         noteService.update(noteToUpdate);
@@ -89,7 +80,6 @@ public class NoteServiceTest {
 
     @Test
     public void createFromList() throws Exception {
-        System.out.println("6");
         List<Note> expected = noteService.getAll();
         noteService.createFromList(LIST_NOTES_TO_CREATE);
         expected.addAll(LIST_NOTES_TO_CREATE);
@@ -100,14 +90,12 @@ public class NoteServiceTest {
 
     @Test(expected = NotFoundException.class)
     public void delete() throws Exception {
-        System.out.println("7");
         noteService.delete(NOTE_FIRST);
         noteService.getById(NOTE_FIRST.getId());
     }
 
     @Test
     public void deleteAll() throws Exception {
-        System.out.println("8");
         noteService.deleteAll();
         assertTrue(noteService.getAll().size() == 0);
     }
