@@ -1,8 +1,9 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.services.jdbc.mock;
 
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.services.GenericService;
+import com.epam.university.spring.enote.services.jdbc.NotepadServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class NotepadServiceImplTest {
+public class NotepadServiceMockTest {
     @Mock
     private GenericDao<Notepad> notepadRepository;
     private GenericService<Notepad> notepadService;
@@ -34,7 +35,6 @@ public class NotepadServiceImplTest {
     public void getById() throws Exception {
         Mockito.when(notepadRepository.get(notepadID)).thenReturn(notepad);
         Notepad actual = notepadService.getById(notepadID);
-
         assertEquals(notepad, actual);
     }
 
@@ -43,7 +43,6 @@ public class NotepadServiceImplTest {
         List<Notepad> expected = Collections.singletonList(notepad);
         Mockito.when(notepadRepository.getAll()).thenReturn(expected);
         List<Notepad> actual = notepadService.getAll();
-
         assertEquals(expected, actual);
     }
 
@@ -51,7 +50,6 @@ public class NotepadServiceImplTest {
     public void save() throws Exception {
         Mockito.when(notepadRepository.save(notepad)).thenReturn(notepad);
         Notepad actual = notepadService.create(notepad);
-
         assertEquals(notepad, actual);
     }
 
@@ -63,13 +61,4 @@ public class NotepadServiceImplTest {
 
         assertEquals(expected, actual);
     }
-
-    @Test
-    public void delete() throws Exception {
-    }
-
-    @Test
-    public void deleteAll() throws Exception {
-    }
-
 }
