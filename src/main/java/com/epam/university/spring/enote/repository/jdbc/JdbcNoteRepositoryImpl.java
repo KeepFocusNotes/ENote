@@ -51,7 +51,7 @@ public class JdbcNoteRepositoryImpl extends JdbcAbstractGenericDao<Note> impleme
 
     @Override
     public List<Note> getAll() {
-        return jdbcTemplate.query("SELECT * FROM notes ORDER BY email", ROW_MAPPER);
+        return jdbcTemplate.query("SELECT * FROM notes ORDER BY title", ROW_MAPPER);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class JdbcNoteRepositoryImpl extends JdbcAbstractGenericDao<Note> impleme
             Number newKey = simpleJdbcInsert.executeAndReturnKey(parameterSource);
             Note.setId(newKey.intValue());
         } else if (namedParameterJdbcTemplate.update(
-                "UPDATE notes SET title=:title,desctiption=:description WHERE id=:id",
+                "UPDATE notes SET title=:title,description=:description WHERE id=:id",
                 parameterSource) == 0) {
             return null;
         }

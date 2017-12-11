@@ -37,6 +37,7 @@ electronic notes by the Spring framework.
 + 3.1 UserServiceTest class, covering all of GenericService and GenericDao methods of the service and dao levels (completed 100%):
 + 3.1.1 UserServiceTest class, UserTestData implementation (completed), initDB.sql, populateDB.sql (completed);
 + 3.1.2 NotepadServiceTest class, NotepadTestData implementation (completed), initDB.sql, populateDB.sql (competed);
++ 3.1.3 NoteServiceTest class, NoteTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.2 ServiceValidatorUtilTest (completed);
 + 3.3 Mock test Services(completed);
 ```
