@@ -21,7 +21,6 @@ public abstract class AbstractNamedEntity extends AbstractBaseEntity {
     protected String mail;
 
     public AbstractNamedEntity() {
-        System.out.println(getId());
     }
 
     protected AbstractNamedEntity(Integer id, String mail) {
