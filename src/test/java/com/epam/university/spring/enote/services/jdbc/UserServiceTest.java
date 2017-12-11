@@ -40,28 +40,23 @@ public class UserServiceTest {
 
     @Test
     public void getByIdFirstUser() throws Exception {
-        System.out.println("1");
         assertEquals(userService.getById(USER_FIRST_ID), USER_FIRST);
         //assertMatch(userService.getById(USER_FIRST_ID), USER_FIRST);
     }
 
     @Test
     public void getByIdLastUser() throws Exception {
-        System.out.println("2");
         assertEquals(userService.getById(USER_LAST_ID), USER_LAST);
         //assertMatch(actual,USER_FIRST);
     }
 
     @Test
     public void getAll() throws Exception {
-        System.out.println("3");
         List<User> usersAll = userService.getAll();
-        System.out.println(usersAll.size());
         usersAll.sort(Comparator.comparing(AbstractBaseEntity::getId));
         int counter = 1;
         for (User user : usersAll) {
             if (counter != user.getId() | counter > USERS_INITIALIZED) {
-                System.out.println(user);
                 throw new NotFoundException("Entity with needed id not found.");
             }
             counter++;
@@ -71,14 +66,12 @@ public class UserServiceTest {
 
     @Test
     public void create() throws Exception {
-        System.out.println("4");
         USER_TO_CREATE.setId(userService.create(USER_TO_CREATE).getId());
         assertEquals(userService.getById(USER_TO_CREATE.getId()), USER_TO_CREATE);
     }
 
     @Test
     public void update() throws Exception {
-        System.out.println("5");
         User userToUpdate = new User(USER_FIRST);
         userToUpdate.setPassword("UpdatedPassword");
         userService.update(userToUpdate);
@@ -87,7 +80,6 @@ public class UserServiceTest {
 
     @Test
     public void createFromList() throws Exception {
-        System.out.println("6");
         List<User> expected = userService.getAll();
         userService.createFromList(LIST_USERS_TO_CREATE);
         expected.addAll(LIST_USERS_TO_CREATE);
@@ -98,14 +90,12 @@ public class UserServiceTest {
 
     @Test(expected = NotFoundException.class)
     public void delete() throws Exception {
-        System.out.println("7");
         userService.delete(USER_FIRST);
         userService.getById(USER_FIRST.getId());
     }
 
     @Test
     public void deleteAll() throws Exception {
-        System.out.println("8");
         userService.deleteAll();
         assertTrue(userService.getAll().size() == 0);
     }

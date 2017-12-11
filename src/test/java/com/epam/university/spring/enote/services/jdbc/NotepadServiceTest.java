@@ -40,29 +40,23 @@ public class NotepadServiceTest {
 
     @Test
     public void getByIdFirstNotepad() throws Exception {
-        System.out.println("1");
         assertEquals(notepadService.getById(NOTEPAD_FIRST_ID), NOTEPAD_FIRST);
         //assertMatch(notepadService.getById(NOTEPAD_FIRST_ID), NOTEPAD_FIRST);
     }
 
     @Test
     public void getByIdLastNotepad() throws Exception {
-        System.out.println("2");
-        System.out.println(notepadService.getById(499));
         assertEquals(notepadService.getById(NOTEPAD_LAST_ID), NOTEPAD_LAST);
         //assertMatch(actual,NOTEPAD_FIRST);
     }
 
     @Test
     public void getAll() throws Exception {
-        System.out.println("3");
         List<Notepad> notepadsAll = notepadService.getAll();
-        System.out.println(notepadsAll.size());
         notepadsAll.sort(Comparator.comparing(AbstractBaseEntity::getId));
         int counter = 1;
         for (Notepad notepad : notepadsAll) {
             if (counter != notepad.getId() | counter > NOTEPADS_INITIALIZED) {
-                System.out.println(notepad);
                 throw new NotFoundException("Entity with needed id not found.");
             }
             counter++;
@@ -72,14 +66,12 @@ public class NotepadServiceTest {
 
     @Test
     public void create() throws Exception {
-        System.out.println("4");
         NOTEPAD_TO_CREATE.setId(notepadService.create(NOTEPAD_TO_CREATE).getId());
         assertEquals(notepadService.getById(NOTEPAD_TO_CREATE.getId()), NOTEPAD_TO_CREATE);
     }
 
     @Test
     public void update() throws Exception {
-        System.out.println("5");
         Notepad notepadToUpdate = new Notepad(NOTEPAD_FIRST);
         notepadToUpdate.setTitle("UpdatedTitle");
         notepadService.update(notepadToUpdate);
@@ -88,7 +80,6 @@ public class NotepadServiceTest {
 
     @Test
     public void createFromList() throws Exception {
-        System.out.println("6");
         List<Notepad> expected = notepadService.getAll();
         notepadService.createFromList(LIST_NOTEPADS_TO_CREATE);
         expected.addAll(LIST_NOTEPADS_TO_CREATE);
@@ -99,14 +90,12 @@ public class NotepadServiceTest {
 
     @Test(expected = NotFoundException.class)
     public void delete() throws Exception {
-        System.out.println("7");
         notepadService.delete(NOTEPAD_FIRST);
         notepadService.getById(NOTEPAD_FIRST.getId());
     }
 
     @Test
     public void deleteAll() throws Exception {
-        System.out.println("8");
         notepadService.deleteAll();
         assertTrue(notepadService.getAll().size() == 0);
     }
