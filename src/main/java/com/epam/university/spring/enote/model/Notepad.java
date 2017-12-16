@@ -25,6 +25,10 @@ import javax.validation.constraints.Size;
         "title"}, name = "notepads_unique_user_title")})
 public class Notepad extends AbstractBaseEntity {
 
+    public static final String DELETE = "Notepad.delete";
+    public static final String DELETE_ALL = "Notepad.deleteAll";
+    public static final String ALL_SORTED = "Notepad.getAllSorted";
+
     @Column(name = "title", nullable = false)
     @NotBlank
     @Size(min = 1, max = 128)

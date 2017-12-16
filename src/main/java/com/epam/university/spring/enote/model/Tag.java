@@ -23,6 +23,10 @@ import javax.validation.constraints.Size;
         "title"}, name = "tags_unique_note_title")})
 public class Tag extends AbstractBaseEntity {
 
+    public static final String DELETE = "Tag.delete";
+    public static final String DELETE_ALL = "Tag.deleteAll";
+    public static final String ALL_SORTED = "Tag.getAllSorted";
+
     @Column(name = "title", nullable = false)
     @NotBlank
     @Size(min = 1, max = 128)
