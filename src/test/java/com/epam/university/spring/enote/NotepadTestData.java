@@ -13,16 +13,15 @@ public class NotepadTestData {
     public static final int NOTEPAD_FIRST_ID = START_SEQ;
     public static final int NOTEPAD_LAST_ID = NOTEPADS_INITIALIZED;
     public static final Notepad NOTEPAD_FIRST = new Notepad(NOTEPAD_FIRST_ID,
-            "NotepadFirst", 43);
+            "NotepadFirst");
     public static final Notepad NOTEPAD_LAST = new Notepad(NOTEPAD_LAST_ID,
-            "NotepadLast", 333);
+            "NotepadLast");
     public static final Notepad NOTEPAD_TO_CREATE = new Notepad(null,
-            "NotepadToCreate", 64);
+            "NotepadToCreate");
     public static final List<Notepad> LIST_NOTEPADS_TO_CREATE = new ArrayList<>();
 
     public NotepadTestData() {
         LIST_NOTEPADS_TO_CREATE.add(NOTEPAD_TO_CREATE);
-        LIST_NOTEPADS_TO_CREATE.add(new Notepad(null, "NotepadToCreateSecond",
-                65));
+        LIST_NOTEPADS_TO_CREATE.add(new Notepad(null, "NotepadToCreateSecond"));
     }
 }

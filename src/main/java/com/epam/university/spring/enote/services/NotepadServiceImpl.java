@@ -1,14 +1,13 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
-import com.epam.university.spring.enote.services.NotepadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotepadServiceImpl extends JdbcGenericServiceImpl<Notepad> implements NotepadService {
+public class NotepadServiceImpl extends GenericServiceImpl<Notepad> implements NotepadService {
 
    // private final JdbcNotepadRepositoryImpl jdbcNotepadRepositoryImpl;
 

@@ -13,16 +13,15 @@ public class TagTestData {
     public static final int TAG_FIRST_ID = START_SEQ;
     public static final int TAG_LAST_ID = TAGS_INITIALIZED;
     public static final Tag TAG_FIRST = new Tag(TAG_FIRST_ID,
-            "TagFirst", 43);
+            "TagFirst");
     public static final Tag TAG_LAST = new Tag(TAG_LAST_ID,
-            "TagLast", 333);
+            "TagLast");
     public static final Tag TAG_TO_CREATE = new Tag(null,
-            "TagToCreateFirst", 64);
+            "TagToCreateFirst");
     public static final List<Tag> LIST_TAGS_TO_CREATE = new ArrayList<>();
 
     public TagTestData() {
         LIST_TAGS_TO_CREATE.add(TAG_TO_CREATE);
-        LIST_TAGS_TO_CREATE.add(new Tag(null, "TagToCreateSecond",
-                65));
+        LIST_TAGS_TO_CREATE.add(new Tag(null, "TagToCreateSecond"));
     }
 }

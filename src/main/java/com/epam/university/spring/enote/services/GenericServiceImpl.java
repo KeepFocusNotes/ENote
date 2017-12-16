@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.repository.GenericDao;
@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Service
-public class JdbcGenericServiceImpl<T extends AbstractBaseEntity> implements
+public class GenericServiceImpl<T extends AbstractBaseEntity> implements
         GenericService<T> {
 
     private GenericDao<T> genericDao;
 
-    public JdbcGenericServiceImpl(GenericDao<T> genericDao) {
+    public GenericServiceImpl(GenericDao<T> genericDao) {
         this.genericDao = genericDao;
     }
 
