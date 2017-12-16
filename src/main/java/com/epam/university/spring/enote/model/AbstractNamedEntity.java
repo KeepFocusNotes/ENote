@@ -3,6 +3,12 @@ package com.epam.university.spring.enote.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 
 /**
  * An abstract class designed for a person to be able to identify an entity (easier to perceive
@@ -17,7 +23,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
+
+    @Column(name = "email", nullable = false, unique = true)
+    @Email
+    @NotBlank
+    @Size(max = 100)
     protected String mail;
 
     public AbstractNamedEntity() {
