@@ -1,6 +1,6 @@
 package com.epam.university.spring.enote.repository.jpa;
 
-import com.epam.university.spring.enote.model.User;
+import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,30 +11,31 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+
 @Getter
 @Setter
 @Repository
 @Transactional
-public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implements GenericDao<User> {
+public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements GenericDao<Notepad> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public boolean delete(User entity) {
-        return entityManager.createNamedQuery(User.DELETE)
+    public boolean delete(Notepad entity) {
+        return entityManager.createNamedQuery(Notepad.DELETE)
                 .setParameter("id", entity.getId())
                 .executeUpdate() != 0;
     }
 
     @Override
-    public List<User> getAll() {
-        return entityManager.createNamedQuery(User.ALL_SORTED, User.class).getResultList();
+    public List<Notepad> getAll() {
+        return entityManager.createNamedQuery(Notepad.ALL_SORTED, Notepad.class).getResultList();
     }
 
     @Override
     public boolean deleteAll() {
-        return entityManager.createNamedQuery(User.DELETE_ALL)
+        return entityManager.createNamedQuery(Notepad.DELETE_ALL)
                 .executeUpdate() != 0;
     }
 }

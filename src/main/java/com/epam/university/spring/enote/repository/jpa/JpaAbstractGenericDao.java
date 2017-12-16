@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -33,15 +34,17 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
         }
     }
 
-    public T get(Integer id){
-        return entityManager.find(entityClass,id);
+    public T get(Integer id) {
+        return entityManager.find(entityClass, id);
+    }
+
+    public List<T> saveAll(List<T> entities) {
+        return entities.stream().map(this::save).collect(Collectors.toList());
     }
 
     public abstract boolean delete(T entity);
 
     public abstract List<T> getAll();
-
-    public abstract List<T> saveAll(List<T> entity);
 
     public abstract boolean deleteAll();
 }
