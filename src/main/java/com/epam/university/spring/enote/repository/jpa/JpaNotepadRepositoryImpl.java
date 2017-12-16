@@ -2,8 +2,6 @@ package com.epam.university.spring.enote.repository.jpa;
 
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,9 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-
-@Getter
-@Setter
 @Repository
 @Transactional
 public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements GenericDao<Notepad> {

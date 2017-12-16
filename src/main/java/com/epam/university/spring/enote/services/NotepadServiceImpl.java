@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotepadServiceImpl extends GenericServiceImpl<Notepad> implements NotepadService {
 
-   // private final JdbcNotepadRepositoryImpl jdbcNotepadRepositoryImpl;
-
     @Autowired
     public NotepadServiceImpl(
-            @Qualifier("jdbcNotepadRepositoryImpl")
+            /*@Qualifier("jdbcNotepadRepositoryImpl")
                     GenericDao<Notepad> jdbcNotepadRepositoryImpl) {
-        super(jdbcNotepadRepositoryImpl);
-      //  this.jdbcNotepadRepositoryImpl = (JdbcNotepadRepositoryImpl) jdbcNotepadRepositoryImpl;
+        super(jdbcNotepadRepositoryImpl);*/
+            @Qualifier("jpaNotepadRepositoryImpl")
+                    GenericDao<Notepad> jpaNotepadRepositoryImpl) {
+        super(jpaNotepadRepositoryImpl);
     }
 }

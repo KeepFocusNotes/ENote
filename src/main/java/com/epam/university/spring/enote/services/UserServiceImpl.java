@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends GenericServiceImpl<User> implements UserService {
 
-    // private final JdbcUserRepositoryImpl jdbcUserRepositoryImpl;
-
     @Autowired
     public UserServiceImpl(
             /*@Qualifier("jdbcUserRepositoryImpl")

@@ -11,9 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-
-@Getter
-@Setter
 @Repository
 @Transactional
 public class JpaNoteRepositoryImpl extends JpaAbstractGenericDao<Note> implements GenericDao<Note> {

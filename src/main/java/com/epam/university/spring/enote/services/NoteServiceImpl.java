@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteService {
 
-    //private final JdbcNoteRepositoryImpl jdbcNoteRepositoryImpl;
-
     @Autowired
     public NoteServiceImpl(
-            @Qualifier("jdbcNoteRepositoryImpl")
+            /*@Qualifier("jdbcNoteRepositoryImpl")
                     GenericDao<Note> jdbcNoteRepositoryImpl) {
-        super(jdbcNoteRepositoryImpl);
-      //  this.jdbcNoteRepositoryImpl = (JdbcNoteRepositoryImpl) jdbcNoteRepositoryImpl;
+        super(jdbcNoteRepositoryImpl);*/
+            @Qualifier("jpaNoteRepositoryImpl")
+                    GenericDao<Note> jpaNoteRepositoryImpl) {
+        super(jpaNoteRepositoryImpl);
     }
 }
