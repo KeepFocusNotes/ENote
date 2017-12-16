@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,8 +15,6 @@ import java.util.stream.Collectors;
 @Setter
 @Repository
 public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
-    //TODO is setted method in the implementing interface is needed for autowiring of the DAO in
-    //services?
 
     @PersistenceContext
     private EntityManager entityManager;
