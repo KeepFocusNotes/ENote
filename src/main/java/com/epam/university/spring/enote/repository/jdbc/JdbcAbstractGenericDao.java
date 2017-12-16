@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.repository.jdbc;
 
+import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Repository
-public abstract class JdbcAbstractGenericDao<T extends Serializable> {
+public abstract class JdbcAbstractGenericDao<T extends AbstractBaseEntity> {
     //TODO is setted method in the implementing interface is needed for autowiring of the DAO in
     //services?
     public Class<T> entityClass;
