@@ -35,6 +35,7 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
         return entityManager.find(entityClass, id);
     }
 
+    //TODO fix the transactional
     public List<T> saveAll(List<T> entities) {
         return entities.stream().map(this::save).collect(Collectors.toList());
     }

@@ -21,6 +21,7 @@ public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implement
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public boolean delete(User entity) {
         return entityManager.createNamedQuery(User.DELETE)
                 .setParameter("id", entity.getId())
@@ -33,6 +34,7 @@ public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implement
     }
 
     @Override
+    @Transactional
     public boolean deleteAll() {
         return entityManager.createNamedQuery(User.DELETE_ALL)
                 .executeUpdate() != 0;

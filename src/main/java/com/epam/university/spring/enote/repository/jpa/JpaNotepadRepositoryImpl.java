@@ -22,6 +22,7 @@ public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> imp
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public boolean delete(Notepad entity) {
         return entityManager.createNamedQuery(Notepad.DELETE)
                 .setParameter("id", entity.getId())
@@ -34,6 +35,7 @@ public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> imp
     }
 
     @Override
+    @Transactional
     public boolean deleteAll() {
         return entityManager.createNamedQuery(Notepad.DELETE_ALL)
                 .executeUpdate() != 0;

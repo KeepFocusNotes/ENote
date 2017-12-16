@@ -22,6 +22,7 @@ public class JpaNoteRepositoryImpl extends JpaAbstractGenericDao<Note> implement
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public boolean delete(Note entity) {
         return entityManager.createNamedQuery(Note.DELETE)
                 .setParameter("id", entity.getId())
@@ -34,6 +35,7 @@ public class JpaNoteRepositoryImpl extends JpaAbstractGenericDao<Note> implement
     }
 
     @Override
+    @Transactional
     public boolean deleteAll() {
         return entityManager.createNamedQuery(Note.DELETE_ALL)
                 .executeUpdate() != 0;

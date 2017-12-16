@@ -22,6 +22,7 @@ public class JpaTagRepositoryImpl extends JpaAbstractGenericDao<Tag> implements 
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public boolean delete(Tag entity) {
         return entityManager.createNamedQuery(Tag.DELETE)
                 .setParameter("id", entity.getId())
@@ -34,6 +35,7 @@ public class JpaTagRepositoryImpl extends JpaAbstractGenericDao<Tag> implements 
     }
 
     @Override
+    @Transactional
     public boolean deleteAll() {
         return entityManager.createNamedQuery(Tag.DELETE_ALL)
                 .executeUpdate() != 0;
