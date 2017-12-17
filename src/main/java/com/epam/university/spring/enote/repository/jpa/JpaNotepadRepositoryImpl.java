@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
+/*@Repository
 @Transactional
 public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements GenericDao<Notepad> {
 
@@ -35,4 +35,4 @@ public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> imp
         return entityManager.createNamedQuery(Notepad.DELETE_ALL)
                 .executeUpdate() != 0;
     }
-}
+}*/

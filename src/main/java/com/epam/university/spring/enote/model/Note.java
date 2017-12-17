@@ -22,35 +22,36 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = Note.DELETE, query = "DELETE FROM Note n WHERE n.id=:id"),
         @NamedQuery(name = Note.DELETE_ALL, query = "DELETE FROM Note"),
         @NamedQuery(name = Note.ALL_SORTED, query = "SELECT n FROM Note n ORDER BY n.title"),
 })
 @Entity
 @Table(name = "notes", uniqueConstraints = {@UniqueConstraint(columnNames = {"notepad_id",
-        "title"}, name = "notes_unique_notepad_title")})
+        "title"}, name = "notes_unique_notepad_title")})*/
 public class Note extends AbstractBaseEntity {
 
-    public static final String DELETE = "Note.delete";
+   /* public static final String DELETE = "Note.delete";
     public static final String DELETE_ALL = "Note.deleteAll";
     public static final String ALL_SORTED = "Note.getAllSorted";
     
     @Column(name = "title", nullable = false)
     @NotBlank
-    @Size(min = 1, max = 128)
+    @Size(min = 1, max = 128)*/
     public String title;
 
-    @Column(name = "description")
-    @Size(max = 120)
+    /*@Column(name = "description")
+    @Size(max = 120)*/
     public String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notepad_id", nullable = false)
     @NotNull
-    public Notepad notepad;
+    public Notepad notepad;*/
+    public Integer notepadId;
 
-    public Note(Note note) {
+    /*public Note(Note note) {
         this(note.getId(), note.getTitle(), note.getDescription());
     }
 
@@ -58,6 +59,17 @@ public class Note extends AbstractBaseEntity {
         super(id);
         this.title = title;
         this.description = description;
+    }*/
+
+    public Note(Note note) {
+        this(note.getId(), note.getTitle(), note.getDescription(), note.getNotepadId());
+    }
+
+    public Note(Integer id, String title, String description, Integer notepadId) {
+        super(id);
+        this.title = title;
+        this.description = description;
+        this.notepadId = notepadId;
     }
 
     @Override

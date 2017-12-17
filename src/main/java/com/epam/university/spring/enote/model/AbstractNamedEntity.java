@@ -23,13 +23,13 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@MappedSuperclass
+//@MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 
-    @Column(name = "email", nullable = false, unique = true)
+  /*  @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 100)*/
     protected String mail;
 
     public AbstractNamedEntity() {

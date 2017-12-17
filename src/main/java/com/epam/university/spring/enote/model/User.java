@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id"),
         @NamedQuery(name = User.DELETE_ALL, query = "DELETE FROM User"),
         @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.email"),
@@ -25,30 +25,30 @@ import java.time.LocalDate;
 @Entity
 //TODO uniqueConstraints = {@UniqueConstraint ??
 @Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames = {"email"}, name =
-        "users_unique_email")})
+        "users_unique_email")})*/
 public class User extends AbstractNamedEntity {
 
-    public static final String DELETE = "User.delete";
+   /* public static final String DELETE = "User.delete";
     public static final String DELETE_ALL = "User.deleteAll";
     public static final String ALL_SORTED = "User.getAllSorted";
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 100)*/
     private String email;
 
     //temporal field
-    @Column(name = "password", nullable = false)
+    /*@Column(name = "password", nullable = false)
     @NotBlank
-    @Size(min = 5, max = 128)
+    @Size(min = 5, max = 128)*/
     private String password;
 
-    @Column(name = "birth_date")
+   // @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Column(name = "registration_date", columnDefinition = "timestamp default now()")
-    @NotNull
+   /* @Column(name = "registration_date", columnDefinition = "timestamp default now()")
+    @NotNull*/
     private LocalDate registrationDate = LocalDate.now();
 
     public User() {

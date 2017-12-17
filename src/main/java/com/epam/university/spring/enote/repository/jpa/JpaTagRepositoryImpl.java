@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
+/*@Repository
 @Transactional
 public class JpaTagRepositoryImpl extends JpaAbstractGenericDao<Tag> implements GenericDao<Tag> {
 
@@ -37,4 +37,4 @@ public class JpaTagRepositoryImpl extends JpaAbstractGenericDao<Tag> implements 
         return entityManager.createNamedQuery(Tag.DELETE_ALL)
                 .executeUpdate() != 0;
     }
-}
+}*/
