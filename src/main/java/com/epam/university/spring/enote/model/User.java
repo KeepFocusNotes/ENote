@@ -77,7 +77,7 @@ public class User extends AbstractNamedEntity {
                 '}';
     }
 
-    //TODO optimize
+   /* //TODO need to swap to external lib to check if the fields are equal, because of JPA
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,5 +96,5 @@ public class User extends AbstractNamedEntity {
         result = 31 * result + email.hashCode();
         result = 31 * result + password.hashCode();
         return result;
-    }
+    }*/
 }
