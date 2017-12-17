@@ -3,15 +3,52 @@ package com.epam.university.spring.enote.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Getter
 @Setter
+/*@NamedQueries({
+        @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id"),
+        @NamedQuery(name = User.DELETE_ALL, query = "DELETE FROM User"),
+        @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.email"),
+})
+@Entity
+//TODO uniqueConstraints = {@UniqueConstraint ??
+@Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames = {"email"}, name =
+        "users_unique_email")})*/
 public class User extends AbstractNamedEntity {
+
+   /* public static final String DELETE = "User.delete";
+    public static final String DELETE_ALL = "User.deleteAll";
+    public static final String ALL_SORTED = "User.getAllSorted";
+
+    @Column(name = "email", nullable = false, unique = true)
+    @Email
+    @NotBlank
+    @Size(max = 100)*/
     private String email;
+
     //temporal field
+    /*@Column(name = "password", nullable = false)
+    @NotBlank
+    @Size(min = 5, max = 128)*/
     private String password;
+
+   // @Column(name = "birth_date")
     private LocalDate birthDate;
+
+   /* @Column(name = "registration_date", columnDefinition = "timestamp default now()")
+    @NotNull*/
     private LocalDate registrationDate = LocalDate.now();
 
     public User() {
@@ -40,6 +77,7 @@ public class User extends AbstractNamedEntity {
                 '}';
     }
 
+   /* //TODO need to swap to external lib to check if the fields are equal, because of JPA
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,5 +96,5 @@ public class User extends AbstractNamedEntity {
         result = 31 * result + email.hashCode();
         result = 31 * result + password.hashCode();
         return result;
-    }
+    }*/
 }

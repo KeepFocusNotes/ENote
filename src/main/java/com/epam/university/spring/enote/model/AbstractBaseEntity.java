@@ -3,13 +3,28 @@ package com.epam.university.spring.enote.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.SequenceGenerator;
 import java.io.Serializable;
 
 @Getter
 @Setter
-public abstract class AbstractBaseEntity implements Serializable{
+//@MappedSuperclass
+//some kind of login can be in accessors, it's not safety
+//@Access(AccessType.FIELD)
+public abstract class AbstractBaseEntity implements Serializable {
     public static final int START_SEQ = 1;
+
+  /*  @Id
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")*/
     protected Integer id;
+
 
     public AbstractBaseEntity() {
     }

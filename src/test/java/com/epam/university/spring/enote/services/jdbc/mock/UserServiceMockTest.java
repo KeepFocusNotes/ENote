@@ -3,7 +3,7 @@ package com.epam.university.spring.enote.services.jdbc.mock;
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.services.GenericService;
-import com.epam.university.spring.enote.services.jdbc.UserServiceImpl;
+import com.epam.university.spring.enote.services.UserServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
