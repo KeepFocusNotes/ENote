@@ -44,7 +44,18 @@ electronic notes by the Spring framework.
 ```
 ##### 4 Step implement Spring+JPA package (in progress):
 ```diff
-- implement Spring data JPA package;
++ 🏹 4.1 Implement Spring data JPA profile/package (completed 100%):
++ 4.1.1 Switched back to JPA - debugging of JPA profile (completed 100%):
++ 4.1.1 Abstract Entity's @id Generation has been fixed (completed);
++ 4.1.2 AbstractNamedEntity upgraded (completed);
++ 4.1.3 constructors of the entities upgraded, fetch of the fields changed (completed);
++ 4.1.4 User's duplicate (email column) has been deleted (completed);
++ 4.1.5 JpaAbstractGenericDao has been fixed (completed);
++ 4.1.6 Spring-app.xml has been fixed (completed);
++ 4.2 Upgrade tests (completed);
++ 4.2.1 TagServiceTest, NotepadTestData, NoteTestData, TagTestData have been fixed (completed); 
++ 4.3 Merge conflicts with Jdbc profile (completed);
++ 4.4 Finalize the debugging of JPA (completed 100 %);
 ```
 #### Prerequisites:
 - IntelliJ IDEA.

@@ -11,11 +11,11 @@ public class TagServiceImpl extends GenericServiceImpl<Tag> implements TagServic
 
     @Autowired
     public TagServiceImpl(
-            @Qualifier("jdbcTagRepositoryImpl")
+           /*   @Qualifier("jdbcTagRepositoryImpl")
                     GenericDao<Tag> jdbcTagRepositoryImpl) {
-        super(jdbcTagRepositoryImpl);
-           /* @Qualifier("jpaTagRepositoryImpl")
+        super(jdbcTagRepositoryImpl);*/
+          @Qualifier("jpaTagRepositoryImpl")
                     GenericDao<Tag> jpaTagRepositoryImpl) {
-        super(jpaTagRepositoryImpl);*/
+        super(jpaTagRepositoryImpl);
     }
 }

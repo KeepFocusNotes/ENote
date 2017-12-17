@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-/*@Repository
+@Repository
 @Transactional
 public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implements GenericDao<User> {
 
@@ -35,4 +35,4 @@ public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implement
         return entityManager.createNamedQuery(User.DELETE_ALL)
                 .executeUpdate() != 0;
     }
-}*/
+}

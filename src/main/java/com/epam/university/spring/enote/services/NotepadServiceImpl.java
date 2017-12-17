@@ -11,11 +11,11 @@ public class NotepadServiceImpl extends GenericServiceImpl<Notepad> implements N
 
     @Autowired
     public NotepadServiceImpl(
-            @Qualifier("jdbcNotepadRepositoryImpl")
+             /* @Qualifier("jdbcNotepadRepositoryImpl")
                     GenericDao<Notepad> jdbcNotepadRepositoryImpl) {
-        super(jdbcNotepadRepositoryImpl);
-           /* @Qualifier("jpaNotepadRepositoryImpl")
+        super(jdbcNotepadRepositoryImpl);*/
+          @Qualifier("jpaNotepadRepositoryImpl")
                     GenericDao<Notepad> jpaNotepadRepositoryImpl) {
-        super(jpaNotepadRepositoryImpl);*/
+        super(jpaNotepadRepositoryImpl);
     }
 }
