@@ -43,17 +43,19 @@ public class Notepad extends AbstractBaseEntity {
     @Size(min = 1, max = 128)
     public String title;
 
+    //TODO check EAGER to print
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @NotNull
     public User user;
 
     public Notepad(Notepad notepad) {
-        this(notepad.getId(), notepad.getTitle());
+        this(notepad.getId(), notepad.getTitle(), notepad.getUser());
     }
 
-    public Notepad(Integer id, String title) {
+    public Notepad(Integer id, String title, User user) {
         super(id);
         this.title = title;
+        this.user = user;
     }
 }

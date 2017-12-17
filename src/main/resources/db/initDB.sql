@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS notes;
 DROP TABLE IF EXISTS tags;
 
 DROP SEQUENCE IF EXISTS global_seq;
-/*just for tests
-CREATE SEQUENCE global_seq START WITH 1000;*/
+
+/*CREATE SEQUENCE global_seq START WITH 1;*/
 
 CREATE TABLE users
 (

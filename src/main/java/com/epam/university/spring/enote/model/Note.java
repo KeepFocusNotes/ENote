@@ -35,7 +35,7 @@ public class Note extends AbstractBaseEntity {
     public static final String DELETE = "Note.delete";
     public static final String DELETE_ALL = "Note.deleteAll";
     public static final String ALL_SORTED = "Note.getAllSorted";
-    
+
     @Column(name = "title", nullable = false)
     @NotBlank
     @Size(min = 1, max = 128)
@@ -45,19 +45,21 @@ public class Note extends AbstractBaseEntity {
     @Size(max = 120)
     public String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    //TODO check EAGER to print vs LAZY
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "notepad_id", nullable = false)
     @NotNull
     public Notepad notepad;
 
     public Note(Note note) {
-        this(note.getId(), note.getTitle(), note.getDescription());
+        this(note.getId(), note.getTitle(), note.getDescription(), note.getNotepad());
     }
 
-    public Note(Integer id, String title, String description) {
+    public Note(Integer id, String title, String description, Notepad notepad) {
         super(id);
         this.title = title;
         this.description = description;
+        this.notepad = notepad;
     }
 
     @Override
@@ -65,6 +67,7 @@ public class Note extends AbstractBaseEntity {
         return "Note{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", notepad=" + notepad +
                 ", id=" + id +
                 '}';
     }

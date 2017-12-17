@@ -41,24 +41,27 @@ public class Tag extends AbstractBaseEntity {
     @Size(min = 1, max = 128)
     public String title;
 
+    //TODO check EAGER to print
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "note_id", nullable = false)
     @NotNull
     public Note note;
 
     public Tag(Tag tag) {
-        this(tag.getId(), tag.getTitle());
+        this(tag.getId(), tag.getTitle(), tag.getNote());
     }
 
-    public Tag(Integer id, String title) {
+    public Tag(Integer id, String title, Note note) {
         super(id);
         this.title = title;
+        this.note = note;
     }
 
     @Override
     public String toString() {
         return "Tag{" +
                 "title='" + title + '\'' +
+                ", note=" + note +
                 ", id=" + id +
                 '}';
     }

@@ -30,18 +30,18 @@ public abstract class AbstractNamedEntity extends AbstractBaseEntity {
     @Email
     @NotBlank
     @Size(max = 100)
-    protected String mail;
+    protected String email;
 
     public AbstractNamedEntity() {
     }
 
     protected AbstractNamedEntity(Integer id, String mail) {
         super(id);
-        this.mail = mail;
+        this.email = mail;
     }
 
     @Override
     public String toString() {
-        return String.format("Entity %s (%s, '%s')", getClass().getName(), id, mail);
+        return String.format("Entity %s (%s, '%s')", getClass().getName(), id, email);
     }
 }
