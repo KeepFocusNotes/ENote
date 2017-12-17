@@ -43,6 +43,12 @@
                        value="${hibernate.format_sql}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
                        value="${hibernate.use_sql_comments}"/>
+               <!-- <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_ACTION}"
+                       value="${javax.persistence.schema-generation.scripts.action}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_CREATE_TARGET}"
+                       value="${javax.persistence.schema-generation.scripts.create-target}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_DROP_TARGET}"
+                       value="${javax.persistence.schema-generation.scripts.drop-target}"/>-->
             </map>
         </property>
 

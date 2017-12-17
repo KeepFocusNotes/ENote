@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,7 +24,8 @@ import java.time.LocalDate;
 })
 @Entity
 //TODO uniqueConstraints = {@UniqueConstraint ??
-@Table(name = "users")
+@Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames = {"email"}, name =
+        "users_unique_email")})
 public class User extends AbstractNamedEntity {
 
     public static final String DELETE = "User.delete";
