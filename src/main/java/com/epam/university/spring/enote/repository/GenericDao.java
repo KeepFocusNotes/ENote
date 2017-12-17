@@ -2,7 +2,6 @@ package com.epam.university.spring.enote.repository;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 
-import java.io.Serializable;
 import java.util.List;
 
 public interface GenericDao<T extends AbstractBaseEntity> {

@@ -11,11 +11,11 @@ public class UserServiceImpl extends GenericServiceImpl<User> implements UserSer
 
     @Autowired
     public UserServiceImpl(
-            @Qualifier("jdbcUserRepositoryImpl")
+           /* @Qualifier("jdbcUserRepositoryImpl")
                     GenericDao<User> jdbcUserRepositoryImpl) {
-        super(jdbcUserRepositoryImpl);
-            /*@Qualifier("jpaUserRepositoryImpl")
+        super(jdbcUserRepositoryImpl);*/
+            @Qualifier("jpaUserRepositoryImpl")
                     GenericDao<User> jpaUserRepositoryImpl) {
-        super(jpaUserRepositoryImpl);*/
+        super(jpaUserRepositoryImpl);
     }
 }

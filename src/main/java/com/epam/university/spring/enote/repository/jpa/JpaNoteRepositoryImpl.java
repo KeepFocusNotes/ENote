@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-/*@Repository
+@Repository
 @Transactional
 public class JpaNoteRepositoryImpl extends JpaAbstractGenericDao<Note> implements GenericDao<Note> {
 
@@ -37,4 +37,4 @@ public class JpaNoteRepositoryImpl extends JpaAbstractGenericDao<Note> implement
         return entityManager.createNamedQuery(Note.DELETE_ALL)
                 .executeUpdate() != 0;
     }
-}*/
+}

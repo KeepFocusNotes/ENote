@@ -5,7 +5,8 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--<context:annotation-config/>-->
-
+    <!--Blows without import-->
+    <import resource="spring-db.xml"/>
     <context:component-scan base-package="com.epam.university.**"/>
 
 </beans>

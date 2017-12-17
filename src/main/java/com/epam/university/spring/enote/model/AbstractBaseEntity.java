@@ -14,17 +14,17 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-//@MappedSuperclass
+@MappedSuperclass
 //some kind of login can be in accessors, it's not safety
-//@Access(AccessType.FIELD)
+@Access(AccessType.FIELD)
 public abstract class AbstractBaseEntity implements Serializable {
     public static final int START_SEQ = 1;
 
-  /*  @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")*/
+    @Id
+    /*//TODO Don't works with JPA @SequenceGenerator(name = "global_seq", sequenceName = "global_seq",
+    allocationSize = 1,            initialValue = START_SEQ)*/
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
-
 
     public AbstractBaseEntity() {
     }

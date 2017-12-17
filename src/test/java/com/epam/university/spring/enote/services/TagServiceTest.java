@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.Tag;
@@ -40,13 +40,13 @@ public class TagServiceTest {
 
     @Test
     public void getByIdFirstTag() throws Exception {
-        assertEquals(tagService.getById(TAG_FIRST_ID), TAG_FIRST);
+                assertEquals(tagService.getById(TAG_FIRST_ID), TAG_FIRST);
         //assertMatch(tagService.getById(TAG_FIRST_ID), TAG_FIRST);
     }
 
     @Test
     public void getByIdLastTag() throws Exception {
-        assertEquals(tagService.getById(TAG_LAST_ID), TAG_LAST);
+                assertEquals(tagService.getById(TAG_LAST_ID), TAG_LAST);
         //assertMatch(actual,TAG_FIRST);
     }
 
@@ -64,7 +64,7 @@ public class TagServiceTest {
         assertTrue(TAGS_INITIALIZED == tagsAll.size());
     }
 
-    @Test
+   @Test
     public void create() throws Exception {
         TAG_TO_CREATE.setId(tagService.create(TAG_TO_CREATE).getId());
         assertEquals(tagService.getById(TAG_TO_CREATE.getId()), TAG_TO_CREATE);

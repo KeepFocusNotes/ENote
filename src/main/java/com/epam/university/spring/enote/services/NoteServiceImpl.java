@@ -11,11 +11,11 @@ public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteSer
 
     @Autowired
     public NoteServiceImpl(
-            @Qualifier("jdbcNoteRepositoryImpl")
+            /*  @Qualifier("jdbcNoteRepositoryImpl")
                     GenericDao<Note> jdbcNoteRepositoryImpl) {
-        super(jdbcNoteRepositoryImpl);
-          /*  @Qualifier("jpaNoteRepositoryImpl")
+        super(jdbcNoteRepositoryImpl);*/
+          @Qualifier("jpaNoteRepositoryImpl")
                     GenericDao<Note> jpaNoteRepositoryImpl) {
-        super(jpaNoteRepositoryImpl);*/
+        super(jpaNoteRepositoryImpl);
     }
 }

@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +20,15 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
     private EntityManager entityManager;
 
     public Class<T> entityClass;
+
+
+    public JpaAbstractGenericDao() {
+        if (entityClass == null) {
+            //only works if one extends BaseDao, we will take care of it with CDI
+            entityClass = (Class) ((ParameterizedType) getClass().getGenericSuperclass())
+                    .getActualTypeArguments()[0];
+        }
+    }
 
     @Transactional
     public T save(T entity) {

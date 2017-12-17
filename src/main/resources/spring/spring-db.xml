@@ -28,7 +28,7 @@
         <property name="password" value="${database.password}"/>
     </bean>
 
-    <!--JPA; Local.. - only one database; constants links, swapped to jdbc
+    <!--JPA; Local.. - only one database; constants links, swapped to jpa-->
     <context:component-scan
             base-package="com.epam.university.spring.enote.repository.jpa"/>
     <bean id="entityManagerFactory"
@@ -42,12 +42,12 @@
                        value="${hibernate.format_sql}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
                        value="${hibernate.use_sql_comments}"/>
-                <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_ACTION}"
+               <!--< <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_ACTION}"
                        value="${javax.persistence.schema-generation.scripts.action}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_CREATE_TARGET}"
                        value="${javax.persistence.schema-generation.scripts.create-target}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_DROP_TARGET}"
-                       value="${javax.persistence.schema-generation.scripts.drop-target}"/>
+                       value="${javax.persistence.schema-generation.scripts.drop-target}"/>>-->
             </map>
         </property>
 
@@ -60,12 +60,12 @@
 
     <tx:annotation-driven/>
 
-    Transaction manager for a single JPA EntityManagerFactory (alternative to JTA)
+   <!--< Transaction manager for a single JPA EntityManagerFactory (alternative to JTA)>-->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
           p:entityManagerFactory-ref="entityManagerFactory"/>
-        -->
 
-    <!--swapping to jpa-->
+
+    <!--<swapping to jpa
      <context:component-scan
             base-package="com.epam.university.spring.enote.repository.jdbc"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -74,6 +74,6 @@
 
     <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource"/>
-    </bean>
+    </bean>>-->
 
 </beans>

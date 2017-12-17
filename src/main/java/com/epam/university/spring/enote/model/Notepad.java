@@ -24,47 +24,38 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-/*@NamedQueries({
+@NamedQueries({
         @NamedQuery(name = Notepad.DELETE, query = "DELETE FROM Notepad n WHERE n.id=:id"),
         @NamedQuery(name = Notepad.DELETE_ALL, query = "DELETE FROM Notepad"),
         @NamedQuery(name = Notepad.ALL_SORTED, query = "SELECT n FROM Notepad n ORDER BY n.title"),
 })
 @Entity
 @Table(name = "notepads", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id",
-        "title"}, name = "notepads_unique_user_title")})*/
+        "title"}, name = "notepads_unique_user_title")})
 public class Notepad extends AbstractBaseEntity {
 
-    /* public static final String DELETE = "Notepad.delete";
-     public static final String DELETE_ALL = "Notepad.deleteAll";
-     public static final String ALL_SORTED = "Notepad.getAllSorted";
+    public static final String DELETE = "Notepad.delete";
+    public static final String DELETE_ALL = "Notepad.deleteAll";
+    public static final String ALL_SORTED = "Notepad.getAllSorted";
 
-     @Column(name = "title", nullable = false)
-     @NotBlank
-     @Size(min = 1, max = 128)*/
+    @Column(name = "title", nullable = false)
+    @NotBlank
+    @Size(min = 1, max = 128)
     public String title;
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    //TODO check EAGER to print
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @NotNull*/
-    //public User user;
-    public Integer userId;
+    @NotNull
+    public User user;
 
-    /*public Notepad(Notepad notepad) {
-        this(notepad.getId(), notepad.getTitle());
-    }
-
-    public Notepad(Integer id, String title) {
-        super(id);
-        this.title = title;
-    }
-*/
     public Notepad(Notepad notepad) {
-        this(notepad.getId(), notepad.getTitle(), notepad.getUserId());
+        this(notepad.getId(), notepad.getTitle(), notepad.getUser());
     }
 
-    public Notepad(Integer id, String title, Integer userId) {
+    public Notepad(Integer id, String title, User user) {
         super(id);
         this.title = title;
-        this.userId = userId;
+        this.user = user;
     }
 }

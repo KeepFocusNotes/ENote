@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote.services.jdbc;
+package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.Note;

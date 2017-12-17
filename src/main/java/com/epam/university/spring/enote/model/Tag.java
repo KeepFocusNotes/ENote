@@ -22,55 +22,46 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-/*@NamedQueries({
+@NamedQueries({
         @NamedQuery(name = Tag.DELETE, query = "DELETE FROM Tag t WHERE t.id=:id"),
         @NamedQuery(name = Tag.DELETE_ALL, query = "DELETE FROM Tag"),
         @NamedQuery(name = Tag.ALL_SORTED, query = "SELECT t FROM Tag t ORDER BY t.title"),
 })
 @Entity
 @Table(name = "tags", uniqueConstraints = {@UniqueConstraint(columnNames = {"note_id",
-        "title"}, name = "tags_unique_note_title")})*/
+        "title"}, name = "tags_unique_note_title")})
 public class Tag extends AbstractBaseEntity {
 
-   /* public static final String DELETE = "Tag.delete";
+    public static final String DELETE = "Tag.delete";
     public static final String DELETE_ALL = "Tag.deleteAll";
     public static final String ALL_SORTED = "Tag.getAllSorted";
 
     @Column(name = "title", nullable = false)
     @NotBlank
-    @Size(min = 1, max = 128)*/
+    @Size(min = 1, max = 128)
     public String title;
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    //TODO check EAGER to print
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "note_id", nullable = false)
     @NotNull
-    public Note note;*/
-
-   public Integer noteId;
-
-   /* public Tag(Tag tag) {
-        this(tag.getId(), tag.getTitle());
-    }
-
-    public Tag(Integer id, String title) {
-        super(id);
-        this.title = title;
-    }*/
+    public Note note;
 
     public Tag(Tag tag) {
-        this(tag.getId(), tag.getTitle(), tag.getNoteId());
+        this(tag.getId(), tag.getTitle(), tag.getNote());
     }
 
-    public Tag(Integer id, String title, Integer noteId) {
+    public Tag(Integer id, String title, Note note) {
         super(id);
         this.title = title;
-        this.noteId = noteId;
+        this.note = note;
     }
 
     @Override
     public String toString() {
         return "Tag{" +
                 "title='" + title + '\'' +
+                ", note=" + note +
                 ", id=" + id +
                 '}';
     }
