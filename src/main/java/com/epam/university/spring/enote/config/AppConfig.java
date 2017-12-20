@@ -49,6 +49,7 @@ public class AppConfig {
     return new EmbeddedDatabaseBuilder().setName("test").
         setType(EmbeddedDatabaseType.H2)
         .addScript("classpath:db/initDB.sql")
+        .addScript("classpath:db/populateDB.sql")
         .build();
   }
 

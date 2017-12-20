@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.services.mock;
 
+import com.epam.university.spring.enote.UserTestData;
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.services.GenericService;
@@ -29,7 +30,7 @@ public class UserServiceMockTest {
         MockitoAnnotations.initMocks(this);
         userService = new UserServiceImpl(userRepository);
         user = new User(userID, "asd@asd.ru", "1234",
-                LocalDate.of(1952, 10, 7));
+            UserTestData.dateConverter.convertToDatabaseColumn(LocalDate.of(1952, 10, 7)));
     }
 
     @Test

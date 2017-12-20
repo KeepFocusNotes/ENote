@@ -1,21 +1,5 @@
 package com.epam.university.spring.enote.services;
 
-import com.epam.university.spring.enote.model.AbstractBaseEntity;
-import com.epam.university.spring.enote.model.Notepad;
-import com.epam.university.spring.enote.services.NotepadService;
-import com.epam.university.spring.enote.util.exception.NotFoundException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlConfig;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Comparator;
-import java.util.List;
-
 import static com.epam.university.spring.enote.NotepadTestData.LIST_NOTEPADS_TO_CREATE;
 import static com.epam.university.spring.enote.NotepadTestData.NOTEPADS_INITIALIZED;
 import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_FIRST;
@@ -26,13 +10,24 @@ import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_TO_CREATE
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
+import com.epam.university.spring.enote.config.AppConfig;
+import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.model.Notepad;
+import com.epam.university.spring.enote.util.exception.NotFoundException;
+import java.util.Comparator;
+import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+@ContextConfiguration(classes = AppConfig.class)
+@WebAppConfiguration
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @RunWith(SpringRunner.class)
-@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 public class NotepadServiceTest {
 
     @Autowired

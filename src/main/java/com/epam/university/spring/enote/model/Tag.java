@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,6 +46,7 @@ public class Tag extends AbstractBaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "note_id", nullable = false)
     @NotNull
+    @JsonIgnore
     public Note note;
 
     public Tag(Tag tag) {

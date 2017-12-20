@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.services;
 
+import com.epam.university.spring.enote.config.AppConfig;
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.services.UserService;
@@ -15,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Comparator;
 import java.util.List;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import static com.epam.university.spring.enote.UserTestData.LIST_USERS_TO_CREATE;
 import static com.epam.university.spring.enote.UserTestData.USERS_INITIALIZED;
@@ -26,13 +28,10 @@ import static com.epam.university.spring.enote.UserTestData.USER_TO_CREATE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
+@ContextConfiguration(classes = AppConfig.class)
+@WebAppConfiguration
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @RunWith(SpringRunner.class)
-@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 public class UserServiceTest {
 
     @Autowired

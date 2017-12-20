@@ -1,21 +1,5 @@
 package com.epam.university.spring.enote.services;
 
-import com.epam.university.spring.enote.model.AbstractBaseEntity;
-import com.epam.university.spring.enote.model.Note;
-import com.epam.university.spring.enote.services.NoteService;
-import com.epam.university.spring.enote.util.exception.NotFoundException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlConfig;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Comparator;
-import java.util.List;
-
 import static com.epam.university.spring.enote.NoteTestData.LIST_NOTES_TO_CREATE;
 import static com.epam.university.spring.enote.NoteTestData.NOTES_INITIALIZED;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST;
@@ -26,20 +10,31 @@ import static com.epam.university.spring.enote.NoteTestData.NOTE_TO_CREATE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
+import com.epam.university.spring.enote.config.AppConfig;
+import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.model.Note;
+import com.epam.university.spring.enote.util.exception.NotFoundException;
+import java.util.Comparator;
+import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+@ContextConfiguration(classes = AppConfig.class)
+@WebAppConfiguration
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @RunWith(SpringRunner.class)
-@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 public class NoteServiceTest {
 
     @Autowired
     private NoteService noteService;
 
     @Test
-    public void getByIdFirstNote() throws Exception {
+    public void getByIdFirstNote() {
         assertEquals(noteService.getById(NOTE_FIRST_ID), NOTE_FIRST);
         //assertMatch(noteService.getById(NOTE_FIRST_ID), NOTE_FIRST);
     }

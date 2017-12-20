@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,6 +50,7 @@ public class Note extends AbstractBaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "notepad_id", nullable = false)
     @NotNull
+    @JsonIgnore
     public Notepad notepad;
 
     public Note(Note note) {

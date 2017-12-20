@@ -1,19 +1,19 @@
 package com.epam.university.spring.enote.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import com.epam.university.spring.enote.util.DateConverter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -34,16 +34,16 @@ public class User extends AbstractNamedEntity {
 
     //temporal field
     @Column(name = "password", nullable = false)
-    @NotBlank
     @Size(min = 5, max = 128)
     private String password;
 
     @Column(name = "birth_date")
-    private LocalDate birthDate;
+    private Timestamp birthDate;
 
     @Column(name = "registration_date", columnDefinition = "timestamp default now()")
     @NotNull
-    private LocalDate registrationDate = LocalDate.now();
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+    private Timestamp registrationDate = new DateConverter().convertToDatabaseColumn(LocalDate.now());
 
     public User() {
     }
@@ -53,7 +53,7 @@ public class User extends AbstractNamedEntity {
         this(u.getId(), u.getEmail(), u.getPassword(), u.getBirthDate());
     }
 
-    public User(Integer id, String email, String password, LocalDate birthDate) {
+    public User(Integer id, String email, String password, Timestamp birthDate) {
         super(id, email);
         this.email = email;
         this.password = password;
