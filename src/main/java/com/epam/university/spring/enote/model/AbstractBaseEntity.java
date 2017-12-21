@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +34,7 @@ public abstract class AbstractBaseEntity implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public boolean isNew() {
         return this.id == null;
     }

@@ -1,8 +1,10 @@
 package com.epam.university.spring.enote.controllers;
 
 import com.epam.university.spring.enote.model.Note;
+import com.epam.university.spring.enote.model.Tag;
 import com.epam.university.spring.enote.services.NoteService;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,11 +25,13 @@ public class NoteController {
     }
 
     @GetMapping("/notes")
+    @ResponseStatus(HttpStatus.OK)
     public List<Note> getAll() {
         return noteService.getAll();
     }
 
     @GetMapping("/notes/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Note getById(@PathVariable Integer id) {
         return noteService.getById(id);
     }
@@ -44,5 +48,41 @@ public class NoteController {
         Note toPassNote = new Note();
         toPassNote.setId(id);
         noteService.delete(toPassNote);
+    }
+
+    @GetMapping("/notes/{id}/tags")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<Tag> getTagsByNoteId(@PathVariable Integer id) {
+        return noteService.getTags(id);
+    }
+
+    @PostMapping("/notes/{noteId}/tags/{tagId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void addTagToNote(@PathVariable Integer noteId, @PathVariable Integer tagId){
+        noteService.addTagToNoteById(noteId, tagId);
+    }
+
+    @DeleteMapping("/notes/{noteId}/tags/{tagId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTagFromNote(@PathVariable Integer noteId, @PathVariable Integer tagId){
+        noteService.deleteTagToNoteById(noteId, tagId);
+    }
+
+    @GetMapping("/notes/tags/{tagId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<Note> getNotesByTagId(@PathVariable Integer tagId){
+        return noteService.getAllNotesByTag(tagId);
+    }
+
+    @GetMapping("/notepads/{notepadId}/notes")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<Note> getNotesByNotepadId(@PathVariable Integer notepadId){
+        return noteService.getNotesByNotepadId(notepadId);
+    }
+
+    @GetMapping("/users/{userId}/notes")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<Note> getNotesByUserId(@PathVariable Integer userId){
+        return noteService.getNotesByUserId(userId);
     }
 }

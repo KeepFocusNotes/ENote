@@ -1,6 +1,7 @@
 package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.monitor.Monitor;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
 import lombok.Getter;

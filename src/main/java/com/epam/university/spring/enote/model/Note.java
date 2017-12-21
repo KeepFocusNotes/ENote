@@ -43,7 +43,7 @@ public class Note extends AbstractBaseEntity {
     public static final String ALL_SORTED = "Note.getAllSorted";
 
     @Column(name = "title", nullable = false)
-    @NotBlank
+    @NotNull
     @Size(min = 1, max = 128)
     public String title;
 
@@ -55,10 +55,9 @@ public class Note extends AbstractBaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "notepad_id", nullable = false)
     @NotNull
-    @JsonIgnore
     public Notepad notepad;
 
-    //@ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
