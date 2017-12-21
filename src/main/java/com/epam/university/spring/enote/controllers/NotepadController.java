@@ -2,7 +2,10 @@ package com.epam.university.spring.enote.controllers;
 
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.services.NotepadService;
+
 import java.util.List;
+
+import com.epam.university.spring.enote.util.exception.GlobalControllerValidatorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,35 +18,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class NotepadController {
-  private NotepadService notepadService;
+    private NotepadService notepadService;
 
-  @Autowired
-  public NotepadController(NotepadService notepadService) {
-    this.notepadService = notepadService;
-  }
+    @Autowired
+    public NotepadController(NotepadService notepadService) {
+        this.notepadService = notepadService;
+    }
 
-  @GetMapping("/notepads")
-  public List<Notepad> getAll(){
-    return notepadService.getAll();
-  }
+    @GetMapping("/notepads")
+    public List<Notepad> getAll() {
+        return notepadService.getAll();
+    }
 
-  @GetMapping("/notepads/{id}")
-  public Notepad getById(@PathVariable Integer id){
-    return notepadService.getById(id);
-  }
+    @GetMapping("/notepads/{id}")
+    public Notepad getById(@PathVariable Integer id) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(id);
+        return notepadService.getById(id);
+    }
 
-  @PostMapping("/notepads")
-  @ResponseStatus(HttpStatus.CREATED)
-  public Notepad create(@RequestBody Notepad notepad) {
-    return notepadService.create(notepad);
-  }
+    @PostMapping("/notepads")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Notepad create(@RequestBody Notepad notepad) {
+        return notepadService.create(notepad);
+    }
 
-  @DeleteMapping("/notepads/{id}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable Integer id){
-    Notepad toPassNotepad = new Notepad();
-    toPassNotepad.setId(id);
-    notepadService.delete(toPassNotepad);
-  }
-
+    @DeleteMapping("/notepads/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(id);
+        Notepad toPassNotepad = new Notepad();
+        toPassNotepad.setId(id);
+        notepadService.delete(toPassNotepad);
+    }
 }

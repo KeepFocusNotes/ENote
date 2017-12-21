@@ -1,7 +1,11 @@
 package com.epam.university.spring.enote.util.exception;
 
-public class NotFoundException extends RuntimeException {
-    public NotFoundException(String errorMessage) {
-        super(errorMessage);
+import org.springframework.http.HttpStatus;
+
+public class NotFoundException extends ApplicationException {
+    public static final String NOT_FOUND_EXCEPTION = "notFound";
+
+    public NotFoundException(String arg) {
+        super(ErrorType.DATA_NOT_FOUND, NOT_FOUND_EXCEPTION, HttpStatus.UNPROCESSABLE_ENTITY, arg);
     }
 }

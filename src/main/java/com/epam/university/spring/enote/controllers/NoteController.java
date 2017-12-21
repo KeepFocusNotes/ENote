@@ -3,8 +3,11 @@ package com.epam.university.spring.enote.controllers;
 import com.epam.university.spring.enote.model.Note;
 import com.epam.university.spring.enote.model.Tag;
 import com.epam.university.spring.enote.services.NoteService;
+
 import java.util.List;
 import java.util.Set;
+
+import com.epam.university.spring.enote.util.exception.GlobalControllerValidatorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,6 +36,7 @@ public class NoteController {
     @GetMapping("/notes/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Note getById(@PathVariable Integer id) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(id);
         return noteService.getById(id);
     }
 
@@ -45,6 +49,7 @@ public class NoteController {
     @DeleteMapping("/notes/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(id);
         Note toPassNote = new Note();
         toPassNote.setId(id);
         noteService.delete(toPassNote);
@@ -53,36 +58,43 @@ public class NoteController {
     @GetMapping("/notes/{id}/tags")
     @ResponseStatus(HttpStatus.OK)
     public Set<Tag> getTagsByNoteId(@PathVariable Integer id) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(id);
         return noteService.getTags(id);
     }
 
     @PostMapping("/notes/{noteId}/tags/{tagId}")
     @ResponseStatus(HttpStatus.OK)
-    public void addTagToNote(@PathVariable Integer noteId, @PathVariable Integer tagId){
+    public void addTagToNote(@PathVariable Integer noteId, @PathVariable Integer tagId) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(tagId);
         noteService.addTagToNoteById(noteId, tagId);
     }
 
     @DeleteMapping("/notes/{noteId}/tags/{tagId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTagFromNote(@PathVariable Integer noteId, @PathVariable Integer tagId){
+    public void deleteTagFromNote(@PathVariable Integer noteId, @PathVariable Integer tagId) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(noteId);
+        GlobalControllerValidatorUtil.validateModificationAllowed(tagId);
         noteService.deleteTagToNoteById(noteId, tagId);
     }
 
     @GetMapping("/notes/tags/{tagId}")
     @ResponseStatus(HttpStatus.OK)
-    public Set<Note> getNotesByTagId(@PathVariable Integer tagId){
+    public Set<Note> getNotesByTagId(@PathVariable Integer tagId) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(tagId);
         return noteService.getAllNotesByTag(tagId);
     }
 
     @GetMapping("/notepads/{notepadId}/notes")
     @ResponseStatus(HttpStatus.OK)
-    public Set<Note> getNotesByNotepadId(@PathVariable Integer notepadId){
+    public Set<Note> getNotesByNotepadId(@PathVariable Integer notepadId) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(notepadId);
         return noteService.getNotesByNotepadId(notepadId);
     }
 
     @GetMapping("/users/{userId}/notes")
     @ResponseStatus(HttpStatus.OK)
-    public Set<Note> getNotesByUserId(@PathVariable Integer userId){
+    public Set<Note> getNotesByUserId(@PathVariable Integer userId) {
+        GlobalControllerValidatorUtil.validateModificationAllowed(userId);
         return noteService.getNotesByUserId(userId);
     }
 }
