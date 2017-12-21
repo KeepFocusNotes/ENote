@@ -73,3 +73,31 @@ electronic notes by the Spring framework.
 Initial DB scheme:
 
 ![Initial DB scheme](http://s019.radikal.ru/i617/1712/20/b6160f97211b.jpg)
+
+
+|URL path|Request method|Result|
+|--------|--------------|------|
+|**USERS**|
+|/|GET|Hello|
+|/users|GET|Get all users|
+|/users|POST|Create user|
+|/users/{id}|GET|Get user by id|
+|/users/{id}|DELETE|Delete user by id|
+|**NOTES**|
+|/notes|GET|Get all notes|
+|/notes|POST|Create note|
+|/notes/tags/{id}|GET|Get notes by tagId|
+|/notes/{id}|GET|Get note by id|
+|/notes/{id}|DELETE|Delete note by id|
+|/notes/{id}/tags|GET|Get tags by noteId|
+|/notes/{noteId}/tags/{tagId}|POST|Add tag to note with noteId and tagId|
+|**NOTEPADS**|
+|/notepads|GET|Get all notepads|
+|/notepads|POST|Create notepad|
+|/notepads/{id}|GET|Get notepad by id|
+|/notepads/{id}|DELETE|Delete notepad by id|
+|**TAGS**|
+|/tags|GET|Get all tags|
+|/tags|POST|Create tag|
+|/tags/{id}|GET|Get tag by id|
+|/tags/{id}|DELETE|Delete tag by id|
