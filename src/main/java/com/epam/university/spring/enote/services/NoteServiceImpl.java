@@ -4,15 +4,14 @@ import com.epam.university.spring.enote.model.Note;
 import com.epam.university.spring.enote.model.Tag;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteService {

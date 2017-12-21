@@ -1,18 +1,16 @@
 package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
-import com.epam.university.spring.enote.monitor.Monitor;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @NoArgsConstructor
