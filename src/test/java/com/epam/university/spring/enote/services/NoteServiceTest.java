@@ -7,6 +7,7 @@ import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST_ID;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST_ID;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_TO_CREATE;
+import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_FIRST_ID;
 import static com.epam.university.spring.enote.TagTestData.TAG_FIRST_ID;
 import static com.epam.university.spring.enote.TagTestData.TAG_LAST_ID;
 import static org.junit.Assert.assertEquals;
@@ -140,5 +141,12 @@ public class NoteServiceTest {
         Set<Note> allNotesByTag = noteService.getAllNotesByTag(333);
         assertTrue(allNotesByTag.contains(noteService.getById(NOTE_FIRST_ID))
                 && allNotesByTag.contains(noteService.getById(NOTE_LAST_ID)));
+    }
+
+    @Test
+    public void getByNotepadId() {
+        Set<Note> allNotesByTag = noteService.getNoteByNotepadId(NOTEPAD_FIRST_ID);
+        assertTrue(allNotesByTag.stream().allMatch(note -> note.getNotepad().getId().equals
+                (NOTEPAD_FIRST_ID)));
     }
 }

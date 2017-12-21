@@ -2,8 +2,8 @@ package com.epam.university.spring.enote.services;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.repository.GenericDao;
-import com.epam.university.spring.enote.services.GenericService;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 
 @NoArgsConstructor
+@Getter
 @Service
 public class GenericServiceImpl<T extends AbstractBaseEntity> implements
         GenericService<T> {

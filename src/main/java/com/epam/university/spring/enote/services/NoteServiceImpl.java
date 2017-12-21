@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteService {
@@ -64,5 +66,12 @@ public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteSer
             return tag.getNotes();
         }
         return null;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Override
+    public Set<Note> getNoteByNotepadId(Integer notepadId) {
+        return new HashSet<>(getAll().stream().filter(note -> note.getNotepad().getId().equals
+                (notepadId)).collect(Collectors.toList()));
     }
 }

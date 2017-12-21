@@ -18,4 +18,6 @@ public interface NoteService extends GenericService<Note> {
     void deleteTagToNoteById(Integer noteId, Integer tagId);
 
     Set<Note> getAllNotesByTag(Integer tagId);
+
+    Set<Note> getNoteByNotepadId(Integer notepadId);
 }

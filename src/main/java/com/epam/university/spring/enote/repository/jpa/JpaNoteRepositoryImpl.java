@@ -2,8 +2,6 @@ package com.epam.university.spring.enote.repository.jpa;
 
 import com.epam.university.spring.enote.model.Note;
 import com.epam.university.spring.enote.repository.GenericDao;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +24,7 @@ public class JpaNoteRepositoryImpl extends JpaAbstractGenericDao<Note> implement
                 .executeUpdate() != 0;
     }
 
+    @Transactional
     @Override
     public List<Note> getAll() {
         return entityManager.createNamedQuery(Note.ALL_SORTED, Note.class).getResultList();
