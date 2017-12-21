@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,28 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringRunner.class)
 public class NoteServiceTest {
 
+    private static Note NOTE_GET_TAGS;
+    private static Tag TAG_FIRST_GET_TASKS;
+    private static Tag TAG_LAST_GET_TASKS;
+    private static Integer TAG_ID;
+
     @Autowired
     private NoteService noteService;
     @Autowired
     private TagService tagService;
+
+    @Before
+    public void setUp() {
+        TAG_FIRST_GET_TASKS = tagService.getById(TAG_FIRST_ID);
+        TAG_LAST_GET_TASKS = tagService.getById(TAG_LAST_ID);
+        Set<Tag> tags = new HashSet<>();
+        tags.add(TAG_FIRST_GET_TASKS);
+        tags.add(TAG_LAST_GET_TASKS);
+        NOTE_GET_TAGS = noteService.getById(NOTE_FIRST_ID);
+        NOTE_GET_TAGS.setTags(tags);
+        noteService.update(NOTE_GET_TAGS);
+        TAG_ID = 333;
+    }
 
     @Test
     public void getByIdFirstNote() {
@@ -101,52 +120,52 @@ public class NoteServiceTest {
 
     @Test
     public void deleteAll() throws Exception {
+        List<Note> notesBeforeDeleting = noteService.getAll();
         noteService.deleteAll();
-        assertTrue(noteService.getAll().size() == 0);
+        assertTrue(noteService.getAll().size() == 0 && notesBeforeDeleting != null);
     }
 
     @Test
     public void getTags() {
-        Tag tag = tagService.getById(TAG_FIRST_ID);
-        Tag tagLast = tagService.getById(TAG_LAST_ID);
-        Set<Tag> tags = new HashSet<>();
-        tags.add(tag);
-        tags.add(tagLast);
-        Note note = noteService.getById(NOTE_FIRST_ID);
-        note.setTags(tags);
-        noteService.update(note);
         Set<Tag> tagsFromDb = noteService.getById(NOTE_FIRST_ID).getTags();
-        assertTrue(tagsFromDb.contains(tag) && tagsFromDb.contains(tagLast));
+        assertTrue(tagsFromDb.contains(TAG_FIRST_GET_TASKS) && tagsFromDb.contains(TAG_LAST_GET_TASKS));
     }
 
     @Test
     public void addTagToNoteById() {
-        noteService.addTagToNoteById(NOTE_FIRST_ID, 333);
+        noteService.addTagToNoteById(NOTE_FIRST_ID, TAG_ID);
         Note noteFromDb = noteService.getById(NOTE_FIRST_ID);
-        assertTrue(noteFromDb.getTags().contains(tagService.getById(333)));
+        assertTrue(noteFromDb.getTags().contains(tagService.getById(TAG_ID)));
     }
 
     @Test
     public void deleteTagToNoteById() {
-        noteService.addTagToNoteById(NOTE_FIRST_ID, 333);
-        noteService.deleteTagToNoteById(NOTE_FIRST_ID, 333);
+        noteService.addTagToNoteById(NOTE_FIRST_ID, TAG_ID);
+        noteService.deleteTagToNoteById(NOTE_FIRST_ID, TAG_ID);
         Note noteTagDeleted = noteService.getById(NOTE_FIRST_ID);
-        assertTrue(!noteTagDeleted.getTags().contains(tagService.getById(333)));
+        assertTrue(!noteTagDeleted.getTags().contains(tagService.getById(TAG_ID)));
     }
 
     @Test
     public void getAllNotesByTag() {
-        noteService.addTagToNoteById(NOTE_FIRST_ID, 333);
-        noteService.addTagToNoteById(NOTE_LAST_ID, 333);
-        Set<Note> allNotesByTag = noteService.getAllNotesByTag(333);
+        noteService.addTagToNoteById(NOTE_FIRST_ID, TAG_ID);
+        noteService.addTagToNoteById(NOTE_LAST_ID, TAG_ID);
+        Set<Note> allNotesByTag = noteService.getAllNotesByTag(TAG_ID);
         assertTrue(allNotesByTag.contains(noteService.getById(NOTE_FIRST_ID))
                 && allNotesByTag.contains(noteService.getById(NOTE_LAST_ID)));
     }
 
     @Test
     public void getByNotepadId() {
-        Set<Note> allNotesByTag = noteService.getNoteByNotepadId(NOTEPAD_FIRST_ID);
-        assertTrue(allNotesByTag.stream().allMatch(note -> note.getNotepad().getId().equals
-                (NOTEPAD_FIRST_ID)));
+        Set<Note> allNotesByNotepadId = noteService.getNotesByNotepadId(NOTEPAD_FIRST_ID);
+        assertTrue(allNotesByNotepadId.stream().allMatch(note -> note.getNotepad().getId().equals
+                (NOTEPAD_FIRST_ID)) && allNotesByNotepadId.size() > 0);
+    }
+
+    @Test
+    public void getByUserId() {
+        Set<Note> allNotesByUser = noteService.getNotesByUserId(TAG_ID);
+        assertTrue(allNotesByUser.stream().allMatch(note -> note.getNotepad().getUser().getId()
+                .equals(TAG_ID)) && allNotesByUser.size() > 0);
     }
 }
