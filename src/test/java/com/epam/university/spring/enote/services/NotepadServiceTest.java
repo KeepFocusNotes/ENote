@@ -14,8 +14,10 @@ import com.epam.university.spring.enote.config.AppConfig;
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.util.exception.NotFoundException;
+
 import java.util.Comparator;
 import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,5 +95,12 @@ public class NotepadServiceTest {
     public void deleteAll() throws Exception {
         notepadService.deleteAll();
         assertTrue(notepadService.getAll().size() == 0);
+    }
+
+    @Test
+    public void getNotepadsByUserId() {
+        List<Notepad> notepads = notepadService.getByUserId(NOTEPAD_LAST.getUser().getId());
+        assertTrue(notepads.stream().allMatch(notepad -> notepad.getUser().getId().equals(
+                NOTEPAD_LAST.getUser().getId())));
     }
 }

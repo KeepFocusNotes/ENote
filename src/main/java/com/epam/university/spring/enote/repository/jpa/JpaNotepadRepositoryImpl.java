@@ -11,7 +11,8 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements GenericDao<Notepad> {
+public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements
+        GenericDao<Notepad> {
 
     @PersistenceContext
     private EntityManager entityManager;
