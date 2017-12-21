@@ -3,19 +3,17 @@ package com.epam.university.spring.enote.services;
 import com.epam.university.spring.enote.config.AppConfig;
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.User;
-import com.epam.university.spring.enote.services.UserService;
 import com.epam.university.spring.enote.util.exception.NotFoundException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Comparator;
 import java.util.List;
+
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import static com.epam.university.spring.enote.UserTestData.LIST_USERS_TO_CREATE;

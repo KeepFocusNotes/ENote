@@ -6,10 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -18,6 +21,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -46,12 +51,28 @@ public class Note extends AbstractBaseEntity {
     @Size(max = 120)
     public String description;
 
-    //TODO check EAGER to print vs LAZY
+    //TODO check EAGER to print vs EAGER
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "notepad_id", nullable = false)
     @NotNull
     @JsonIgnore
     public Notepad notepad;
+
+    //@ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name = "notes_tags",
+            joinColumns = {@JoinColumn(name = "note_id",
+                    referencedColumnName = "id",
+                    nullable = false),
+            },
+            inverseJoinColumns = {@JoinColumn(name = "tag_id",
+                    referencedColumnName = "id",
+                    nullable = false)})
+    Set<Tag> tags = new HashSet<>();
 
     public Note(Note note) {
         this(note.getId(), note.getTitle(), note.getDescription(), note.getNotepad());
@@ -70,6 +91,7 @@ public class Note extends AbstractBaseEntity {
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", notepad=" + notepad +
+                ", tags=" + tags +
                 ", id=" + id +
                 '}';
     }

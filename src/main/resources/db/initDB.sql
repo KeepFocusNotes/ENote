@@ -24,7 +24,7 @@ CREATE TABLE notepads (
   user_id INTEGER                            NOT NULL,
   title   VARCHAR                            NOT NULL,
   CONSTRAINT user_title UNIQUE (user_id, title),
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE notes (
@@ -33,13 +33,18 @@ CREATE TABLE notes (
   title       VARCHAR                            NOT NULL,
   description VARCHAR,
   CONSTRAINT notepad_id_title UNIQUE (notepad_id, title),
-  FOREIGN KEY (notepad_id) REFERENCES notepads (id) ON DELETE CASCADE
+  FOREIGN KEY (notepad_id) REFERENCES notepads (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE tags (
-  id      INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  title   VARCHAR                            NOT NULL,
-  note_id INTEGER                            NOT NULL,
-    CONSTRAINT note_id_title UNIQUE (note_id, title),
-  FOREIGN KEY (note_id) REFERENCES notes (id) ON DELETE CASCADE
+  id    INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  title VARCHAR                            NOT NULL,
+);
+
+CREATE TABLE notes_tags (
+  note_id INTEGER NOT NULL,
+  tag_id  INTEGER NOT NULL,
+  CONSTRAINT note_id_tag_id UNIQUE (note_id, tag_id),
+  FOREIGN KEY (note_id) REFERENCES notes (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE ON UPDATE CASCADE,
 );

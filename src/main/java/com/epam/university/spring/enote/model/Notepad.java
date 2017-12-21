@@ -45,7 +45,7 @@ public class Notepad extends AbstractBaseEntity {
     public String title;
 
     //TODO check EAGER to print
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     @NotNull
     @JsonIgnore

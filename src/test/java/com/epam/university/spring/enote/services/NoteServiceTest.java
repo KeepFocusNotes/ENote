@@ -7,15 +7,22 @@ import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST_ID;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST_ID;
 import static com.epam.university.spring.enote.NoteTestData.NOTE_TO_CREATE;
+import static com.epam.university.spring.enote.TagTestData.TAG_FIRST_ID;
+import static com.epam.university.spring.enote.TagTestData.TAG_LAST_ID;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.epam.university.spring.enote.config.AppConfig;
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.Note;
+import com.epam.university.spring.enote.model.Tag;
 import com.epam.university.spring.enote.util.exception.NotFoundException;
+
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +39,8 @@ public class NoteServiceTest {
 
     @Autowired
     private NoteService noteService;
+    @Autowired
+    private TagService tagService;
 
     @Test
     public void getByIdFirstNote() {
@@ -93,5 +102,43 @@ public class NoteServiceTest {
     public void deleteAll() throws Exception {
         noteService.deleteAll();
         assertTrue(noteService.getAll().size() == 0);
+    }
+
+    @Test
+    public void getTags() {
+        Tag tag = tagService.getById(TAG_FIRST_ID);
+        Tag tagLast = tagService.getById(TAG_LAST_ID);
+        Set<Tag> tags = new HashSet<>();
+        tags.add(tag);
+        tags.add(tagLast);
+        Note note = noteService.getById(NOTE_FIRST_ID);
+        note.setTags(tags);
+        noteService.update(note);
+        Set<Tag> tagsFromDb = noteService.getById(NOTE_FIRST_ID).getTags();
+        assertTrue(tagsFromDb.contains(tag) && tagsFromDb.contains(tagLast));
+    }
+
+    @Test
+    public void addTagToNoteById() {
+        noteService.addTagToNoteById(NOTE_FIRST_ID, 333);
+        Note noteFromDb = noteService.getById(NOTE_FIRST_ID);
+        assertTrue(noteFromDb.getTags().contains(tagService.getById(333)));
+    }
+
+    @Test
+    public void deleteTagToNoteById() {
+        noteService.addTagToNoteById(NOTE_FIRST_ID, 333);
+        noteService.deleteTagToNoteById(NOTE_FIRST_ID, 333);
+        Note noteTagDeleted = noteService.getById(NOTE_FIRST_ID);
+        assertTrue(!noteTagDeleted.getTags().contains(tagService.getById(333)));
+    }
+
+    @Test
+    public void getAllNotesByTag() {
+        noteService.addTagToNoteById(NOTE_FIRST_ID, 333);
+        noteService.addTagToNoteById(NOTE_LAST_ID, 333);
+        Set<Note> allNotesByTag = noteService.getAllNotesByTag(333);
+        assertTrue(allNotesByTag.contains(noteService.getById(NOTE_FIRST_ID))
+                && allNotesByTag.contains(noteService.getById(NOTE_LAST_ID)));
     }
 }

@@ -1,6 +1,5 @@
 package com.epam.university.spring.enote.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,15 +8,14 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,8 +27,7 @@ import javax.validation.constraints.Size;
         @NamedQuery(name = Tag.ALL_SORTED, query = "SELECT t FROM Tag t ORDER BY t.title"),
 })
 @Entity
-@Table(name = "tags", uniqueConstraints = {@UniqueConstraint(columnNames = {"note_id",
-        "title"}, name = "tags_unique_note_title")})
+@Table(name = "tags")
 public class Tag extends AbstractBaseEntity {
 
     public static final String DELETE = "Tag.delete";
@@ -41,29 +38,22 @@ public class Tag extends AbstractBaseEntity {
     @NotBlank
     @Size(min = 1, max = 128)
     public String title;
-
-    //TODO check EAGER to print
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "note_id", nullable = false)
-    @NotNull
-    @JsonIgnore
-    public Note note;
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
+    private Set<Note> notes = new HashSet<>();
 
     public Tag(Tag tag) {
-        this(tag.getId(), tag.getTitle(), tag.getNote());
+        this(tag.getId(), tag.getTitle());
     }
 
-    public Tag(Integer id, String title, Note note) {
+    public Tag(Integer id, String title) {
         super(id);
         this.title = title;
-        this.note = note;
     }
 
     @Override
     public String toString() {
         return "Tag{" +
                 "title='" + title + '\'' +
-                ", note=" + note +
                 ", id=" + id +
                 '}';
     }

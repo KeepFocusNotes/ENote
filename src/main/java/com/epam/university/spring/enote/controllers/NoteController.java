@@ -15,34 +15,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class NoteController {
-  private NoteService noteService;
+    private NoteService noteService;
 
-  @Autowired
-  public NoteController(NoteService noteService) {
-    this.noteService = noteService;
-  }
+    @Autowired
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
+    }
 
-  @GetMapping("/notes")
-  public List<Note> getAll(){
-    return noteService.getAll();
-  }
+    @GetMapping("/notes")
+    public List<Note> getAll() {
+        return noteService.getAll();
+    }
 
-  @GetMapping("/notes/{id}")
-  public Note getById(@PathVariable Integer id){
-    return noteService.getById(id);
-  }
+    @GetMapping("/notes/{id}")
+    public Note getById(@PathVariable Integer id) {
+        return noteService.getById(id);
+    }
 
-  @PostMapping("/notes")
-  @ResponseStatus(HttpStatus.CREATED)
-  public Note create(@RequestBody Note note) {
-    return noteService.create(note);
-  }
+    @PostMapping("/notes")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Note create(@RequestBody Note note) {
+        return noteService.create(note);
+    }
 
-  @DeleteMapping("/notes/{id}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable Integer id){
-    Note toPassNote = new Note();
-    toPassNote.setId(id);
-    noteService.delete(toPassNote);
-  }
+    @DeleteMapping("/notes/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+        Note toPassNote = new Note();
+        toPassNote.setId(id);
+        noteService.delete(toPassNote);
+    }
 }
