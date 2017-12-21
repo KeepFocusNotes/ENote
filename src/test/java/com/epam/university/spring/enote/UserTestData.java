@@ -3,6 +3,7 @@ package com.epam.university.spring.enote;
 import com.epam.university.spring.enote.model.User;
 
 import com.epam.university.spring.enote.util.DateConverter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,9 @@ public class UserTestData {
             "UserSecondPassword", null);
     public static final User USER_TO_CREATE = new User(null,
             "userToCreateFirst@gmail.com", "passwordUserToCreateFirst", dateConverter.convertToDatabaseColumn(LocalDate
-        .of(2000, 1, 1)));
+            .of(2000, 1, 1)));
     public static final List<User> LIST_USERS_TO_CREATE = new ArrayList<>();
+    public static final Integer USER_57_ID = 57;
 
     public UserTestData() {
         LIST_USERS_TO_CREATE.add(USER_TO_CREATE);
