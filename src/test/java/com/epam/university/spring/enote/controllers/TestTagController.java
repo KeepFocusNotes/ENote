@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.epam.university.spring.enote.config.AppConfig;
 import com.epam.university.spring.enote.model.Tag;
+import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.services.TagService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class TestTagController {
 
   private Tag tag;
   private ObjectMapper objectMapper;
+  private User user;
 
   @Before
   public void setupSpec() throws Exception {
@@ -50,6 +52,8 @@ public class TestTagController {
     tag.setTitle("sometitle");
     tag.setId(11);
 
+    user = new User();
+    user.setId(12);
   }
 
   @Test
@@ -74,10 +78,19 @@ public class TestTagController {
   }
 
   @Test
-  public void testGetAllUsers() throws Exception {
+  public void testGetAllTags() throws Exception {
     Mockito.when(tagService.getAll()).thenReturn(Collections.EMPTY_LIST);
 
     mvc.perform(get("/tags")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
+  }
+
+  @Test
+  public void testGetTagsByUserId() throws Exception {
+    Mockito.when(tagService.getTagsByUserId(user.getId())).thenReturn(Collections.EMPTY_SET);
+
+    mvc.perform(get("/users/" + user.getId() + "/tags")
         .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
   }

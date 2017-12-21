@@ -3,6 +3,7 @@ package com.epam.university.spring.enote.controllers;
 import com.epam.university.spring.enote.model.Tag;
 import com.epam.university.spring.enote.services.TagService;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +32,11 @@ public class TagController {
   @GetMapping("/tags/{id}")
   public Tag getById(@PathVariable Integer id){
     return tagService.getById(id);
+  }
+
+  @GetMapping("/users/{id}/tags")
+  public Set<Tag> getByUserId(@PathVariable Integer id){
+    return tagService.getTagsByUserId(id);
   }
 
   @PostMapping("/tags")
