@@ -28,11 +28,11 @@
         <property name="password" value="${database.password}"/>
     </bean>
 
-    <!--JPA; Local.. - only one database; constants links, swapped to jpa-->
+    <!--JPA; Local.. - only one database; constants links, swapped to jpahibernate-->
     <context:component-scan
-            base-package="com.epam.university.spring.enote.repository.jpa"/>
+            base-package="com.epam.university.spring.enote.repository.jpahibernate"/>
   <!--  <bean id="entityManagerFactory"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          class="org.springframework.orm.jpahibernate.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:packagesToScan="com.epam.university.**.model">
 
@@ -52,8 +52,8 @@
         </property>
 
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-                  p:showSql="${jpa.showSql}">
+            <bean class="org.springframework.orm.jpahibernate.vendor.HibernateJpaVendorAdapter"
+                  p:showSql="${jpahibernate.showSql}">
             </bean>
         </property>
     </bean>-->
@@ -61,11 +61,11 @@
     <!--<tx:annotation-driven/>-->
 
    <!--< Transaction manager for a single JPA EntityManagerFactory (alternative to JTA)>-->
-    <!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+    <!--<bean id="transactionManager" class="org.springframework.orm.jpahibernate.JpaTransactionManager"
           p:entityManagerFactory-ref="entityManagerFactory"/>-->
 
 
-    <!--<swapping to jpa
+    <!--<swapping to jpahibernate
      <context:component-scan
             base-package="com.epam.university.spring.enote.repository.jdbc"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

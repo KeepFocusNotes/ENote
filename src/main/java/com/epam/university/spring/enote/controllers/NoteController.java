@@ -1,7 +1,7 @@
 package com.epam.university.spring.enote.controllers;
 
-import com.epam.university.spring.enote.model.Note;
-import com.epam.university.spring.enote.services.NoteService;
+import com.epam.university.spring.enote.model.springdatamodels.Note;
+import com.epam.university.spring.enote.services.springdataservices.NoteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,21 +28,19 @@ public class NoteController {
   }
 
   @GetMapping("/notes/{id}")
-  public Note getById(@PathVariable Integer id){
+  public Note getById(@PathVariable Long id){
     return noteService.getById(id);
   }
 
   @PostMapping("/notes")
   @ResponseStatus(HttpStatus.CREATED)
   public Note create(@RequestBody Note note) {
-    return noteService.create(note);
+    return noteService.createOrUpdate(note);
   }
 
   @DeleteMapping("/notes/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable Integer id){
-    Note toPassNote = new Note();
-    toPassNote.setId(id);
-    noteService.delete(toPassNote);
+  public void delete(@PathVariable Long id){
+    noteService.delete(id);
   }
 }

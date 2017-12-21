@@ -1,7 +1,7 @@
 package com.epam.university.spring.enote.controllers;
 
-import com.epam.university.spring.enote.model.User;
-import com.epam.university.spring.enote.services.UserService;
+import com.epam.university.spring.enote.model.springdatamodels.User;
+import com.epam.university.spring.enote.services.springdataservices.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,25 +32,25 @@ public class UserController {
 
   @GetMapping("/users")
   public List<User> getAll(){
-    return userService.getAll();
+    List<User> users = userService.getAll();
+    return users;
   }
 
   @GetMapping("/users/{id}")
-  public User getById(@PathVariable Integer id){
+  public User getById(@PathVariable Long id){
     return userService.getById(id);
   }
 
   @PostMapping("/users")
   @ResponseStatus(HttpStatus.CREATED)
   public User create(@RequestBody User user) {
-    return userService.create(user);
+    User tt = userService.createOrUpdate(user);
+    return tt;
   }
 
   @DeleteMapping("/users/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable Integer id){
-    User toPassUser = new User();
-    toPassUser.setId(id);
-    userService.delete(toPassUser);
+  public void delete(@PathVariable Long id){
+    userService.delete(id);
   }
 }

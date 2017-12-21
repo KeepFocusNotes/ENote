@@ -1,6 +1,6 @@
 package com.epam.university.spring.enote.repository;
 
-import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.model.genericmodels.AbstractBaseEntity;
 
 import java.util.List;
 

@@ -24,7 +24,7 @@
     <hibernate-validator.version>6.0.6.Final</hibernate-validator.version>
 
     <!--Db-->
-    <h2.version>1.4.196</h2.version>
+    <h2.version>1.4.192</h2.version>
     <!--Tests  -->
     <junit.version>4.12</junit.version>
     <assertj.version>3.8.0</assertj.version>

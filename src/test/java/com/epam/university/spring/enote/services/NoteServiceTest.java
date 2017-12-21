@@ -11,8 +11,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.epam.university.spring.enote.config.AppConfig;
-import com.epam.university.spring.enote.model.AbstractBaseEntity;
-import com.epam.university.spring.enote.model.Note;
+import com.epam.university.spring.enote.model.genericmodels.AbstractBaseEntity;
+import com.epam.university.spring.enote.model.genericmodels.Note;
+import com.epam.university.spring.enote.services.genericservices.NoteService;
 import com.epam.university.spring.enote.util.exception.NotFoundException;
 import java.util.Comparator;
 import java.util.List;

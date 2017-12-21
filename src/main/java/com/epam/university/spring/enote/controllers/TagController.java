@@ -1,7 +1,7 @@
 package com.epam.university.spring.enote.controllers;
 
-import com.epam.university.spring.enote.model.Tag;
-import com.epam.university.spring.enote.services.TagService;
+import com.epam.university.spring.enote.model.springdatamodels.Tag;
+import com.epam.university.spring.enote.services.springdataservices.TagService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,22 +29,20 @@ public class TagController {
   }
 
   @GetMapping("/tags/{id}")
-  public Tag getById(@PathVariable Integer id){
+  public Tag getById(@PathVariable Long id){
     return tagService.getById(id);
   }
 
   @PostMapping("/tags")
   @ResponseStatus(HttpStatus.CREATED)
   public Tag create(@RequestBody Tag tag) {
-    return tagService.create(tag);
+    return tagService.createOrUpdate(tag);
   }
 
   @DeleteMapping("/tags/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable Integer id){
-    Tag toPassTag = new Tag();
-    toPassTag.setId(id);
-    tagService.delete(toPassTag);
+  public void delete(@PathVariable Long id){
+    tagService.delete(id);
   }
 
 }

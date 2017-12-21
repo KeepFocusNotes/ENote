@@ -1,12 +1,14 @@
 package com.epam.university.spring.enote.config;
 
 import java.sql.SQLException;
+import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -18,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages = "com.epam.**")
-@EnableJpaRepositories("com.epam.university.spring.enote.repository")
+@EnableJpaRepositories("com.epam.university.spring.enote.repository.springdatajpa")
 @EnableTransactionManagement
 public class AppConfig {
   @Bean
@@ -35,7 +37,7 @@ public class AppConfig {
     LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
     bean.setDataSource(dataSource);
     bean.setJpaVendorAdapter(jpaVendorAdapter);
-    bean.setPackagesToScan("com.epam");
+    bean.setPackagesToScan("com.epam.university.spring.enote.model.springdatamodels");
     return bean;
   }
 
@@ -46,11 +48,13 @@ public class AppConfig {
 
   @Bean
   public DataSource dataSource() throws SQLException {
-    return new EmbeddedDatabaseBuilder().setName("test").
-        setType(EmbeddedDatabaseType.H2)
-        .addScript("classpath:db/initDB.sql")
-        .addScript("classpath:db/populateDB.sql")
-        .build();
-  }
+    DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
+    dataSource.setDriverClassName("org.h2.Driver");
+    dataSource.setUrl("jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;ACCESS_MODE_DATA=rws;PAGE_SIZE=4");
+    dataSource.setUsername("user");
+    dataSource.setPassword("password");
+
+    return dataSource;
+  }
 }

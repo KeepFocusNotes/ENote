@@ -1,6 +1,6 @@
 package com.epam.university.spring.enote.repository.jdbc;
 
-import com.epam.university.spring.enote.model.User;
+import com.epam.university.spring.enote.model.genericmodels.User;
 import com.epam.university.spring.enote.repository.GenericDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;

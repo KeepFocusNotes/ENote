@@ -1,10 +1,10 @@
 package com.epam.university.spring.enote.services.mock;
 
 import com.epam.university.spring.enote.UserTestData;
-import com.epam.university.spring.enote.model.User;
+import com.epam.university.spring.enote.model.genericmodels.User;
 import com.epam.university.spring.enote.repository.GenericDao;
-import com.epam.university.spring.enote.services.GenericService;
-import com.epam.university.spring.enote.services.UserServiceImpl;
+import com.epam.university.spring.enote.services.genericservices.GenericService;
+import com.epam.university.spring.enote.services.genericservices.UserServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

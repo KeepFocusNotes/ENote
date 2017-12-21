@@ -1,7 +1,8 @@
 package com.epam.university.spring.enote.controllers;
 
-import com.epam.university.spring.enote.model.Notepad;
-import com.epam.university.spring.enote.services.NotepadService;
+
+import com.epam.university.spring.enote.model.springdatamodels.Notepad;
+import com.epam.university.spring.enote.services.springdataservices.NotepadService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,22 +29,20 @@ public class NotepadController {
   }
 
   @GetMapping("/notepads/{id}")
-  public Notepad getById(@PathVariable Integer id){
+  public Notepad getById(@PathVariable Long id){
     return notepadService.getById(id);
   }
 
   @PostMapping("/notepads")
   @ResponseStatus(HttpStatus.CREATED)
   public Notepad create(@RequestBody Notepad notepad) {
-    return notepadService.create(notepad);
+    return notepadService.createOrUpdate(notepad);
   }
 
   @DeleteMapping("/notepads/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void delete(@PathVariable Integer id){
-    Notepad toPassNotepad = new Notepad();
-    toPassNotepad.setId(id);
-    notepadService.delete(toPassNotepad);
+  public void delete(@PathVariable Long id){
+    notepadService.delete(id);
   }
 
 }

@@ -1,12 +1,12 @@
 package com.epam.university.spring.enote;
 
-import com.epam.university.spring.enote.model.Note;
-import com.epam.university.spring.enote.model.Notepad;
+import com.epam.university.spring.enote.model.genericmodels.Note;
+import com.epam.university.spring.enote.model.genericmodels.Notepad;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.university.spring.enote.model.AbstractBaseEntity.START_SEQ;
+import static com.epam.university.spring.enote.model.genericmodels.AbstractBaseEntity.START_SEQ;
 
 public class NoteTestData {
 

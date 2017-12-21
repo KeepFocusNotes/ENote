@@ -1,13 +1,13 @@
 package com.epam.university.spring.enote;
 
-import com.epam.university.spring.enote.model.User;
+import com.epam.university.spring.enote.model.genericmodels.User;
 
 import com.epam.university.spring.enote.util.DateConverter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.university.spring.enote.model.AbstractBaseEntity.START_SEQ;
+import static com.epam.university.spring.enote.model.genericmodels.AbstractBaseEntity.START_SEQ;
 
 public class UserTestData {
     public static DateConverter dateConverter = new DateConverter();

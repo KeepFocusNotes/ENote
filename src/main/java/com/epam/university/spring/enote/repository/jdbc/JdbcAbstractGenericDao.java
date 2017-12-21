@@ -1,11 +1,10 @@
 package com.epam.university.spring.enote.repository.jdbc;
 
-import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.model.genericmodels.AbstractBaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Getter
