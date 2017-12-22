@@ -2,6 +2,12 @@ ENote
 =====
 ENote is short-term practice (students project) with the primary objective to implement most 
 important functionality of electronic notes by the Spring framework.
+Special features:
+- generic dao (both jdbcTemplate and Jpa have been implemented) and service layer;
+- h2 sql initialization for tests for 500 units of all entities (except auxiliary many-many table);
+- rest controllers;
+- performance benchmark by Spring Aspect, swagger;
+- globalExceptionHandler for add layers, checked/unchecked exceptions.
 
 #### DB scheme:
 ![DB scheme](http://s1.radikale.ru/uploads/2017/12/22/992fda9cf4f8cc01c49eec3b861f9add-full.png)
@@ -33,6 +39,7 @@ important functionality of electronic notes by the Spring framework.
 |/tags|POST|Create tag|
 |/tags/{id}|GET|Get tag by id|
 |/tags/{id}|DELETE|Delete tag by id|
+|/users/{id}/tags|GET|Get tag by userId|
 
 ### Plan
 
@@ -99,9 +106,9 @@ important functionality of electronic notes by the Spring framework.
 + 5.1.5 The functionality have been added to controllers, tests of controllers (completed);
 + 5.2 Create benchmark class via Spting aspect's (completed)(completed);
 + 🏹 5.3 GlobalExceptionsIntercepter (checked/unchecked exceptions), finalization (completed 100%):
-5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
-5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
-5.3.3 Swagger connected, DB scheme, link's table, Readme fixed, release 3.0 finalized 100%;
++ 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
++ 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
++ 5.3.3 Swagger connected, DB scheme, link's table, Readme fixed, release 3.0 finalized 100%;
 ```
 #### Prerequisites:
 - IntelliJ IDEA.
