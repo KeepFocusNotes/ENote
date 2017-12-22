@@ -2,6 +2,7 @@ package com.epam.university.spring.enote.model;
 
 import com.epam.university.spring.enote.util.DateConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +25,6 @@ import lombok.Setter;
         @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.email"),
 })
 @Entity
-//TODO uniqueConstraints = {@UniqueConstraint ??
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"}, name =
         "users_unique_email")})
 public class User extends AbstractNamedEntity {
@@ -70,25 +71,4 @@ public class User extends AbstractNamedEntity {
                 ", id=" + id +
                 '}';
     }
-
-   /* //TODO need to swap to external lib to check if the fields are equal, because of JPA
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
-        User user = (User) o;
-
-        if (!email.equals(user.email)) return false;
-        return password.equals(user.password);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + password.hashCode();
-        return result;
-    }*/
 }

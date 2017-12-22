@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 import java.util.List;
 
+/*Jpa profile is on
 @Getter
 @Setter
 @Repository
 public abstract class JdbcAbstractGenericDao<T extends AbstractBaseEntity> {
-    //TODO is setted method in the implementing interface is needed for autowiring of the DAO in
-    //services?
+    //TODO - optional -  test with/without diff lombok's annotations
     public Class<T> entityClass;
 
     public abstract T get(Integer id);
@@ -28,3 +28,4 @@ public abstract class JdbcAbstractGenericDao<T extends AbstractBaseEntity> {
 
     public abstract boolean deleteAll();
 }
+*/

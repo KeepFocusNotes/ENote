@@ -51,7 +51,7 @@ public class Note extends AbstractBaseEntity {
     @Size(max = 120)
     public String description;
 
-    //TODO check EAGER to print vs EAGER
+    //TODO - optional - try for different cases EAGER vs LAZY
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "notepad_id", nullable = false)
     @NotNull

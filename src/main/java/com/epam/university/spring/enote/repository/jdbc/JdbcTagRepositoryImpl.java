@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*Jpa profile is on
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class JdbcTagRepositoryImpl extends JdbcAbstractGenericDao<Tag> implements
@@ -25,7 +26,6 @@ public class JdbcTagRepositoryImpl extends JdbcAbstractGenericDao<Tag> implement
     //takes the fields throw reflection with using getters
     private static final BeanPropertyRowMapper<Tag> ROW_MAPPER = BeanPropertyRowMapper
             .newInstance(Tag.class);
-    //TODO why not create utils with getter?!
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -74,16 +74,17 @@ public class JdbcTagRepositoryImpl extends JdbcAbstractGenericDao<Tag> implement
         return tags.stream().map(this::save).collect(Collectors.toList());
     }
 
-    //TODO cascade removing
+    //TODO - optional - cascade removing
     //create abstract for each repo
     @Override
     public boolean delete(Tag Tag) {
         return jdbcTemplate.update("DELETE FROM tags WHERE id=?", Tag.getId()) != 0;
     }
 
-    //TODO cascade removing
+    //TODO - optional - cascade removing
     @Override
     public boolean deleteAll() {
         return jdbcTemplate.update("DELETE FROM tags") != 0;
     }
 }
+*/

@@ -44,7 +44,6 @@ public class Notepad extends AbstractBaseEntity {
     @Size(min = 1, max = 128)
     public String title;
 
-    //TODO check EAGER to print
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     @NotNull

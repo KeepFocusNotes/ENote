@@ -10,38 +10,38 @@
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:db/h2.properties"
-                                  system-properties-mode="OVERRIDE"/>
+    <!-- <context:property-placeholder location="classpath:db/h2.properties"
+                                   system-properties-mode="OVERRIDE"/>
 
-    <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-        <jdbc:script location="classpath:db/initDB.sql"/>
+     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
+         <jdbc:script location="classpath:db/initDB.sql"/>
 
-        <!--init block deleted temporary-->
-    </jdbc:initialize-database>
 
-    <!--no pooling-->
+     </jdbc:initialize-database>-->
+
+    <!--no pooling
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
         <property name="password" value="${database.password}"/>
-    </bean>
+    </bean>-->
 
-    <!--JPA; Local.. - only one database; constants links, swapped to jpa-->
+    <!--<JPA; Local.. - only one database; constants links, swapped to jpa
     <context:component-scan
-            base-package="com.epam.university.spring.enote.repository.jpa"/>
-  <!--  <bean id="entityManagerFactory"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:packagesToScan="com.epam.university.**.model">
+            base-package="com.epam.university.spring.enote.repository.jpa"/>-->
+    <!--< bean id="entityManagerFactory"
+             class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+             p:dataSource-ref="dataSource"
+             p:packagesToScan="com.epam.university.**.model">
 
-        <property name="jpaPropertyMap">
-            <map>
-                <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}"
-                       value="${hibernate.format_sql}"/>
-                <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
-                       value="${hibernate.use_sql_comments}"/>-->
+           <property name="jpaPropertyMap">
+               <map>
+                   <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}"
+                          value="${hibernate.format_sql}"/>
+                   <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
+                          value="${hibernate.use_sql_comments}"/>>-->
                <!--< <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_ACTION}"
                        value="${javax.persistence.schema-generation.scripts.action}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_CREATE_TARGET}"

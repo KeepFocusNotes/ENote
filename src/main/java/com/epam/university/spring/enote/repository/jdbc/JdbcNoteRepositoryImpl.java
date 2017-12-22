@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*Jpa profile is on
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class JdbcNoteRepositoryImpl extends JdbcAbstractGenericDao<Note> implements
@@ -25,14 +26,12 @@ public class JdbcNoteRepositoryImpl extends JdbcAbstractGenericDao<Note> impleme
     //takes the fields throw reflection with using getters
     private static final BeanPropertyRowMapper<Note> ROW_MAPPER = BeanPropertyRowMapper.newInstance
             (Note.class);
-    //TODO why not create utils with getter?!
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     //takes the fields throw reflection with using setters
     private final SimpleJdbcInsert simpleJdbcInsert;
 
-    //for all possible deps?
     @Autowired
     public JdbcNoteRepositoryImpl(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate
             namedParameterJdbcTemplate, DataSource dataSource) {
@@ -74,16 +73,17 @@ public class JdbcNoteRepositoryImpl extends JdbcAbstractGenericDao<Note> impleme
         return notes.stream().map(this::save).collect(Collectors.toList());
     }
 
-    //TODO cascade removing
+    //TODO - optional - cascade removing
     //create abstract for each repo
     @Override
     public boolean delete(Note Note) {
         return jdbcTemplate.update("DELETE FROM notes WHERE id=?", Note.getId()) != 0;
     }
 
-    //TODO cascade removing
+    //TODO - optional - cascade removing
     @Override
     public boolean deleteAll() {
         return jdbcTemplate.update("DELETE FROM notes") != 0;
     }
 }
+*/

@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*Jpa profile is on
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class JdbcUserRepositoryImpl extends JdbcAbstractGenericDao<User> implements
@@ -25,7 +26,6 @@ public class JdbcUserRepositoryImpl extends JdbcAbstractGenericDao<User> impleme
     //takes the fields throw reflection with using getters
     private static final BeanPropertyRowMapper<User> ROW_MAPPER = BeanPropertyRowMapper.newInstance
             (User.class);
-    //TODO why not create utils with getter?!
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -75,16 +75,17 @@ public class JdbcUserRepositoryImpl extends JdbcAbstractGenericDao<User> impleme
         return users.stream().map(this::save).collect(Collectors.toList());
     }
 
-    //TODO cascade removing
+    //TODO - optional - cascade removing
     //create abstract for each repo
     @Override
     public boolean delete(User user) {
         return jdbcTemplate.update("DELETE FROM users WHERE id=?", user.getId()) != 0;
     }
 
-    //TODO cascade removing
+    //TODO - optional - cascade removing
     @Override
     public boolean deleteAll() {
         return jdbcTemplate.update("DELETE FROM users") != 0;
     }
 }
+*/

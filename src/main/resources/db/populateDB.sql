@@ -1,5 +1,7 @@
 DELETE FROM users;
 DELETE FROM notepads;
+DELETE FROM notes;
+DELETE FROM tags;
 
 //ALTER SEQUENCE global_seq RESTART WITH 1000;
 
