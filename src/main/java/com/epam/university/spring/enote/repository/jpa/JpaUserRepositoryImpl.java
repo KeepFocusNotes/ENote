@@ -2,12 +2,11 @@ package com.epam.university.spring.enote.repository.jpa;
 
 import com.epam.university.spring.enote.model.User;
 import com.epam.university.spring.enote.repository.GenericDao;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional

@@ -21,7 +21,6 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
 
     public Class<T> entityClass;
 
-
     public JpaAbstractGenericDao() {
         if (entityClass == null) {
             //only works if one extends BaseDao, we will take care of it with CDI
@@ -40,11 +39,12 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
         }
     }
 
+    @Transactional
     public T get(Integer id) {
         return entityManager.find(entityClass, id);
     }
 
-    //TODO fix the transactional
+    @Transactional
     public List<T> saveAll(List<T> entities) {
         return entities.stream().map(this::save).collect(Collectors.toList());
     }

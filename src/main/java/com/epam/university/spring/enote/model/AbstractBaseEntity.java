@@ -1,5 +1,6 @@
 package com.epam.university.spring.enote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +22,8 @@ public abstract class AbstractBaseEntity implements Serializable {
     public static final int START_SEQ = 1;
 
     @Id
-    /*//TODO Don't works with JPA @SequenceGenerator(name = "global_seq", sequenceName = "global_seq",
-    allocationSize = 1,            initialValue = START_SEQ)*/
+    /*//TODO - optional - don't works with JPA @SequenceGenerator(name = "global_seq",
+    sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)*/
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
@@ -33,6 +34,7 @@ public abstract class AbstractBaseEntity implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public boolean isNew() {
         return this.id == null;
     }
@@ -53,7 +55,7 @@ public abstract class AbstractBaseEntity implements Serializable {
         return id != null && id.equals(that.id);
     }
 
-    //TODO is returning just if is enough here or we need to use hashcode
+    //TODO - optional - try to break hibernate by changing the hash
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;

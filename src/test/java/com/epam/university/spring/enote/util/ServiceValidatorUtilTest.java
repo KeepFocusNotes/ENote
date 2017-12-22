@@ -7,7 +7,7 @@ public class ServiceValidatorUtilTest {
 
     private Integer ID = 1234;
 
-    //TODO refactor
+    //TODO - optional - refactor
     @Test(expected = NotFoundException.class)
     public void exceptionCatchingTestValidateNotFoundBooleanString() {
         ServiceValidatorUtil.validateNotFound(false, "exception have catched");

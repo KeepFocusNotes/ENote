@@ -1,7 +1,45 @@
 ENote
 =====
-ENote is student project with the primary objective to implement most important functionality of 
-electronic notes by the Spring framework.
+ENote is short-term practice (students project) with the primary objective to implement most 
+important functionality of electronic notes by the Spring framework.
+Special features:
+- generic dao (both jdbcTemplate and Jpa have been implemented) and service layer;
+- h2 sql initialization for tests for 500 units of all entities (except auxiliary many-many table);
+- rest controllers;
+- performance benchmark by Spring Aspect, swagger;
+- globalExceptionHandler for add layers, checked/unchecked exceptions.
+
+#### DB scheme:
+![DB scheme](http://s1.radikale.ru/uploads/2017/12/22/992fda9cf4f8cc01c49eec3b861f9add-full.png)
+
+#### Table of requests:
+|URL path|Request method|Result|
+|--------|--------------|------|
+|**USERS**|
+|/|GET|Hello|
+|/users|GET|Get all users|
+|/users|POST|Create user|
+|/users/{id}|GET|Get user by id|
+|/users/{id}|DELETE|Delete user by id|
+|**NOTES**|
+|/notes|GET|Get all notes|
+|/notes|POST|Create note|
+|/notes/tags/{id}|GET|Get notes by tagId|
+|/notes/{id}|GET|Get note by id|
+|/notes/{id}|DELETE|Delete note by id|
+|/notes/{id}/tags|GET|Get tags by noteId|
+|/notes/{noteId}/tags/{tagId}|POST|Add tag to note with noteId and tagId|
+|**NOTEPADS**|
+|/notepads|GET|Get all notepads|
+|/notepads|POST|Create notepad|
+|/notepads/{id}|GET|Get notepad by id|
+|/notepads/{id}|DELETE|Delete notepad by id|
+|**TAGS**|
+|/tags|GET|Get all tags|
+|/tags|POST|Create tag|
+|/tags/{id}|GET|Get tag by id|
+|/tags/{id}|DELETE|Delete tag by id|
+|/users/{id}/tags|GET|Get tag by userId|
 
 ### Plan
 
@@ -57,6 +95,21 @@ electronic notes by the Spring framework.
 + 4.3 Merge conflicts with Jdbc profile (completed);
 + 4.4 Finalize the debugging of JPA (completed 100 %);
 ```
+##### 5 Step implement controllers, performance benchmark,exceptions handling system(completed):
+```diff
++ 5.1 Implement Controllers layer, add functionality and tests (completed 100%):
++ 5.1.1 switched to JavaConfig, added basic restControllers(completed);
++ 5.1.2 manyToMany relationship has been implemented; initDB.sql/populateDB.sql fixed (100%);
++ 5.1.3 AbstractNamedEntity upgraded (completed);
++ 5.1.4 Services have been upgraded, functionality added, refactoring (completed);
+(completed);
++ 5.1.5 The functionality have been added to controllers, tests of controllers (completed);
++ 5.2 Create benchmark class via Spting aspect's (completed)(completed);
++ 🏹 5.3 GlobalExceptionsIntercepter (checked/unchecked exceptions), finalization (completed 100%):
++ 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
++ 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
++ 5.3.3 Swagger connected, DB scheme, link's table, Readme fixed, release 3.0 finalized 100%;
+```
 #### Prerequisites:
 - IntelliJ IDEA.
 
@@ -68,36 +121,4 @@ electronic notes by the Spring framework.
 - Konstantin Mavropulo
 
 #### Acknowledgments:
-//TODO
-
-Initial DB scheme:
-
-![Initial DB scheme](http://s019.radikal.ru/i617/1712/20/b6160f97211b.jpg)
-
-
-|URL path|Request method|Result|
-|--------|--------------|------|
-|**USERS**|
-|/|GET|Hello|
-|/users|GET|Get all users|
-|/users|POST|Create user|
-|/users/{id}|GET|Get user by id|
-|/users/{id}|DELETE|Delete user by id|
-|**NOTES**|
-|/notes|GET|Get all notes|
-|/notes|POST|Create note|
-|/notes/tags/{id}|GET|Get notes by tagId|
-|/notes/{id}|GET|Get note by id|
-|/notes/{id}|DELETE|Delete note by id|
-|/notes/{id}/tags|GET|Get tags by noteId|
-|/notes/{noteId}/tags/{tagId}|POST|Add tag to note with noteId and tagId|
-|**NOTEPADS**|
-|/notepads|GET|Get all notepads|
-|/notepads|POST|Create notepad|
-|/notepads/{id}|GET|Get notepad by id|
-|/notepads/{id}|DELETE|Delete notepad by id|
-|**TAGS**|
-|/tags|GET|Get all tags|
-|/tags|POST|Create tag|
-|/tags/{id}|GET|Get tag by id|
-|/tags/{id}|DELETE|Delete tag by id|
+Grigory Kislin's popular repositories
