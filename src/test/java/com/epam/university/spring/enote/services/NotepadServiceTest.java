@@ -17,6 +17,7 @@ import com.epam.university.spring.enote.util.exception.NotFoundException;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -99,7 +100,7 @@ public class NotepadServiceTest {
 
     @Test
     public void getNotepadsByUserId() {
-        List<Notepad> notepads = notepadService.getByUserId(NOTEPAD_LAST.getUser().getId());
+        Set<Notepad> notepads = notepadService.getByUserId(NOTEPAD_LAST.getUser().getId());
         assertTrue(notepads.stream().allMatch(notepad -> notepad.getUser().getId().equals(
                 NOTEPAD_LAST.getUser().getId())));
     }

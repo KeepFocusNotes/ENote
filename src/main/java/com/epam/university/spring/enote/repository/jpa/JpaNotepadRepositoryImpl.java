@@ -6,11 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static com.epam.university.spring.enote.model.Notepad.GET_BY_USER_ID;
 
 @Repository
 public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements
-        GenericDao<Notepad> {
+        JpaNotepadRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -31,5 +35,12 @@ public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> imp
     public boolean deleteAll() {
         return entityManager.createNamedQuery(Notepad.DELETE_ALL)
                 .executeUpdate() != 0;
+    }
+
+    @Override
+    public Set<Notepad> getByUserId(Integer userId) {
+        return new HashSet<>(entityManager.createNamedQuery(GET_BY_USER_ID, Notepad.class)
+                .setParameter("id", userId)
+                .getResultList());
     }
 }
