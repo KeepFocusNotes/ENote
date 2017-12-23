@@ -2,6 +2,7 @@ package com.epam.university.spring.enote.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "com.epam.**")
@@ -40,7 +43,16 @@ public class AppConfig {
         bean.setDataSource(dataSource);
         bean.setJpaVendorAdapter(jpaVendorAdapter);
         bean.setPackagesToScan("com.epam");
+        bean.setJpaProperties(hibernateProperties());
         return bean;
+    }
+
+    Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.format_sql", "true");
+        properties.setProperty("hibernate.use_sql_comments", "true");
+        return properties;
     }
 
     @Bean
