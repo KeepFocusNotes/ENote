@@ -3,10 +3,13 @@ package com.epam.university.spring.enote.services;
 import com.epam.university.spring.enote.model.Note;
 import com.epam.university.spring.enote.model.Tag;
 import com.epam.university.spring.enote.repository.GenericDao;
+import com.epam.university.spring.enote.repository.jpa.JpaNoteRepository;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,9 @@ public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteSer
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JpaNoteRepository jpaNoteRepository;
 
     @Autowired
     public NoteServiceImpl(
@@ -63,19 +69,16 @@ public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteSer
                 .getNotes();
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Override
-    public Set<Note> getNotesByNotepadId(Integer notepadId) {
+    public Set<Note> getByNotepadId(Integer notepadId) {
         ServiceValidatorUtil.validateNotFoundWithId(notepadService.getById(notepadId), notepadId);
-        return new HashSet<>(getAll().stream().filter(note -> note.getNotepad().getId().equals
-                (notepadId)).collect(Collectors.toList()));
+        return jpaNoteRepository.getByNotepadId(notepadId);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Override
     public Set<Note> getNotesByUserId(Integer userId) {
         ServiceValidatorUtil.validateNotFoundWithId(userService.getById(userId), userId);
         return new HashSet<>(notepadService.getByUserId(userId).stream().flatMap(notepad ->
-                getNotesByNotepadId(notepad.getId()).stream()).collect(Collectors.toList()));
+                getByNotepadId(notepad.getId()).stream()).collect(Collectors.toList()));
     }
 }

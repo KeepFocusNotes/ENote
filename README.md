@@ -110,6 +110,13 @@ Special features:
 + 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
 + 5.3.3 Swagger connected, DB scheme, link's table, Readme fixed, release 3.0 finalized 100%;
 ```
+##### 6 Step code refactoring (optional):
+```diff
++ 6.1 Code refactoring:
++ 6.1.1 @Transactional annotations replaced to the Service layer (completed);
++ 6.1.2 Service method's refactoring (...);
+ ...
+```
 #### Prerequisites:
 - IntelliJ IDEA.
 

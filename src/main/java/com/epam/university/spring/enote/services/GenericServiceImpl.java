@@ -3,8 +3,10 @@ package com.epam.university.spring.enote.services;
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
+
 import java.util.List;
 import java.util.stream.Collectors;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,11 +56,10 @@ public class GenericServiceImpl<T extends AbstractBaseEntity> implements
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public List<T> createFromList(List<T> entitys) {
-        Assert.notNull(entitys, "List of objects " + entitys.getClass() +
+    public List<T> createFromList(List<T> entities) {
+        Assert.notNull(entities, "List of objects " + entities.getClass() +
                 " must not be null");
-        return entitys.stream().map(this::create).collect(Collectors.toList());
+        return entities.stream().map(this::create).collect(Collectors.toList());
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

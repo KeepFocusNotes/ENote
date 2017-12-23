@@ -19,7 +19,7 @@ public interface NoteService extends GenericService<Note> {
 
     Set<Note> getAllNotesByTag(Integer tagId);
 
-    Set<Note> getNotesByNotepadId(Integer notepadId);
+    Set<Note> getByNotepadId(Integer notepadId);
 
     Set<Note> getNotesByUserId(Integer userId);
 }

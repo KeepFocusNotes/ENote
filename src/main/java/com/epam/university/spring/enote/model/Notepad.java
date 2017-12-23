@@ -1,6 +1,5 @@
 package com.epam.university.spring.enote.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +28,8 @@ import org.hibernate.validator.constraints.NotBlank;
         @NamedQuery(name = Notepad.DELETE, query = "DELETE FROM Notepad n WHERE n.id=:id"),
         @NamedQuery(name = Notepad.DELETE_ALL, query = "DELETE FROM Notepad"),
         @NamedQuery(name = Notepad.ALL_SORTED, query = "SELECT n FROM Notepad n ORDER BY n.title"),
+        @NamedQuery(name = Notepad.GET_BY_USER_ID, query = "SELECT n FROM Notepad n WHERE " +
+                "(n.user).id=:id"),
 })
 @Entity
 @Table(name = "notepads", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id",
@@ -38,6 +39,7 @@ public class Notepad extends AbstractBaseEntity {
     public static final String DELETE = "Notepad.delete";
     public static final String DELETE_ALL = "Notepad.deleteAll";
     public static final String ALL_SORTED = "Notepad.getAllSorted";
+    public static final String GET_BY_USER_ID = "Notepad.getByUserId";
 
     @Column(name = "title", nullable = false)
     @NotBlank

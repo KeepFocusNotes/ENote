@@ -157,9 +157,10 @@ public class NoteServiceTest {
 
     @Test
     public void getByNotepadId() {
-        Set<Note> allNotesByNotepadId = noteService.getNotesByNotepadId(NOTEPAD_FIRST_ID);
-        assertTrue(allNotesByNotepadId.stream().allMatch(note -> note.getNotepad().getId().equals
-                (NOTEPAD_FIRST_ID)) && allNotesByNotepadId.size() > 0);
+        Set<Note> allNotesByNotepadId = noteService.getByNotepadId(NOTEPAD_FIRST_ID);
+        System.out.println(allNotesByNotepadId);
+        assertTrue(allNotesByNotepadId.stream().allMatch(note -> note.getNotepad()
+                .getId().equals(NOTEPAD_FIRST_ID)) && allNotesByNotepadId.size() > 0);
     }
 
     @Test

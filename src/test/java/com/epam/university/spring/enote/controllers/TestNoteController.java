@@ -132,7 +132,7 @@ public class TestNoteController {
 
   @Test
   public void testGetNotesByNotepadId() throws Exception{
-    Mockito.when(noteService.getNotesByNotepadId(notepad.getId())).thenReturn(Collections.EMPTY_SET);
+    Mockito.when(noteService.getByNotepadId(notepad.getId())).thenReturn(Collections.EMPTY_SET);
 
     mvc.perform(get("/notepads/" + notepad.getId() + "/notes")
         .contentType(MediaType.APPLICATION_JSON))

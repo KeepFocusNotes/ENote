@@ -88,7 +88,7 @@ public class NoteController {
     @ResponseStatus(HttpStatus.OK)
     public Set<Note> getNotesByNotepadId(@PathVariable Integer notepadId) {
         GlobalControllerValidatorUtil.validateModificationAllowed(notepadId);
-        return noteService.getNotesByNotepadId(notepadId);
+        return noteService.getByNotepadId(notepadId);
     }
 
     @GetMapping("/users/{userId}/notes")
