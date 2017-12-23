@@ -71,7 +71,6 @@ public class NoteServiceImpl extends GenericServiceImpl<Note> implements NoteSer
                 (notepadId)).collect(Collectors.toList()));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Override
     public Set<Note> getNotesByUserId(Integer userId) {
         ServiceValidatorUtil.validateNotFoundWithId(userService.getById(userId), userId);
