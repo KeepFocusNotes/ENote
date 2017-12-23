@@ -108,13 +108,18 @@ Special features:
 + 🏹 5.3 GlobalExceptionsIntercepter (checked/unchecked exceptions), finalization (completed 100%):
 + 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
 + 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
-+ 5.3.3 Swagger connected, DB scheme, link's table, Readme fixed, release 3.0 finalized 100%;
++ 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized 100%);
 ```
 ##### 6 Step code refactoring (optional):
 ```diff
 + 6.1 Code refactoring:
-+ 6.1.1 @Transactional annotations replaced to the Service layer (completed);
-+ 6.1.2 Service method's refactoring (...);
++ 6.1.1 Service and Dao layers refactoring:
++ 6.1.1.1 Replace @Transactional annotations to the Service layer from Dao (completed); 
++ 6.1.1.2 Upgrade repository.jpa package structure; upgrade method's logic (completed); 
++ 6.1.2 Data source refactoring:
++ 6.1.2.1 Upgrade data source configuration (completed);
++ 6.1.2.1 Change data source transaction isolation level to Serializable (completed);
+   ...
  ...
 ```
 #### Prerequisites:
