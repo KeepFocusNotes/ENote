@@ -6,6 +6,8 @@ import com.epam.university.spring.enote.util.ServiceValidatorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -27,6 +29,7 @@ public class NotepadServiceImpl extends GenericServiceImpl<Notepad> implements N
         super(jpaNotepadRepositoryImpl);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED,readOnly = true)
     @Override
     public List<Notepad> getByUserId(Integer userId) {
         Assert.isTrue(userId > 0, "User's id " + userId +

@@ -6,17 +6,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional
 public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implements GenericDao<User> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public boolean delete(User entity) {
         return entityManager.createNamedQuery(User.DELETE)
                 .setParameter("id", entity.getId())
@@ -29,7 +26,6 @@ public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implement
     }
 
     @Override
-    @Transactional
     public boolean deleteAll() {
         return entityManager.createNamedQuery(User.DELETE_ALL)
                 .executeUpdate() != 0;

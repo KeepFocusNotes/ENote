@@ -4,7 +4,6 @@ import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.ParameterizedType;
@@ -29,7 +28,6 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
         }
     }
 
-    @Transactional
     public T save(T entity) {
         if (entity.isNew()) {
             entityManager.persist(entity);
@@ -39,12 +37,10 @@ public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
         }
     }
 
-    @Transactional
     public T get(Integer id) {
         return entityManager.find(entityClass, id);
     }
 
-    @Transactional
     public List<T> saveAll(List<T> entities) {
         return entities.stream().map(this::save).collect(Collectors.toList());
     }

@@ -5,6 +5,7 @@ import com.epam.university.spring.enote.repository.GenericDao;
 import com.epam.university.spring.enote.util.ServiceValidatorUtil;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -53,12 +54,12 @@ public class GenericServiceImpl<T extends AbstractBaseEntity> implements
         ServiceValidatorUtil.validateNotFoundWithId(genericDao.save(entity), entity.getId());
     }
 
-    @Override
     @Transactional(propagation = Propagation.REQUIRED)
+    @Override
     public List<T> createFromList(List<T> entitys) {
         Assert.notNull(entitys, "List of objects " + entitys.getClass() +
                 " must not be null");
-        return entitys.stream().map(this::create).collect(Collectors.toList());
+        return entitys.stream().map(entity->genericDao.save(entity)).collect(Collectors.toList());
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

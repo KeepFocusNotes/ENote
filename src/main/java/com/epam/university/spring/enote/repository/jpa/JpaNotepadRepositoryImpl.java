@@ -3,14 +3,12 @@ package com.epam.university.spring.enote.repository.jpa;
 import com.epam.university.spring.enote.model.Notepad;
 import com.epam.university.spring.enote.repository.GenericDao;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Transactional
 public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> implements
         GenericDao<Notepad> {
 
@@ -18,7 +16,6 @@ public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> imp
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public boolean delete(Notepad entity) {
         return entityManager.createNamedQuery(Notepad.DELETE)
                 .setParameter("id", entity.getId())
@@ -31,7 +28,6 @@ public class JpaNotepadRepositoryImpl extends JpaAbstractGenericDao<Notepad> imp
     }
 
     @Override
-    @Transactional
     public boolean deleteAll() {
         return entityManager.createNamedQuery(Notepad.DELETE_ALL)
                 .executeUpdate() != 0;
