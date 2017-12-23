@@ -1,6 +1,7 @@
 package com.epam.university.spring.enote.repository.jpa;
 
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
+import com.epam.university.spring.enote.repository.GenericDao;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Repository
-public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> {
+public abstract class JpaAbstractGenericDao<T extends AbstractBaseEntity> implements GenericDao<T>{
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -32,6 +32,8 @@ import java.util.Set;
         @NamedQuery(name = Note.DELETE, query = "DELETE FROM Note n WHERE n.id=:id"),
         @NamedQuery(name = Note.DELETE_ALL, query = "DELETE FROM Note"),
         @NamedQuery(name = Note.ALL_SORTED, query = "SELECT n FROM Note n ORDER BY n.title"),
+        @NamedQuery(name = Note.GET_BY_NOTEPAD_ID, query = "SELECT n FROM Note n WHERE " +
+                "(n.notepad).id=:id"),
 })
 @Entity
 @Table(name = "notes", uniqueConstraints = {@UniqueConstraint(columnNames = {"notepad_id",
@@ -41,6 +43,7 @@ public class Note extends AbstractBaseEntity {
     public static final String DELETE = "Note.delete";
     public static final String DELETE_ALL = "Note.deleteAll";
     public static final String ALL_SORTED = "Note.getAllSorted";
+    public static final String GET_BY_NOTEPAD_ID = "Note.getByNotepadId";
 
     @Column(name = "title", nullable = false)
     @NotNull
