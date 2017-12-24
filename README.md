@@ -2,12 +2,16 @@ ENote
 =====
 ENote is short-term practice (students project) with the primary objective to implement most 
 important functionality of electronic notes by the Spring framework.
+```diff
 Special features:
-- generic dao (both jdbcTemplate and Jpa profiles have been implemented), generic service layer;
-- h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many table);
-- rest controllers;
-- performance benchmark by Spring Aspect, swagger;
-- globalExceptionHandler for add layers, checked/unchecked exceptions.
++ 🏹 transaction isolation set;
++ 🏹 Spring cache set;
++ 🏹 generic dao (both jdbcTemplate and Jpa profiles have been implemented);
++ 🏹 generic service layer;
++ 🏹 h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many table);
++ 🏹 performance benchmark by Spring Aspect, swagger;
++ 🏹 globalExceptionHandler for add layers, checked/unchecked exceptions.
+```
 
 #### DB scheme:
 ![DB scheme](http://s1.radikale.ru/uploads/2017/12/22/992fda9cf4f8cc01c49eec3b861f9add-full.png)
@@ -65,14 +69,14 @@ Special features:
 + 2.3 populateDB.sql (completed for users and notepads (16403 entities in each));
 + 2.4 ServiceValidatorUtil (completed);
 + 2.5 NotFoundException (completed);
-+ 2.6 Generic services structure implemented (completed 100%):
++ 🏹 2.6 Generic services structure implemented (completed 100%):
 + 2.6.1 GenericService and JdbcGenericServiceImpl (competed);
 + 2.6.2 UserService, NotepadService, NoteService, TagService added (completed);
 + 2.6.3 jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed);
 ```
 ##### 3 Step test all methods of Services, Dao layers and utils (completed 100%): 
 ```diff
-+ 3.1 UserServiceTest class, covering all of GenericService and GenericDao methods of the service and dao levels (completed 100%):
++ 🏹 3.1 UserServiceTest class, covering all of GenericService and GenericDao methods of the service and dao levels (completed 100%):
 + 3.1.1 UserServiceTest class, UserTestData implementation (completed), initDB.sql, populateDB.sql (completed);
 + 3.1.2 NotepadServiceTest class, NotepadTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.1.3 NoteServiceTest class, NoteTestData implementation (completed), initDB.sql, populateDB.sql (competed);
@@ -82,7 +86,7 @@ Special features:
 ```
 ##### 4 Step implement Spring+JPA package (in progress):
 ```diff
-+ 🏹 4.1 Implement Spring data JPA profile/package (completed 100%):
++ 🏹 4.1 Implement generic Spring data JPA profile/package (completed 100%):
 + 4.1.1 Switched back to JPA - debugging of JPA profile (completed 100%):
 + 4.1.1 Abstract Entity's @id Generation has been fixed (completed);
 + 4.1.2 AbstractNamedEntity upgraded (completed);
@@ -102,9 +106,8 @@ Special features:
 + 5.1.2 manyToMany relationship has been implemented; initDB.sql/populateDB.sql fixed (100%);
 + 5.1.3 AbstractNamedEntity upgraded (completed);
 + 5.1.4 Services have been upgraded, functionality added, refactoring (completed);
-(completed);
 + 5.1.5 The functionality have been added to controllers, tests of controllers (completed);
-+ 5.2 Create benchmark class via Spting aspect's (completed)(completed);
++ 🏹 5.2 Create benchmark class via Spting aspect's (completed)(completed);
 + 🏹 5.3 GlobalExceptionsIntercepter (checked/unchecked exceptions), finalization (completed 100%):
 + 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
 + 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
@@ -116,15 +119,14 @@ Special features:
 + 6.1.1 Service and Dao layers refactoring (completed 100%):
 + 6.1.1.1 Replace @Transactional annotations to the Service layer from Dao (completed); 
 + 6.1.1.2 Upgrade repository.jpa package structure; upgrade method's logic (completed); 
-+ 6.1.2 Refactor data source, optimise transaction isolation (completed 100%):
++ 🏹 6.1.2 Refactor data source, optimise transaction isolation (completed 100%):
 + 6.1.2.1 Upgrade data source configuration (completed);
 + 6.1.2.1 Change data source transaction isolation level to Serializable (completed);
-+ 6.1.3 Enable Spring cache (completed 100%):
++ 🏹 6.1.3 Enable Spring cache (completed 100%):
 + 6.1.3.1 Set appconfig, spring-cache config, ehcache config (completed);
-+ 6.1.3.2 Install cache to Service Layer, check enable, delete deprecated service tests 
-(competed);
- + 6.1.3 Enable Hibernate level 2 cache (completed 90%):
- in progress ...
++ 6.1.3.2 Install cache to Service Layer, check enable, delete deprecated service tests (competed);
++ 🏹 6.1.3 Enable Hibernate level 2 cache (completed 90%, in progress):
+...
 ```
 #### Prerequisites:
 - IntelliJ IDEA.
