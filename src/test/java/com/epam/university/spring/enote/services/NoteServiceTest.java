@@ -1,15 +1,15 @@
 package com.epam.university.spring.enote.services;
 
-import static com.epam.university.spring.enote.NoteTestData.LIST_NOTES_TO_CREATE;
-import static com.epam.university.spring.enote.NoteTestData.NOTES_INITIALIZED;
-import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST;
-import static com.epam.university.spring.enote.NoteTestData.NOTE_FIRST_ID;
-import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST;
-import static com.epam.university.spring.enote.NoteTestData.NOTE_LAST_ID;
-import static com.epam.university.spring.enote.NoteTestData.NOTE_TO_CREATE;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_FIRST_ID;
-import static com.epam.university.spring.enote.TagTestData.TAG_FIRST_ID;
-import static com.epam.university.spring.enote.TagTestData.TAG_LAST_ID;
+import static com.epam.university.spring.enote.testdata.NoteTestData.LIST_NOTES_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.NoteTestData.NOTES_INITIALIZED;
+import static com.epam.university.spring.enote.testdata.NoteTestData.NOTE_FIRST;
+import static com.epam.university.spring.enote.testdata.NoteTestData.NOTE_FIRST_ID;
+import static com.epam.university.spring.enote.testdata.NoteTestData.NOTE_LAST;
+import static com.epam.university.spring.enote.testdata.NoteTestData.NOTE_LAST_ID;
+import static com.epam.university.spring.enote.testdata.NoteTestData.NOTE_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPAD_FIRST_ID;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_FIRST_ID;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_LAST_ID;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -158,7 +158,6 @@ public class NoteServiceTest {
     @Test
     public void getByNotepadId() {
         Set<Note> allNotesByNotepadId = noteService.getByNotepadId(NOTEPAD_FIRST_ID);
-        System.out.println(allNotesByNotepadId);
         assertTrue(allNotesByNotepadId.stream().allMatch(note -> note.getNotepad()
                 .getId().equals(NOTEPAD_FIRST_ID)) && allNotesByNotepadId.size() > 0);
     }

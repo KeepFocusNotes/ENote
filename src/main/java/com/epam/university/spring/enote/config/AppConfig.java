@@ -58,6 +58,8 @@ public class AppConfig {
         properties.put(org.hibernate.cfg.Environment.SHOW_SQL, "true");
         properties.put(org.hibernate.cfg.Environment.USE_SQL_COMMENTS, "true");
         properties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
+        //cache
+        properties.put(org.hibernate.cfg.Environment.GENERATE_STATISTICS,"true");
         properties.put(org.hibernate.cfg.Environment.CACHE_REGION_FACTORY,
                 "org.hibernate.cache.jcache.JCacheRegionFactory");
         properties.put(org.hibernate.cache.jcache.JCacheRegionFactory.PROVIDER,

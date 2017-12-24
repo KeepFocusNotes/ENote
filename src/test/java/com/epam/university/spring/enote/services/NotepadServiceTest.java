@@ -1,12 +1,12 @@
 package com.epam.university.spring.enote.services;
 
-import static com.epam.university.spring.enote.NotepadTestData.LIST_NOTEPADS_TO_CREATE;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPADS_INITIALIZED;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_FIRST;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_FIRST_ID;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_LAST;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_LAST_ID;
-import static com.epam.university.spring.enote.NotepadTestData.NOTEPAD_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.LIST_NOTEPADS_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPADS_INITIALIZED;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPAD_FIRST;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPAD_FIRST_ID;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPAD_LAST;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPAD_LAST_ID;
+import static com.epam.university.spring.enote.testdata.NotepadTestData.NOTEPAD_TO_CREATE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
