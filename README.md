@@ -73,7 +73,7 @@ Special features (completed):
 + 🏹 2.6 Generic services structure implemented (completed):
 + 2.6.1 GenericService and JdbcGenericServiceImpl (competed);
 + 2.6.2 UserService, NotepadService, NoteService, TagService added (completed);
-+ 2.6.3 jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed);
++ 2.6.3 jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed).
 ```
 ##### 3 Step - test all methods of Services, Dao layers and utils (completed): 
 ```diff
@@ -83,7 +83,7 @@ Special features (completed):
 + 3.1.3 NoteServiceTest class, NoteTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.1.4 TagServiceTest class, TagTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.2 ServiceValidatorUtilTest (completed);
-+ 3.3 Mock test Services(completed);
++ 3.3 Mock test Services(completed).
 ```
 ##### 4 Step - implement Spring+JPA package (completed):
 ```diff
@@ -98,7 +98,7 @@ Special features (completed):
 + 4.2 Upgrade tests (completed);
 + 4.2.1 TagServiceTest, NotepadTestData, NoteTestData, TagTestData have been fixed (completed); 
 + 4.3 Merge conflicts with Jdbc profile (completed);
-+ 4.4 Finalize the debugging of JPA (completed);
++ 4.4 Finalize the debugging of JPA (completed).
 ```
 ##### 5 Step - implement controllers, performance benchmark,exceptions handling system (completed):
 ```diff
@@ -112,7 +112,7 @@ Special features (completed):
 + 🏹 5.3 GlobalExceptionInterceptor (checked/unchecked exceptions), finalization (completed):
 + 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
 + 5.3.2 GlobalExceptionInterceptor and GlobalControllerValidatorUtil (completed);
-+ 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized);
++ 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized).
 ```
 ##### 6 Step - code performance refactoring, set transaction isolation and cache (optional):
 ```diff
