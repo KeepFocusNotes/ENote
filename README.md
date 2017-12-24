@@ -85,7 +85,7 @@ Special features (completed 100%):
 + 3.2 ServiceValidatorUtilTest (completed);
 + 3.3 Mock test Services(completed);
 ```
-##### 4 Step implement Spring+JPA package (in progress):
+##### 4 Step implement Spring+JPA package (completed):
 ```diff
 + 🏹 4.1 Implement generic Spring data JPA profile/package (completed 100%):
 + 4.1.1 Switched back to JPA - debugging of JPA profile (completed 100%):
