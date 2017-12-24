@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implements GenericDao<User> {
+public class JpaUserRepositoryImpl extends JpaAbstractGenericDao<User> implements JpaUserRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
