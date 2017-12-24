@@ -1,7 +1,10 @@
 package com.epam.university.spring.enote.config;
 
+//import com.epam.university.spring.enote.util.JpaUtil;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,12 +22,16 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.util.Properties;
+
 @Configuration
 @ComponentScan(basePackages = "com.epam.**")
 @EnableJpaRepositories("com.epam.university.spring.enote.repository")
 @EnableTransactionManagement
-@ImportResource("classpath:aspect-conf.xml")
+@ImportResource({"classpath:aspect-conf.xml", "classpath:spring/spring-cache.xml"})
+
 public class AppConfig {
+
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
@@ -40,7 +47,23 @@ public class AppConfig {
         bean.setDataSource(dataSource);
         bean.setJpaVendorAdapter(jpaVendorAdapter);
         bean.setPackagesToScan("com.epam");
+        bean.setJpaProperties(hibernateProperties());
         return bean;
+    }
+
+    Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.H2Dialect");
+        properties.put(org.hibernate.cfg.Environment.SHOW_SQL, "true");
+        properties.put(org.hibernate.cfg.Environment.USE_SQL_COMMENTS, "true");
+        properties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
+        /*properties.put(org.hibernate.cfg.Environment.CACHE_REGION_FACTORY,
+                "org.hibernate.cache.jcache.JCacheRegionFactory");
+        properties.put(org.hibernate.cache.jcache.JCacheRegionFactory.PROVIDER,
+                "org.ehcache.jsr107.EhcacheCachingProvider");
+        properties.put(org.hibernate.cfg.AvailableSettings.USE_SECOND_LEVEL_CACHE, "true");
+        properties.put(org.hibernate.cfg.AvailableSettings.USE_QUERY_CACHE, "false");*/
+        return properties;
     }
 
     @Bean
@@ -48,13 +71,9 @@ public class AppConfig {
         return new JpaTransactionManager(emf);
     }
 
-   /* @Bean
-    public DataSource dataSource() throws SQLException {
-        return new EmbeddedDatabaseBuilder().setName("test")
-                .setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:db/initDB.sql")
-                .addScript("classpath:db/populateDB.sql")
-                .build();
+    /*@Bean
+    public JpaUtil jpaUtil() {
+        return new JpaUtil();
     }*/
 
     @Bean(name = "dataSource")
