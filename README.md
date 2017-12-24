@@ -7,8 +7,7 @@ Special features:
 + transaction isolation set;
 + Spring cache set;
 + generic dao (both jdbcTemplate and Jpa profiles have been implemented), generic service layer;
-+ h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many 
-tble);
++ h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many table);
 + rest controllers;
 + performance benchmark by Spring Aspect, swagger;
 + globalExceptionHandler for add layers, checked/unchecked exceptions.
