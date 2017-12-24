@@ -46,38 +46,11 @@ public class HibernateSecondLevelCacheTest {
     }
 
     @Test
-    public void isPopulatedL2Cache() {
-        long entitiesCountBeforeCall = jpaUtil.getSecondLevelCacheStatistics("users")
-                .getEntries().size();
-        userService.getAll();
-        long entitiesCountAfterCall = jpaUtil.getSecondLevelCacheStatistics("users")
-                .getEntries().size();
-        assertTrue(entitiesCountBeforeCall == 0 && entitiesCountAfterCall == 500);
-    }
-
-    @Test
     public void isReadingFromL2Cache() {
-        Session session0 = jpaUtil.getSessionFactory().openSession();
-        Transaction transaction0 = session0.beginTransaction();
-        //print to panel to init counter of getting from db probably
-        log.info("Load first: " + session0.load(User.class, 1));
-        transaction0.commit();
-        session0.close();
-        Session session1 = jpaUtil.getSessionFactory().openSession();
-        Transaction transaction1 = session1.beginTransaction();
-        log.info("Load second: " + session1.load(User.class, 1));
-        transaction1.commit();
-        session1.close();
-        Session session2 = jpaUtil.getSessionFactory().openSession();
-        Transaction transaction2 = session2.beginTransaction();
-        log.info("Load third: " + session2.load(User.class, 1));
-        transaction2.commit();
-        session2.close();
-        Session session3 = jpaUtil.getSessionFactory().openSession();
-        Transaction transaction3 = session3.beginTransaction();
-        log.info("Load forth: " + session3.load(User.class, 1));
-        transaction3.commit();
-        session3.close();
+        log.info("Load first: " + userService.getById(1));
+        log.info("Load second: " + userService.getById(1));
+        log.info("Load third: " + userService.getById(1));
+        log.info("Load forth: " + userService.getById(1));
         assertEquals(3, jpaUtil.getSecondLevelCacheStatistics("users").getHitCount());
     }
 }
