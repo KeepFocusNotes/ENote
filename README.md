@@ -2,12 +2,17 @@ ENote
 =====
 ENote is short-term practice (students project) with the primary objective to implement most 
 important functionality of electronic notes by the Spring framework.
+```diff
 Special features:
-- generic dao (both jdbcTemplate and Jpa profiles have been implemented), generic service layer;
-- h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many table);
-- rest controllers;
-- performance benchmark by Spring Aspect, swagger;
-- globalExceptionHandler for add layers, checked/unchecked exceptions.
++- transaction isolation set;
++- Spring cache set;
++- generic dao (both jdbcTemplate and Jpa profiles have been implemented), generic service layer;
++- h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many 
+table);
++- rest controllers;
++- performance benchmark by Spring Aspect, swagger;
++- globalExceptionHandler for add layers, checked/unchecked exceptions.
+```
 
 #### DB scheme:
 ![DB scheme](http://s1.radikale.ru/uploads/2017/12/22/992fda9cf4f8cc01c49eec3b861f9add-full.png)
