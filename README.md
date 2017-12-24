@@ -3,14 +3,15 @@ ENote
 ENote is short-term practice (students project) with the primary objective to implement most 
 important functionality of electronic notes by the Spring framework.
 ```diff
-Special features:
+Special features (completed 100%):
 + 🏹 transaction isolation set;
 + 🏹 Spring cache set;
-+ 🏹 generic dao (both jdbcTemplate and Jpa profiles have been implemented);
-+ 🏹 generic service layer;
-+ 🏹 h2 sql initialization for tests with 500 units of all entities (except auxiliary many-many table);
++ 🏹 Hibernate level 2 cache set; 
++ 🏹 Generic dao (both jdbcTemplate and Jpa profiles have been implemented);
++ 🏹 Generic service layer;
++ 🏹 H2 sql initialization of tests with 500 units for entities (except auxiliary many-many table);
 + 🏹 performance benchmark by Spring Aspect, swagger;
-+ 🏹 globalExceptionHandler for add layers, checked/unchecked exceptions.
++ 🏹 GlobalExceptionInterceptor and exceptions layer for add layers, checked/unchecked exceptions.
 ```
 
 #### DB scheme:
@@ -108,9 +109,9 @@ Special features:
 + 5.1.4 Services have been upgraded, functionality added, refactoring (completed);
 + 5.1.5 The functionality have been added to controllers, tests of controllers (completed);
 + 🏹 5.2 Create benchmark class via Spting aspect's (completed)(completed);
-+ 🏹 5.3 GlobalExceptionsIntercepter (checked/unchecked exceptions), finalization (completed 100%):
++ 🏹 5.3 GlobalExceptionInterceptor (checked/unchecked exceptions), finalization (completed 100%):
 + 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
-+ 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
++ 5.3.2 GlobalExceptionInterceptor and GlobalControllerValidatorUtil (completed);
 + 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized 100%);
 ```
 ##### 6 Step code performance refactoring, set transaction isolation and cache (optional):
@@ -125,7 +126,10 @@ Special features:
 + 🏹 6.1.3 Enable Spring cache (completed 100%):
 + 6.1.3.1 Set appconfig, spring-cache config, ehcache config (completed);
 + 6.1.3.2 Install cache to Service Layer, check enable, delete deprecated service tests (competed);
-+ 🏹 6.1.3 Enable Hibernate level 2 cache (completed 90%, in progress):
++ 🏹 6.1.4 Enable Hibernate level 2 cache (completed 100%):
++ 6.1.4.1 Set appconfig, add JpaUtil class (completed);
++ 6.1.4.2 Enable and check 2 level cache (completed).
+
 ...
 ```
 #### Prerequisites:

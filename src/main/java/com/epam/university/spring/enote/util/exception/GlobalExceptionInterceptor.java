@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
-public class GlobalControllerExceptionHandler {
-    private static final Logger log = LoggerFactory.getLogger(GlobalControllerExceptionHandler.class);
+public class GlobalExceptionInterceptor {
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionInterceptor.class);
 
     @ExceptionHandler(ApplicationException.class)
     public ModelAndView applicationErrorHandler(HttpServletRequest req, ApplicationException appEx) throws Exception {

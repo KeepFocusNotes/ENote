@@ -5,6 +5,7 @@ package com.epam.university.spring.enote.config;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import com.epam.university.spring.enote.util.JpaUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -57,12 +58,12 @@ public class AppConfig {
         properties.put(org.hibernate.cfg.Environment.SHOW_SQL, "true");
         properties.put(org.hibernate.cfg.Environment.USE_SQL_COMMENTS, "true");
         properties.put(org.hibernate.cfg.Environment.FORMAT_SQL, "true");
-        /*properties.put(org.hibernate.cfg.Environment.CACHE_REGION_FACTORY,
+        properties.put(org.hibernate.cfg.Environment.CACHE_REGION_FACTORY,
                 "org.hibernate.cache.jcache.JCacheRegionFactory");
         properties.put(org.hibernate.cache.jcache.JCacheRegionFactory.PROVIDER,
                 "org.ehcache.jsr107.EhcacheCachingProvider");
         properties.put(org.hibernate.cfg.AvailableSettings.USE_SECOND_LEVEL_CACHE, "true");
-        properties.put(org.hibernate.cfg.AvailableSettings.USE_QUERY_CACHE, "false");*/
+        properties.put(org.hibernate.cfg.AvailableSettings.USE_QUERY_CACHE, "false");
         return properties;
     }
 
@@ -71,10 +72,10 @@ public class AppConfig {
         return new JpaTransactionManager(emf);
     }
 
-    /*@Bean
+    @Bean
     public JpaUtil jpaUtil() {
         return new JpaUtil();
-    }*/
+    }
 
     @Bean(name = "dataSource")
     public DataSource dataSource() {
