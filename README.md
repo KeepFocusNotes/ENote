@@ -110,17 +110,21 @@ Special features:
 + 5.3.2 GlobalControllerEcxeptionHandler and GlobalControllerValidatorUtil (completed);
 + 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized 100%);
 ```
-##### 6 Step code refactoring (optional):
+##### 6 Step code performance refactoring, set transaction isolation and cache (optional):
 ```diff
-+ 6.1 Code refactoring:
-+ 6.1.1 Service and Dao layers refactoring:
++ 6.1 Performance refactoring:
++ 6.1.1 Service and Dao layers refactoring (completed 100%):
 + 6.1.1.1 Replace @Transactional annotations to the Service layer from Dao (completed); 
 + 6.1.1.2 Upgrade repository.jpa package structure; upgrade method's logic (completed); 
-+ 6.1.2 Data source refactoring:
++ 6.1.2 Refactor data source, optimise transaction isolation (completed 100%):
 + 6.1.2.1 Upgrade data source configuration (completed);
 + 6.1.2.1 Change data source transaction isolation level to Serializable (completed);
-   ...
- ...
++ 6.1.3 Enable Spring cache (completed 100%):
++ 6.1.3.1 Set appconfig, spring-cache config, ehcache config (completed);
++ 6.1.3.2 Install cache to Service Layer, check enable, delete deprecated service tests 
+(competed);
+ + 6.1.3 Enable Hibernate level 2 cache (completed 90%):
+ in progress ...
 ```
 #### Prerequisites:
 - IntelliJ IDEA.
