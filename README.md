@@ -3,7 +3,7 @@ ENote
 ENote is short-term practice (students project) with the primary objective to implement most 
 important functionality of electronic notes by the Spring framework.
 ```diff
-Special features (completed 100%):
+Special features (completed):
 + 🏹 transaction isolation set;
 + 🏹 Spring cache set;
 + 🏹 Hibernate level 2 cache set; 
@@ -48,7 +48,7 @@ Special features (completed 100%):
 
 ### Plan
 
-##### 1 Step (completed 100%):
+##### 1 Step (completed):
 ```diff
 + 1.1 init repository (completed);
 + 1.2 init/set new Maven project and directory's structure (completed);
@@ -56,9 +56,9 @@ Special features (completed 100%):
 + 1.4 spring-app.xml (completed);
 + 1.5 spring-db.xml (completed);
 + 1.6 h2.properties (completed);
-+ 1.7 entities (mostly completed).
++ 1.7 entities (completed).
 ```
-##### 2 Step implement Spring+JDBC package (completed 100%):
+##### 2 Step - implement Spring+JDBC package (completed):
 ```diff
 + 2.1 Jdbc package installation:
 + 2.1.1 JdbcAbstractGenericDao (completed);
@@ -70,25 +70,25 @@ Special features (completed 100%):
 + 2.3 populateDB.sql (completed for users and notepads (16403 entities in each));
 + 2.4 ServiceValidatorUtil (completed);
 + 2.5 NotFoundException (completed);
-+ 🏹 2.6 Generic services structure implemented (completed 100%):
++ 🏹 2.6 Generic services structure implemented (completed):
 + 2.6.1 GenericService and JdbcGenericServiceImpl (competed);
 + 2.6.2 UserService, NotepadService, NoteService, TagService added (completed);
-+ 2.6.3 jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed);
++ 2.6.3 jdbc UserServiceImpl, NotepadServiceImpl, NoteServiceImpl, TagServiceImpl (completed).
 ```
-##### 3 Step test all methods of Services, Dao layers and utils (completed 100%): 
+##### 3 Step - test all methods of Services, Dao layers and utils (completed): 
 ```diff
-+ 🏹 3.1 UserServiceTest class, covering all of GenericService and GenericDao methods of the service and dao levels (completed 100%):
++ 🏹 3.1 UserServiceTest class, covering all of GenericService and GenericDao methods of the service and dao levels (completed):
 + 3.1.1 UserServiceTest class, UserTestData implementation (completed), initDB.sql, populateDB.sql (completed);
 + 3.1.2 NotepadServiceTest class, NotepadTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.1.3 NoteServiceTest class, NoteTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.1.4 TagServiceTest class, TagTestData implementation (completed), initDB.sql, populateDB.sql (competed);
 + 3.2 ServiceValidatorUtilTest (completed);
-+ 3.3 Mock test Services(completed);
++ 3.3 Mock test Services(completed).
 ```
-##### 4 Step implement Spring+JPA package (completed):
+##### 4 Step - implement Spring+JPA package (completed):
 ```diff
-+ 🏹 4.1 Implement generic Spring data JPA profile/package (completed 100%):
-+ 4.1.1 Switched back to JPA - debugging of JPA profile (completed 100%):
++ 🏹 4.1 Implement generic Spring data JPA profile/package (completed):
++ 4.1.1 Switched back to JPA - debugging of JPA profile (completed):
 + 4.1.1 Abstract Entity's @id Generation has been fixed (completed);
 + 4.1.2 AbstractNamedEntity upgraded (completed);
 + 4.1.3 constructors of the entities upgraded, fetch of the fields changed (completed);
@@ -98,35 +98,35 @@ Special features (completed 100%):
 + 4.2 Upgrade tests (completed);
 + 4.2.1 TagServiceTest, NotepadTestData, NoteTestData, TagTestData have been fixed (completed); 
 + 4.3 Merge conflicts with Jdbc profile (completed);
-+ 4.4 Finalize the debugging of JPA (completed 100 %);
++ 4.4 Finalize the debugging of JPA (completed).
 ```
-##### 5 Step implement controllers, performance benchmark,exceptions handling system(completed):
+##### 5 Step - implement controllers, performance benchmark,exceptions handling system (completed):
 ```diff
-+ 5.1 Implement Controllers layer, add functionality and tests (completed 100%):
-+ 5.1.1 switched to JavaConfig, added basic restControllers(completed);
-+ 5.1.2 manyToMany relationship has been implemented; initDB.sql/populateDB.sql fixed (100%);
++ 5.1 Implement Controllers layer, add functionality and tests (completed):
++ 5.1.1 switched to JavaConfig, added basic restControllers (completed);
++ 5.1.2 manyToMany relationship has been implemented; initDB.sql/populateDB.sql fixed (completed);
 + 5.1.3 AbstractNamedEntity upgraded (completed);
 + 5.1.4 Services have been upgraded, functionality added, refactoring (completed);
 + 5.1.5 The functionality have been added to controllers, tests of controllers (completed);
-+ 🏹 5.2 Create benchmark class via Spting aspect's (completed)(completed);
-+ 🏹 5.3 GlobalExceptionInterceptor (checked/unchecked exceptions), finalization (completed 100%):
++ 🏹 5.2 Create benchmark class via Spting aspect's (completed);
++ 🏹 5.3 GlobalExceptionInterceptor (checked/unchecked exceptions), finalization (completed):
 + 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
 + 5.3.2 GlobalExceptionInterceptor and GlobalControllerValidatorUtil (completed);
-+ 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized 100%);
++ 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized).
 ```
-##### 6 Step code performance refactoring, set transaction isolation and cache (optional):
+##### 6 Step - code performance refactoring, set transaction isolation and cache (optional):
 ```diff
 + 6.1 Performance refactoring:
-+ 6.1.1 Service and Dao layers refactoring (completed 100%):
++ 6.1.1 Service and Dao layers refactoring (completed):
 + 6.1.1.1 Replace @Transactional annotations to the Service layer from Dao (completed); 
 + 6.1.1.2 Upgrade repository.jpa package structure; upgrade method's logic (completed); 
-+ 🏹 6.1.2 Refactor data source, optimise transaction isolation (completed 100%):
++ 🏹 6.1.2 Refactor data source, optimise transaction isolation (completed):
 + 6.1.2.1 Upgrade data source configuration (completed);
 + 6.1.2.1 Change data source transaction isolation level to Serializable (completed);
-+ 🏹 6.1.3 Enable Spring cache (completed 100%):
++ 🏹 6.1.3 Enable Spring cache (completed):
 + 6.1.3.1 Set appconfig, spring-cache config, ehcache config (completed);
 + 6.1.3.2 Install cache to Service Layer, check enable, delete deprecated service tests (competed);
-+ 🏹 6.1.4 Enable Hibernate level 2 cache (completed 100%):
++ 🏹 6.1.4 Enable Hibernate level 2 cache (completed):
 + 6.1.4.1 Set appconfig, add JpaUtil class (completed);
 + 6.1.4.2 Enable Hibernate level 2 cache (completed);
 + 6.1.4.3 Test Hibernate level 2 cache (completed);
