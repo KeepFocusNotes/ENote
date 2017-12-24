@@ -3,7 +3,7 @@ package com.epam.university.spring.enote.services;
 import com.epam.university.spring.enote.config.AppConfig;
 import com.epam.university.spring.enote.model.AbstractBaseEntity;
 import com.epam.university.spring.enote.model.User;
-//import com.epam.university.spring.enote.util.JpaUtil;
+import com.epam.university.spring.enote.util.JpaUtil;
 import com.epam.university.spring.enote.util.exception.NotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,17 +41,13 @@ public class UserServiceTest {
     @Autowired
     private CacheManager cacheManager;
 
-    /*@Autowired
+    @Autowired
     protected JpaUtil jpaUtil;
-
-    @Before
-    public void setUp() {
-        jpaUtil.clear2ndLevelHibernateCache();
-    }*/
 
     @Before
     public void setUp() throws Exception {
         cacheManager.getCache("users").clear();
+        jpaUtil.clear2ndLevelHibernateCache();
     }
 
     @Test

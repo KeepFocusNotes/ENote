@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class UserServiceImpl extends GenericServiceImpl<User> implements UserSer
         super(jpaUserRepositoryImpl);
     }
 
-    //@Cacheable("users")
+    @Cacheable("users")
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Override
     public List<User> getAll() {

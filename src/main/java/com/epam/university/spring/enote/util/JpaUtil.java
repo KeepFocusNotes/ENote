@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/*public class JpaUtil {
+public class JpaUtil {
 
     @PersistenceContext
     private EntityManager em;
@@ -16,4 +16,4 @@ import javax.persistence.PersistenceContext;
         SessionFactory sessionFactory = session.getSessionFactory();
         sessionFactory.getCache().evictAllRegions();
     }
-}*/
+}
