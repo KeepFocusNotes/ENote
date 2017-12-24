@@ -1,13 +1,13 @@
 package com.epam.university.spring.enote.services;
 
-import static com.epam.university.spring.enote.TagTestData.LIST_TAGS_TO_CREATE;
-import static com.epam.university.spring.enote.TagTestData.TAGS_INITIALIZED;
-import static com.epam.university.spring.enote.TagTestData.TAG_FIRST;
-import static com.epam.university.spring.enote.TagTestData.TAG_FIRST_ID;
-import static com.epam.university.spring.enote.TagTestData.TAG_LAST;
-import static com.epam.university.spring.enote.TagTestData.TAG_LAST_ID;
-import static com.epam.university.spring.enote.TagTestData.TAG_TO_CREATE;
-import static com.epam.university.spring.enote.UserTestData.USER_57_ID;
+import static com.epam.university.spring.enote.testdata.TagTestData.LIST_TAGS_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAGS_INITIALIZED;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_FIRST;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_FIRST_ID;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_LAST;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_LAST_ID;
+import static com.epam.university.spring.enote.testdata.TagTestData.TAG_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.UserTestData.USER_57_ID;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

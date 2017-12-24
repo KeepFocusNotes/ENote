@@ -128,8 +128,8 @@ Special features (completed 100%):
 + 6.1.3.2 Install cache to Service Layer, check enable, delete deprecated service tests (competed);
 + 🏹 6.1.4 Enable Hibernate level 2 cache (completed 100%):
 + 6.1.4.1 Set appconfig, add JpaUtil class (completed);
-+ 6.1.4.2 Enable and check 2 level cache (completed).
-
++ 6.1.4.2 Enable Hibernate level 2 cache (completed);
++ 6.1.4.3 Test Hibernate level 2 cache (completed);
 ...
 ```
 #### Prerequisites:

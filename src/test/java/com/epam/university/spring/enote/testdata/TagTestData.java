@@ -1,4 +1,4 @@
-package com.epam.university.spring.enote;
+package com.epam.university.spring.enote.testdata;
 
 import com.epam.university.spring.enote.model.Tag;
 

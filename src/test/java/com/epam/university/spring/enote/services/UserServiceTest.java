@@ -19,13 +19,13 @@ import java.util.List;
 
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static com.epam.university.spring.enote.UserTestData.LIST_USERS_TO_CREATE;
-import static com.epam.university.spring.enote.UserTestData.USERS_INITIALIZED;
-import static com.epam.university.spring.enote.UserTestData.USER_FIRST;
-import static com.epam.university.spring.enote.UserTestData.USER_FIRST_ID;
-import static com.epam.university.spring.enote.UserTestData.USER_LAST;
-import static com.epam.university.spring.enote.UserTestData.USER_LAST_ID;
-import static com.epam.university.spring.enote.UserTestData.USER_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.UserTestData.LIST_USERS_TO_CREATE;
+import static com.epam.university.spring.enote.testdata.UserTestData.USERS_INITIALIZED;
+import static com.epam.university.spring.enote.testdata.UserTestData.USER_FIRST;
+import static com.epam.university.spring.enote.testdata.UserTestData.USER_FIRST_ID;
+import static com.epam.university.spring.enote.testdata.UserTestData.USER_LAST;
+import static com.epam.university.spring.enote.testdata.UserTestData.USER_LAST_ID;
+import static com.epam.university.spring.enote.testdata.UserTestData.USER_TO_CREATE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
