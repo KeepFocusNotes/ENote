@@ -4,14 +4,14 @@ ENote is short-term practice (students project) with the primary objective to im
 important functionality of electronic notes by the Spring framework.
 ```diff
 Special features (completed):
-+ 🏹 transaction isolation set;
 + 🏹 Spring cache set;
 + 🏹 Hibernate level 2 cache set; 
++ 🏹 H2 transaction isolation set;
 + 🏹 Generic dao (both jdbcTemplate and Jpa profiles have been implemented);
 + 🏹 Generic service layer;
 + 🏹 H2 sql initialization of tests with 500 units for entities (except auxiliary many-many table);
 + 🏹 performance benchmark by Spring Aspect, swagger;
-+ 🏹 GlobalControllerExceptionInterceptor for add layers, checked/unchecked exceptions.
++ 🏹 GlobalControllerExceptionInterceptor sending error info to clients about checked/unchecked exceptions.
 ```
 
 #### DB scheme:
