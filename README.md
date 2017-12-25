@@ -11,7 +11,7 @@ Special features (completed):
 + 🏹 Generic service layer;
 + 🏹 H2 sql initialization of tests with 500 units for entities (except auxiliary many-many table);
 + 🏹 performance benchmark by Spring Aspect, swagger;
-+ 🏹 GlobalExceptionInterceptor and exceptions layer for add layers, checked/unchecked exceptions.
++ 🏹 GlobalControllerExceptionInterceptor for add layers, checked/unchecked exceptions.
 ```
 
 #### DB scheme:
@@ -111,7 +111,7 @@ Special features (completed):
 + 🏹 5.2 Create benchmark class via Spting aspect's (completed);
 + 🏹 5.3 GlobalExceptionInterceptor (checked/unchecked exceptions), finalization (completed):
 + 5.3.1 Auxiliary exceptions classes and superclass ApplicationException (completed);
-+ 5.3.2 GlobalExceptionInterceptor and GlobalControllerValidatorUtil (completed);
++ 5.3.2 GlobalControllerExceptionInterceptor and GlobalControllerValidatorUtil (completed);
 + 5.3.3 Connect swagger, DB scheme, link's table, fix Readme, release 3.0 (finalized).
 ```
 ##### 6 Step - code performance refactoring, set transaction isolation and cache (optional):
@@ -130,6 +130,7 @@ Special features (completed):
 + 6.1.4.1 Set appconfig, add JpaUtil class (completed);
 + 6.1.4.2 Enable Hibernate level 2 cache (completed);
 + 6.1.4.3 Test Hibernate level 2 cache (completed);
++ 6.1.5 Fix GlobalControllerExceptionInterceptor to response errorInfo to the client (completed);
 ...
 ```
 #### Prerequisites:
