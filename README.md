@@ -130,7 +130,7 @@ Special features (completed):
 + 6.1.4.1 Set appconfig, add JpaUtil class (completed);
 + 6.1.4.2 Enable Hibernate level 2 cache (completed);
 + 6.1.4.3 Test Hibernate level 2 cache (completed);
-+ 6.1.5 Fix GlobalControllerExceptionInterceptor to response errorInfo to the client (completed);
++ 🏹 6.1.5 Fix GlobalControllerExceptionInterceptor to response errorInfo to the client (completed);
 ...
 ```
 #### Prerequisites:
